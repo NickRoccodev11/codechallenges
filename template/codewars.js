@@ -61,11 +61,44 @@ const log = console.log
 //     }
 // }
 // let frog = "abcdefgjjhsgjohi"
-// log(charGrouper(frog))
+// // log(charGrouper(frog))
 
-function doubler(arr){
-   let newArr=  arr.map(element=> element+=element)
-   return newArr
+// function doubler(arr){
+//    let newArr=  arr.map(element=> element+=element)
+//    return newArr
+// }
+// let frog= [1,2,3,4,5]
+// console.log(doubler(frog))
+// 
+
+// console.log("hi")
+// let sadFace = {
+// face: "sad",
+// isSad: true,
+// frown: function(){
+//    console.log(":(")
+// }
+
+// }
+
+// function findMultiples(integer, limit) {
+
+
+// }
+// log(findMultiples(2,6))
+
+
+function turn(position, destination) {
+
+   if ((position === "N" && destination === "E") ||
+      (position === "E" && destination === "S") ||
+      (position === "S" && destination === "W") ||
+      (position === "W" && destination === "N")) {
+      return "right"
+   } return "left"
 }
-let frog= [1,2,3,4,5]
-console.log(doubler(frog))
+
+log(turn("E", "S"),
+   turn("S", "E"),
+   turn("N", "E"),
+   turn("E", "N"))
