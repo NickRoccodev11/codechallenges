@@ -6,12 +6,12 @@
 
 
 function rowFinder(k) {
-    lastnumofRow = 0;
+    lastNumOfRow = 0;
     row = 0;
     do {
       row++;
-      lastnumofRow = lastnumofRow + row;
-    } while (lastnumofRow < k);
+      lastNumOfRow = lastNumOfRow + row;
+    } while (lastNumOfRow < k);
     return row;
   }
   
