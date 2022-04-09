@@ -8,10 +8,12 @@
 // uppercase letters A-Z and the values are predetermined words
 
 
-var makeBackronym = function(string){
+var makeBackronym = function (string) {
     let phrase = ""
-   for (i = 0; i < string.length; i++) {
-     phrase += dict[`${string.toUpperCase()[i]}`] + " "
-   }
-   return phrase.slice(0,-1);
- };
+    for (i = 0; i < string.length; i++) {
+        phrase += dict[`${string.toUpperCase()[i]}`] + " "
+    }
+    return phrase.slice(0, -1);
+};
+
+
