@@ -13,9 +13,9 @@ function remover(a, b) {
         if (element === arrB[i]) {
           return false;
         }
-      } return true;
-    }
-    );
+      } 
+      return true;
+    });
     return result;
   }
   
