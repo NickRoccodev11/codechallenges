@@ -14,20 +14,28 @@
 
 // '0' and '?' returns -1
 
-function compareEm(a, b) {
-    if (
-        a.toUpperCase() === a.toLowerCase() ||
-        b.toLowerCase() === b.toUpperCase()) {
-        return -1
-    } else if (
-        a === a.toUpperCase() && b === b.toUpperCase() ||
-        a === a.toLowerCase() && b === b.toLowerCase()) {
-        return 1
-    } else if (
-        a === a.toUpperCase() && b === b.toLowerCase() ||
-        a === a.toLowerCase() && b === b.toUpperCase()) {
-        return 0
-    }
+// function compareEm(a, b) {
+//     if (
+//         a.toUpperCase() === a.toLowerCase() ||
+//         b.toLowerCase() === b.toUpperCase()) {
+//         return -1
+//     } else if (
+//         a === a.toUpperCase() && b === b.toUpperCase() ||
+//         a === a.toLowerCase() && b === b.toLowerCase()) {
+//         return 1
+//     } else if (
+//         a === a.toUpperCase() && b === b.toLowerCase() ||
+//         a === a.toLowerCase() && b === b.toUpperCase()) {
+//         return 0
+//     }
 
 
-}
+// }
+// Given two words and a letter, return a single word that's a combination of both words, merged at the point where the given letter first appears in each word. The returned word should have the beginning of the first word and the ending of the second, with the dividing letter in the middle. You can assume both words will contain the dividing letter.
+
+// Examples
+// ("hello", "world", "l")       ==>  "held"
+// ("coding", "anywhere", "n")   ==>  "codinywhere"
+// ("jason", "samson", "s")      ==>  "jasamson"
+// ("wonderful", "people", "e")  ==>  "wondeople"
+
