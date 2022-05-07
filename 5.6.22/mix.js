@@ -33,109 +33,13 @@
 
 
 
-function mix(s1, s2) {
-    let alphabet = "abcdefghijklmnopqrstuvwxyz",
-        s1Arr = [],
-        s2Arr = [],
-        count = 0,
-        result = [],
-        response = "";
+// 
 
-    //create arrays of letter instances in each string
-    for (i = 0; i < alphabet.length; i++) {
-        for (j = 0; j < s1.length; j++) {
-            if (alphabet[i] === s1[j]) {
-                count++;
-            }
-            if (j === s1.length - 1 && count > 1) {
-                s1Arr.push([alphabet[i], count]);
-                count = 0;
-            }
-            if (j === s1.length - 1 && count <= 1) {
-                count = 0;
-            }
-        }
-    }
-    for (i = 0; i < alphabet.length; i++) {
-        for (j = 0; j < s2.length; j++) {
-            if (alphabet[i] === s2[j]) {
-                count++;
-            }
-            if (j === s2.length - 1 && count > 1) {
-                s2Arr.push([alphabet[i], count]);
-                count = 0;
-            }
-            if (j === s2.length - 1 && count <= 1) {
-                count = 0;
-            }
-        }
-    }
-
-    // sort the letter arrays
-    s1Arr.sort((function (index) {
-        return function (a, b) {
-            return (a[index] === b[index] ? 0 : (a[index] > b[index] ? -1 : 1));
-        };
-    })(1));
-    s2Arr.sort((function (index) {
-        return function (a, b) {
-            return (a[index] === b[index] ? 0 : (a[index] > b[index] ? -1 : 1));
-        };
-    })(1));
-
-    //place all letters present in both strings in the result array
-    for (i = 0; i < s1Arr.length; i++) {
-        for (j = 0; j < s2Arr.length; j++) {
-            if (s1Arr[i][0] === s2Arr[j][0]) {
-                if (s1Arr[i][1] > s2Arr[j][1] && s1Arr[i] !== "!" && s2Arr[j] !== "!") {
-                    result.push([`1:${s1Arr[i][0].repeat(s1Arr[i][1])}`, `a${s1Arr[i][0]}`])
-                    s1Arr[i] = "!"
-                    s2Arr[j] = "!"
-                } else if (s1Arr[i][1] < s2Arr[j][1] && s1Arr[i] !== "!" && s2Arr[j] !== "!") {
-                    result.push([`2:${s2Arr[j][0].repeat(s2Arr[j][1])}`, `b${s2Arr[j][0]}`])
-                    s2Arr[j] = "!"
-                    s1Arr[i] = "!"
-                } else if (s1Arr[i][1] = s2Arr[j][1] && s1Arr[i] !== "!" && s2Arr[j] !== "!") {
-                    result.push([`=:${s2Arr[j][0].repeat(s2Arr[j][1])}`, `z${s2Arr[j][0]}`])
-                    s1Arr[i] = "!"
-                    s2Arr[j] = "!"
-
-                }
-            }
-        }
-    }
-    //place unique letters in the result array
-    for (i = 0; i < s1Arr.length; i++) {
-        if (s1Arr[i] !== "!") {
-            result.push([`1:${s1Arr[i][0].repeat(s1Arr[i][1])}`, `a${s1Arr[i][0]}`])
-
-        }
-    }
-    for (i = 0; i < s2Arr.length; i++) {
-        if (s2Arr[i] !== "!") {
-            result.push([`2:${s2Arr[i][0].repeat(s2Arr[i][1])}`, `b${s2Arr[i][0]}`])
-
-        }
-    }
-
-    
-//sort the list
-    result.sort(function(a, b) {
-        return a[1].localeCompare(b[1]);
-      });
-      log(result)
-  
-    result.sort((a, b) => {
-        return b[0].length - a[0].length
+function binToDec(bin){
+    let binArr = parseInt(bin)
+    log(binArr)
+    binArr.split()
+    return binArr.reduce((acc,curr)=>{
+      return acc*2 + curr
     })
-
-//form the response
-     for (i = 0; i < result.length; i++) {
-
-        response += `/${result[i][0]}`
-
     }
-    response = response.slice(1)
-
-    return response
-}
