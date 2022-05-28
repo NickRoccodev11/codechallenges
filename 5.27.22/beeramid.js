@@ -18,7 +18,6 @@
 
 
 
-
 // Returns number of complete beeramid levels
 var beeramid = function(bonus, price) {
     let level = 1
