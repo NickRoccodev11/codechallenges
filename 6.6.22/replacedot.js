@@ -11,7 +11,20 @@
 // String str will never be null.
 
 
+// the original:
 
+// var replaceDots = function(str) {
+//     return str.replace(/./, '-');
+//   }
+
+
+//first solution :
+function replaceDots(str) {
+    return str.replaceAll(".", "-");
+}
+
+
+//variation
 var replaceDots = function (str) {
     let noDots = "";
     for (i = 0; i < str.length; i++) {
@@ -23,5 +36,4 @@ var replaceDots = function (str) {
     }
     return noDots
   }
-  
-  
+
