@@ -34,7 +34,7 @@
 // minUmbrellas(["rainy", "rainy", "rainy", "rainy", "thunderstorms", "rainy"])
 // should return 1
 
-// Because he only needs 1 umbrella which he takes on every journey.
+
 
 
 function minUmbrellas(weather) {
