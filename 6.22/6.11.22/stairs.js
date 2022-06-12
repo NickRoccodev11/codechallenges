@@ -17,10 +17,25 @@
 
 
 
-function stairsIn20(s) {
-    let total = 0
-    for (i = 0; i < s.length; i++) {
-        total += s[i].reduce((a, b) => a + b)
-    }
-    return total * 20
+// function stairsIn20(s) {
+//     let total = 0
+//     for (i = 0; i < s.length; i++) {
+//         total += s[i].reduce((a, b) => a + b)
+//     }
+//     return total * 20
+// }
+
+
+function knightVsKing(knightPosition, kingPosition) {
+ log(kingPosition.charCodeAt(2))
+ log(knightPosition.charCodeAt(2))
+
 }
+
+knightVsKing([4, "C"], [6, "D"])
+knightVsKing([7, "B"], [6, "C"])
+knightVsKing([2, "F"], [6, "B"])
+
+// [4, "C"], [6, "D"], "Knight");
+// 		doTest([7, "B"], [6, "C"], "King");
+// 		doTest([2, "F"], [6, "B"], "None");
