@@ -7,11 +7,6 @@
 // The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
 
 
-
-
-
-
-
 function twoSum(numbers, target) {
     for (i = 0; i < numbers.length; i++) {
         for (j = 0; j < numbers.length; j++) {
