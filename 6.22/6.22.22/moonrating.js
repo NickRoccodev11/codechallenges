@@ -9,7 +9,7 @@ function moonRating(rating) {
     let newRating = "";
     //fill in moons from the whole numbers
     for (i = 0; i < Math.floor(rating / 2); i++) {
-      rating += "o"
+      newRating += "o"
     }
   //format arg to remove whole number and leave fractional number with decimal
     let remaining = (rating / 2).toString().split(".")
@@ -17,9 +17,9 @@ function moonRating(rating) {
   
   // fill in half or full moons for fractional numbers
     if (remaining >= .25 && remaining < .75) {
-      rating += "c"
+      newRating += "c"
     } else if (remaining >= .75) {
-      rating += "o"
+      newRating += "o"
     }
   // fill in x's for ratings with less than 5 moons
     while (newRating.length < 5) {
