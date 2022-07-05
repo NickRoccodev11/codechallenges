@@ -23,9 +23,6 @@ function outed(meet, boss) {
     }
     numOfPeople++
   }
-  if (total / numOfPeople <= 5) {
-    return "Get Out Now!"
-  } else {
-    return "Nice Work Champ!"
-  }
+
+  return total / numOfPeople <= 5 ? "Get Out Now!" : "Nice Work Champ!"
 }
