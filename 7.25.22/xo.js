@@ -14,14 +14,40 @@
 
 
 function XO(str) {
-    let xCount = 0, 
+    let xCount = 0,
         oCount = 0;
-  for( i=0; i<str.length; i++){
-    if(str[i] === "x"|| str[i] === "X"){
-      xCount++;
-    }else if(str[i] === "o"|| str[i] === "O"){
-      oCount++;
+    for (i = 0; i < str.length; i++) {
+        if (str[i] === "x" || str[i] === "X") {
+            xCount++;
+        } else if (str[i] === "o" || str[i] === "O") {
+            oCount++;
+        }
     }
+    return xCount === oCount
+}
+
+
+function isPrime(num) {
+    if (num <= 1) {
+        return false
     }
-  return xCount === oCount
-  }
+    if (num === 2 || num === 3) {
+        return true
+    } else if (num % 2 === 0) {
+        return false
+    }
+    let counter = 0;
+    for (i = 1; i < Math.ceil(num / 2); i++) {
+        if (i % num === 0) {
+            log(i,counter)
+            counter++;
+        }
+      if (counter > 1){
+        return false
+      }
+      return true
+    }
+}
+
+isPrime(75)
+
