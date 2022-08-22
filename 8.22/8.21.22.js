@@ -20,3 +20,4 @@ function positiveSum(arr) {
       }
     return total
   }
+
