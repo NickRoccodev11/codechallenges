@@ -3,7 +3,6 @@
 //  No floats or non-positive integers will be passed.
 
 
-function sumTwoSmallestNumbers(numbers) {  
-    return numbers.sort((a,b)=> a-b)[0]+ numbers.sort((a,b)=> a-b)[1]
-    }
-
+function sumTwoSmallestNumbers(numbers) {
+    return numbers.sort((a, b) => a - b)[0] + numbers.sort((a, b) => a - b)[1]
+}
