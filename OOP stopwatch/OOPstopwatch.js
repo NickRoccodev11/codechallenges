@@ -1,37 +1,16 @@
-function Stopwatch() {
-   
-    let running, duration = 0, startTime, stopTime
-    
-    this.start = function () {
-        if (running === true) {
-            throw new Error("stopwatch is already running")
-        } else {
-            running = true;
-            startTime = new Date();
-        }
-    },
+let log = console.log
 
-        this.stop = function () {
-            if (running !== true) {
-                throw new Error('Stopwatch is already stopped')
-            } else {
-                running = false
-                stopTime = new Date();
-                const elapsed = (stopTime.getTime() - startTime.getTime())/1000
-                duration += elapsed;
-            }
-        },
 
-        this.reset = function () {
-            startTime = null;
-            stopTime = null;
-            duration = 0;
-            running = false;
-        },
+let train = ["Hello", "my", "Name", "is", "Anne"]
 
-    Object.defineProperty(this, "duration", {
-        get: function () { return duration }
-    })
+function sortMe(names) {
+  names.sort(function (a, b) {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+});
+return names
 }
 
-const sw = new Stopwatch();
+
+log(sortMe(train))
+
+
