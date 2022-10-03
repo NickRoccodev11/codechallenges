@@ -23,6 +23,8 @@ function sortMe(names) {
 // example: [5,3,2,4,1]  => [5,3,1,2,4]
 
 
+//NOT WORKING
+// TO FIX: try using an object with right and left properties, than returning a new array
 
 
 
