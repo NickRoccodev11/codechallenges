@@ -11,8 +11,16 @@ function catType(strng) {
             break;
         }
     }
-    log(strng)
-    return cleanedUp
+
+    let removeAndFlip = cleanedUp.replaceAll("Eek!", "").split('').reverse('').join('')
+    let splitByV = removeAndFlip.split('v')
+    // log(splitByV)
+    let message = "";
+    for (i = 0; i < splitByV.length; i++) {
+        message += splitByV[i][0]
+    }
+    
+    return message.slice(1)
 }
 
 
