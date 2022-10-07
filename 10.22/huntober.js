@@ -81,3 +81,72 @@ function stringReverse(strng){
 }
 
 log(stringReverse("  Hello.! > "))
+
+// day 5
+// several limitations placed on a list of cat puns. return the length of final list
+
+let list = "The Pawshank Redemption,Caturday Night Live,Only Meworders in the Building,I Love Mewcy, Mewsummer Meowders,The Golden Purrs, Purrlandia ,Meowpardy, Meowstery Science Theater: Purrthousand, Amewican Idol,Dog City,Doctor Mew , The Meowing Fed,Mew Peter,The Vicar of Dogley, Kittens,Meownton Abbey,Pets and the Kitty,Dogis and Bonehead,Pawlty Meowers ,The Meowpet Show,Barkos,The Catbert Purrport,The Pawffice,The Dogford Files, Battlestar Catlactica,Catlumbo,SpongeDog Squarepants,NYPD Mew ,Fluffy the Meowpire Purrer,The Inbemewners,Meowder She Wrote,Paw & Order,30 Dog, Pawvatar: The Last Meowbender,The Pawnight Show,Arrested Dogvelopment,Furiends,Mewie,Curb Your Dogthusiasm,Teenage Mewtant Ninja Turtles,Phineas and Purrb,Paw Trek, Paw Trek: The Next Mewination, Twin Mewks, *C*A*T*S*,DogTales, Game of Bones, House of the Meowgon,The Purrlight Zone,Breaking Bone,The Meowre,The Dogpranos,The Rings of Meower, The KIT Crowd,Strangepaw Things ,Catman: The Animeowted Series,Meowter Call Saul,Mewgerton ,Obark,Mewphoria,La Casa de Pawpel,Rick & Meowty,Amewican Purror Story, Mewcifer,PawndaVision,Dogxter,The Meowndalorian, Dog Lasso,Bark,Meowdern Pawmily , Meowtlander,Bone Mirror,Barks and Recreation,How to Get Away with Meowder,Boneland ,Meowther Ted,Mewtopia,Mewey,The Mewkie Meowse Doghouse,Mewster Rogers' Neighborhood"
+
+function submissions(strng) {
+    let collection = strng.split(",")
+    let noWhiteSpace = collection.filter(el => el === el.trim())
+    let noDogs = []
+    for (i = 0; i < noWhiteSpace.length; i++) {
+        if (noWhiteSpace[i].toLowerCase().includes("dog") ||
+            noWhiteSpace[i].toLowerCase().includes("bark") ||
+            noWhiteSpace[i].toLowerCase().includes("bone")
+        ) {
+            false
+        } else {
+            noDogs.push(noWhiteSpace[i])
+        }
+    }
+    let noMultis = noDogs.filter(el => el.length % 5 !== 0)
+    let oddSum = [];
+    for (i = 0; i < noMultis.length; i++) {
+        if ((noMultis[i].charCodeAt(noMultis[i][0]) +
+            noMultis[i].charCodeAt(noMultis[i][noMultis[i].length - 1])) % 3 === 0) {
+            oddSum.push(noMultis[i])
+        }
+    }
+
+    let noEs = []
+    let discarded = []
+    for (i = 0; i < noMultis.length; i++) {
+        if (noMultis[i].length % 2 === 0) {
+            if (noMultis[i][Math.floor(noMultis[i].length / 2)] !== "e") {
+                noEs.push(noMultis[i])
+            } else if (noMultis[i].length % 3 === 0) {
+                if (noMultis[i][Math.floor(noMultis[i].length / 2 + 1)] !== "e") {
+                    noEs.push(noMultis[i])
+                }
+            }
+        }
+    }
+    let capCount = 0;
+    let twoCaps = []
+
+    for (i = 0; i < noEs.length; i++) {
+        for (j = 0; j < noEs[i].length; j++) {
+            if (noEs[i][j] === noEs[i][j].toUpperCase()) {
+                capCount++
+            }
+        }
+        if (capCount >= 2) {
+            twoCaps.push(noEs[i])
+            capCount = 0
+        }
+    }
+    
+    let noS = []
+    for(i=0;i< twoCaps.length; i++){
+        if(!twoCaps[i].includes("S")){
+            noS.push(twoCaps[i])
+        }
+    }
+   
+    return noS.length 
+}
+submissions(list)
+
+
