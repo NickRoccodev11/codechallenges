@@ -32,17 +32,22 @@ function replace(strng) {
         newString = "",
         portion = ""
     for (i = 0; i < strng.length; i++) {
-        if (keyChars.includes(strng[i])){
+        if (keyChars.includes(strng[i])) {
             portion = strng.replace(strng[i], " ")
-            newString += portion.slice(newString.length, i+1)
-        }else if ( i === strng.length-1){
-           portion = portion.split(" ")
-           log(portion)
-           newString += portion[portion.length-1]
+            newString += portion.slice(newString.length, i + 1)
+        } else if (i === strng.length - 1) {
+            portion = portion.split(" ")
+            newString += portion[portion.length - 1]
         }
     }
-  
+
     return newString
 }
 
 log(replace("ZooSflupburnabun"))
+
+function stringReverse(strng){
+    return strng.split('').reverse().join('')
+}
+
+log(stringReverse("  Hello.! > "))

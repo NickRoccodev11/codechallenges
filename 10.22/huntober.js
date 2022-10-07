@@ -72,3 +72,12 @@ function replace(strng) {
 }
 
 log(replace("ZooSflupburnabun"))
+
+// day4
+// reverse a string while preserving all white space ad characters
+
+function stringReverse(strng){
+    return strng.split('').reverse().join('')
+}
+
+log(stringReverse("  Hello.! > "))
