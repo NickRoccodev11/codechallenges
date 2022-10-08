@@ -164,3 +164,27 @@ function charRemover(strng, num) {
 }
 
 log(charRemover("The LBachyelor^ is ma tehrrib le tpelev!isioOn sh8ow.", 5))
+
+ const encryptedMsg = "e!!Igv)t5lltBcvbdeDH3dVw!OOtI#Aa.ZMDu7WYpP^VVjDc4I50iv#ylhgmQfs"
+
+
+//  day 7
+//  switch upper for lower case and direction (a becomes z Etc..)
+
+function switcher(strng) {
+    let alphabet = "zyxwvutsrqponmlkjihgfedcba"
+    let ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let switchedMsg = ''
+    for (i = 0; i < strng.length; i++) {
+        if (alphabet.indexOf(strng[i]) !== -1) {
+            switchedMsg += ALPHABET[alphabet.indexOf(strng[i])]
+        } else if (ALPHABET.indexOf(strng[i]) !== -1) {
+            switchedMsg += alphabet[ALPHABET.indexOf(strng[i])]
+        } else {
+            switchedMsg += strng[i]
+        }
+    }
+    return switchedMsg
+}
+
+log(switcher('vCZNKOV: 0 MFNYVI LI KFMXGFZGRLM XSZMTVH'))
