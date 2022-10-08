@@ -1,4 +1,5 @@
 // huntober string challenge day one 
+const log = console.log
 
 let numArr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 let charArr = ["O", "I", "Z", "E", "h", "S", "G", "L", "B", "q"]
@@ -19,7 +20,9 @@ function decoder(strng) {
     }
     return decoded
 }
-// log(decoder("PR0-T1P #hqB: 1T'5 N1C3 T0 5AY H3770."))
+// log(decoder("e!!Igv)t5lltBcvbdeDH3dVw!OOtI#Aa.ZMDu7WYpP^VVjDc4I50iv#ylhgmQfs"))
+// e!!1gv)tSllt8cvbdeDHEdVw!00t1#Aa.2MDuLWYpP^VVjDch1SOiv#yl4gmQfs
+// e!!1gv)tSllt8cvbdeDHEdVw!00t1#Aa.2MDuLWYpP^VVjDch1SOiv#yl4gmQfs
 
 
 // day 2
@@ -71,8 +74,9 @@ function replace(strng) {
     return newString
 }
 
-log(replace("ZooSflupburnabun"))
-
+// log(replace("e!!1gv)tSllt8cvbdeDHEdVw!00t1#Aa.2MDuLWYpP^VVjDch1SOiv#yl4gmQfs"))
+// !!1gv)t llt8 vbdeDHEdVw!00t1#A .2MDuLWY P^VVjDch1Sllt8cvbdeDHEdVw!00t1#Aa.2MDuLWYpP^VVjDch1SOiv#yl4gmQfs
+// !!1gv)t llt8 vbdeDHEdVw!00t1#A .2MDuLWY P^VVjDch1Sllt8cvbdeDHEdVw!00t1#Aa.2MDuLWYpP^VVjDch1SOiv#yl4gmQfs
 // day4
 // reverse a string while preserving all white space ad characters
 
@@ -80,7 +84,8 @@ function stringReverse(strng){
     return strng.split('').reverse().join('')
 }
 
-log(stringReverse("  Hello.! > "))
+// log(stringReverse(" !!1gv)t llt8 vbdeDHEdVw!00t1#A .2MDuLWY P^VVjDch1Sllt8cvbdeDHEdVw!00t1#Aa.2MDuLWYpP^VVjDch1SOiv#yl4gmQfs"))
+// sfQmg4ly#viOS1hcDjVV^PpYWLuDM2.aA#1t00!wVdEHDedbvc8tllS1hcDjVV^P YWLuDM2. A#1t00!wVdEHDedbv 8tll t)vg1!!
 
 // day 5
 // several limitations placed on a list of cat puns. return the length of final list
@@ -147,7 +152,8 @@ function submissions(strng) {
    
     return noS.length 
 }
-submissions(list)
+// log(submissions(list))
+// sfQmg4ly#viOS1hcDjVV^PpYWLuDM2.aA#1t00!wVdEHDedbvc8tllS1hcDjVV^P YWLuDM2. A#1t00!wVdEHDedbv 8tll t)vg1!!
 
 // day 6 
 // remove chars at nth index
@@ -163,7 +169,7 @@ function charRemover(strng, num) {
     return cleanString
 }
 
-log(charRemover("The LBachyelor^ is ma tehrrib le tpelev!isioOn sh8ow.", 5))
+// log(charRemover("sfQmg4ly#viOS1hcDjVV^PpYWLuDM2.aA#1t00!wVdEHDedbvc8tllS1hcDjVV^P YWLuDM2. A#1t00!wVdEHDedbv 8tll t)vg1!! ", 11))
 
  const encryptedMsg = "e!!Igv)t5lltBcvbdeDH3dVw!OOtI#Aa.ZMDu7WYpP^VVjDc4I50iv#ylhgmQfs"
 
@@ -187,4 +193,4 @@ function switcher(strng) {
     return switchedMsg
 }
 
-log(switcher('vCZNKOV: 0 MFNYVI LI KFMXGFZGRLM XSZMTVH'))
+log(switcher("sfQmg4ly#vOS1hcDjVV^pYWLuDM2.a#1t00!wVdEDedbvc8tll1hcDjVV^P WLuDM2. A#t00!wVdEHDdbv 8tll tvg1!! "))
