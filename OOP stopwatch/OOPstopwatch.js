@@ -1,23 +1,33 @@
 let log = console.log
 ////// DON'T DELETE
 
-let alphabet = "zyxwvutsrqponmlkjihgfedcba"
-let ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+const arr1 = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
 
+const arr2 = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
+const arr3 = [['a', 'B', 'c'], ['d', 'E', 'f'], ['g', 'H', 'i']]
+const arr4 = [['a', 'b', 'c'], ['g', 'h', 'i'], ['d', 'e', 'f']]
+//compare two array to see if their contents are equal
+// each array will have the same number of internal arrays, 
+// and the same number of primitive types within those arrays
+function arrayCompare(array1, array2) {
 
-function switcher(strng) {
-    let switchedMsg = ''
-    for (i = 0; i < strng.length; i++) {
-        if (alphabet.indexOf(strng[i]) !== -1) {
-            switchedMsg += ALPHABET[alphabet.indexOf(strng[i])]
-        } else if (ALPHABET.indexOf(strng[i]) !== -1) {
-            switchedMsg += alphabet[ALPHABET.indexOf(strng[i])]
-        }else{
-            switchedMsg+= strng[i]
+    for (i = 0; i < array1.length; i++) {
+        for (j = 0; j < array1[i].length; j++) {
+            if (array1[i][j] !== array2[i][j]) {
+                return false
+            }
         }
     }
-    return switchedMsg
+    return true
 }
+log(arrayCompare(arr1, arr2))
+log(arrayCompare(arr1, arr3))
+log(arrayCompare(arr3, arr4))
+log(arrayCompare(arr2, arr3))
+log(arrayCompare(arr1, arr4))
+log(arrayCompare(arr2, arr1))
 
-log(switcher('vCZNKOV: 0 MFNYVI LI KFMXGFZGRLM XSZMTVH'))
+
+
+
