@@ -7,10 +7,21 @@ myArray = ['abc', 'xyz', 1, 2, 'Hey!']
 
 function moveLeft(arr, el) {
     let placeHolder,
-        moveFrom = arr[arr.indexOf(el)],
-        moveTo = arr[arr.indexOf(el) - 1],
-        startingIndex = arr.indexOf(moveFrom),
-        finishIndex = arr.indexOf(moveTo);     
+        startingIndex = arr.indexOf(arr[arr.indexOf(el)]),
+        finishIndex = arr.indexOf(arr[arr.indexOf(el) - 1]);     
+
+    if ( startingIndex > 0) {
+        placeHolder = arr[finishIndex];
+        arr[finishIndex] = arr[startingIndex];
+        arr[startingIndex] = placeHolder
+    }
+    return arr
+}
+
+function moveRight(arr, el) {
+    let placeHolder,
+        startingIndex = arr.indexOf(arr[arr.indexOf(el)]),
+        finishIndex = arr.indexOf(arr[arr.indexOf(el) + 1]);     
 
     if ( startingIndex > 0) {
         placeHolder = arr[finishIndex];
@@ -21,4 +32,4 @@ function moveLeft(arr, el) {
 }
 
 
-log(moveLeft(myArray, "Hey!"))
+log(moveRight(myArray, 2))
