@@ -1,3 +1,4 @@
+const log= console.log
 // // huntober string challenge day one 
 // const log = console.log
 
@@ -39,14 +40,14 @@
 //     }
 
 //     let removeAndFlip = cleanedUp.replaceAll("Eek!", "").split('').reverse('').join('')
-    
+
 //     let splitByV = removeAndFlip.split('v')
-  
+
 //     let message = "";
 //     for (i = 0; i < splitByV.length; i++) {
 //         message += splitByV[i][0]
 //     }
-    
+
 //     return message.slice(1)
 // }
 
@@ -142,14 +143,14 @@
 //             capCount = 0
 //         }
 //     }
-    
+
 //     let noS = []
 //     for(i=0;i< twoCaps.length; i++){
 //         if(!twoCaps[i].includes("S")){
 //             noS.push(twoCaps[i])
 //         }
 //     }
-   
+
 //     return noS.length 
 // }
 // // log(submissions(list))
@@ -240,10 +241,10 @@ myArray = ['abc', 'xyz', 1, 2, 'Hey!']
 
 function moveLeft(arr, el) {
     let placeHolder,
-        startingIndex = arr.indexOf(moveFrom),
-        finishIndex = arr.indexOf(moveTo);     
+        startingIndex = arr.indexOf(el),
+        finishIndex = arr.indexOf(arr[arr.indexOf(el) - 1]);
 
-    if ( startingIndex > 0) {
+    if (startingIndex > 0) {
         placeHolder = arr[finishIndex];
         arr[finishIndex] = arr[startingIndex];
         arr[startingIndex] = placeHolder
@@ -253,10 +254,10 @@ function moveLeft(arr, el) {
 
 function moveRight(arr, el) {
     let placeHolder,
-        startingIndex = arr.indexOf(arr[arr.indexOf(el)]),
-        finishIndex = arr.indexOf(arr[arr.indexOf(el) + 1]);     
+        startingIndex = arr.indexOf(el),
+        finishIndex = arr.indexOf(arr[arr.indexOf(el) + 1]);
 
-    if ( startingIndex > 0) {
+    if (startingIndex < arr.length - 1) {
         placeHolder = arr[finishIndex];
         arr[finishIndex] = arr[startingIndex];
         arr[startingIndex] = placeHolder
@@ -264,3 +265,5 @@ function moveRight(arr, el) {
     return arr
 }
 
+// log(moveLeft(myArray, 'xyz'))
+// log(moveRight(myArray, 'Hey!'))
