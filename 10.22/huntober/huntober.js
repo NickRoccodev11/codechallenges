@@ -226,4 +226,28 @@ function arrayCompare(array1, array2) {
 }
 // log(arrayCompare(arr1, arr2))
 
+// DAY 2 ARRAYS  DAY 2 ARRAYS
+// I need twin functions, a function that swaps a given primitive value in a given 
+// 1-dimensional array to an index to the left, and another that swaps it to the right.
+
+// Some things to note:
+
+// If the given value is on the edge of the array and can't move in that direction, don't move it.
+// The array passed in should be mutated by this function. Scandalous, I know
+
+myArray = ['abc', 'xyz', 1, 2, 'Hey!']
+
+
+function moveLeft(arr, el) {
+    let placeHolder,
+        startingIndex = arr.indexOf(moveFrom),
+        finishIndex = arr.indexOf(moveTo);     
+
+    if ( startingIndex > 0) {
+        placeHolder = arr[finishIndex];
+        arr[finishIndex] = arr[startingIndex];
+        arr[startingIndex] = placeHolder
+    }
+    return arr
+}
 

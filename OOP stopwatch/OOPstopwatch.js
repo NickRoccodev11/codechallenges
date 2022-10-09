@@ -2,19 +2,23 @@ let log = console.log
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-let numArr = ["apple", "bite", "car", "dear", "elephant", "frog"]
-// log(numArr.slice(0, 1))
+myArray = ['abc', 'xyz', 1, 2, 'Hey!']
 
-let contain1 = [],
-    contain2 = []
 
-for (i = 0; i < numArr.length; i++) {
-    if (i > 0) {
-        contain1.push(numArr.slice(0, i).join(' '))
-        contain1.push(numArr.slice(i).join(' '))
-        contain2.push(contain1)
-        log(`one:  ${contain1}`)
-        contain1 = []
-        log(contain2)
+function moveLeft(arr, el) {
+    let placeHolder,
+        moveFrom = arr[arr.indexOf(el)],
+        moveTo = arr[arr.indexOf(el) - 1],
+        startingIndex = arr.indexOf(moveFrom),
+        finishIndex = arr.indexOf(moveTo);     
+
+    if ( startingIndex > 0) {
+        placeHolder = arr[finishIndex];
+        arr[finishIndex] = arr[startingIndex];
+        arr[startingIndex] = placeHolder
     }
+    return arr
 }
+
+
+log(moveLeft(myArray, "Hey!"))
