@@ -1,33 +1,20 @@
 let log = console.log
-////// DON'T DELETE
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
-const arr1 = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
+let numArr = ["apple", "bite", "car", "dear", "elephant", "frog"]
+// log(numArr.slice(0, 1))
 
-const arr2 = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
-const arr3 = [['a', 'B', 'c'], ['d', 'E', 'f'], ['g', 'H', 'i']]
-const arr4 = [['a', 'b', 'c'], ['g', 'h', 'i'], ['d', 'e', 'f']]
-//compare two array to see if their contents are equal
-// each array will have the same number of internal arrays, 
-// and the same number of primitive types within those arrays
-function arrayCompare(array1, array2) {
+let contain1 = [],
+    contain2 = []
 
-    for (i = 0; i < array1.length; i++) {
-        for (j = 0; j < array1[i].length; j++) {
-            if (array1[i][j] !== array2[i][j]) {
-                return false
-            }
-        }
+for (i = 0; i < numArr.length; i++) {
+    if (i > 0) {
+        contain1.push(numArr.slice(0, i).join(' '))
+        contain1.push(numArr.slice(i).join(' '))
+        contain2.push(contain1)
+        log(`one:  ${contain1}`)
+        contain1 = []
+        log(contain2)
     }
-    return true
 }
-log(arrayCompare(arr1, arr2))
-log(arrayCompare(arr1, arr3))
-log(arrayCompare(arr3, arr4))
-log(arrayCompare(arr2, arr3))
-log(arrayCompare(arr1, arr4))
-log(arrayCompare(arr2, arr1))
-
-
-
-
