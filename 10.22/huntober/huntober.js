@@ -267,3 +267,34 @@ function moveRight(arr, el) {
 
 // log(moveLeft(myArray, 'xyz'))
 // log(moveRight(myArray, 'Hey!'))
+
+
+// DAY 3 DAY 3 DAY 3 DAY 3 
+// Today I'd like you to write a function that takes in a given array of strings and 
+// move any entries containing the letter 'a' to the front, and then 
+// move any entries that have over 3 characters to the back. 
+// Please preserve the order of things while you do this!
+
+// myArr = ['hi', 'hello', 'howdy', 'hola', 'hej', 'hallo', 'heyyy']
+// // move things around
+// => ['hola', 'hallo', 'hi', 'hej', 'hello', 'howdy', 'heyyy']
+
+
+myArr = ['hi', 'hello', 'howdy', 'hola', 'hej', 'hallo', 'heyyy']
+
+function sortAandLength(arr){
+let arr1= [], arr2 =[], arr3 = [];
+
+for(i=0;i<arr.length; i++){
+    if(arr[i].includes("a")){
+       arr1.push(arr[i])
+    }else if(arr[i].length>3){
+        arr3.push(arr[i])
+    }else{
+        arr2.push(arr[i])
+    }
+}
+log(arr1.concat(arr2,arr3))
+}
+
+sortAandLength(myArr)
