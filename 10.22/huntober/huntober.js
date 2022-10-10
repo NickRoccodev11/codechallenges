@@ -294,7 +294,33 @@ for(i=0;i<arr.length; i++){
         arr2.push(arr[i])
     }
 }
-log(arr1.concat(arr2,arr3))
+return arr1.concat(arr2,arr3)
 }
 
-sortAandLength(myArr)
+// sortAandLength(myArr)
+// ALTERNATIVE WITH SORT
+
+
+function sortAandLength(arr) {
+    let newArr = []
+    newArr = arr.sort((a, b) => {
+        if (a.length < 4 && b.length > 3) {
+            return -1
+        } else if (a.length > 3 && b.length < 4) {
+            return 1
+        } else {
+            return 0
+        }
+
+    })
+    newArr = arr.sort((a, b) => {
+        if (a.includes("a") && !b.includes("a")) {
+            return -1
+        } else if (b.includes("a") && !a.includes("a")) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+    return newArr
+}
