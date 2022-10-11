@@ -1,4 +1,4 @@
-const log= console.log
+const log = console.log
 // // huntober string challenge day one 
 // const log = console.log
 
@@ -282,26 +282,26 @@ function moveRight(arr, el) {
 
 myArr = ['hi', 'hello', 'howdy', 'hola', 'hej', 'hallo', 'heyyy']
 
-function sortAandLength(arr){
-let arr1= [], arr2 =[], arr3 = [];
+function sortAandLength1(arr) {
+    let arr1 = [], arr2 = [], arr3 = [];
 
-for(i=0;i<arr.length; i++){
-    if(arr[i].includes("a")){
-       arr1.push(arr[i])
-    }else if(arr[i].length>3){
-        arr3.push(arr[i])
-    }else{
-        arr2.push(arr[i])
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].includes("a")) {
+            arr1.push(arr[i])
+        } else if (arr[i].length > 3) {
+            arr3.push(arr[i])
+        } else {
+            arr2.push(arr[i])
+        }
     }
-}
-return arr1.concat(arr2,arr3)
+    return arr1.concat(arr2, arr3)
 }
 
 // sortAandLength(myArr)
 // ALTERNATIVE WITH SORT
 
 
-function sortAandLength(arr) {
+function sortAandLength2(arr) {
     let newArr = []
     newArr = arr.sort((a, b) => {
         if (a.length < 4 && b.length > 3) {
@@ -311,7 +311,6 @@ function sortAandLength(arr) {
         } else {
             return 0
         }
-
     })
     newArr = arr.sort((a, b) => {
         if (a.includes("a") && !b.includes("a")) {
