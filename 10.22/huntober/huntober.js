@@ -359,7 +359,7 @@ function moveUp(arr, el) {
     
     return arr
 }
-log(moveUp(myGrid, "c"))
+// log(moveUp(myGrid, "c"))
 
 function moveDown(arr, el) {
 
