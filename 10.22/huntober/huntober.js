@@ -323,3 +323,66 @@ function sortAandLength2(arr) {
     })
     return newArr
 }
+
+// DAY 4 DAy 4 DAy 4 DAy 4 DAY 4
+
+// Please write twin functions that each take in a given value
+//  that will only appear once within a given array of a similar structure
+//   to the one described above, which will either move that value up one row or down one 
+//   row in the array, keeping its same horizontal position. It will essentially swap
+//    places with whatever was where it needed to be. Just like in Day 2, don't do anything 
+//    if the given value is already as high or low as it can get.
+
+// Oh, and go ahead and mutate the given array. We're livin' on the wild side!
+
+myGrid = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
+
+function moveUp(arr, el) {
+
+    let outerIndex,
+        innerIndex,
+        placeHolder;
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].includes(el)) {
+            outerIndex = i
+        }
+    }
+    if (outerIndex === arr.length - 1) {
+        return arr;
+    }
+    for (i = 0; i < arr[outerIndex].length; i++) {
+        if (arr[outerIndex][i] === el) {
+            innerIndex = i
+        }
+    }
+    placeHolder = arr[outerIndex][innerIndex];
+    arr[outerIndex][innerIndex] = arr[outerIndex + 1][innerIndex];
+    arr[outerIndex + 1][innerIndex] = placeHolder;
+    return arr
+}
+// log(moveUp(myGrid, "i"))
+
+function moveDown(arr, el) {
+
+    let outerIndex,
+        innerIndex,
+        placeHolder;
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].includes(el)) {
+            outerIndex = i
+        }
+    }
+    if (outerIndex === 0) {
+        return arr;
+    }
+    for (i = 0; i < arr[outerIndex].length; i++) {
+        if (arr[outerIndex][i] === el) {
+            innerIndex = i
+        }
+    }
+    placeHolder = arr[outerIndex][innerIndex];
+    arr[outerIndex][innerIndex] = arr[outerIndex - 1][innerIndex];
+    arr[outerIndex - 1][innerIndex] = placeHolder;
+    return arr
+}
+log(moveDown(myGrid, "e"))
