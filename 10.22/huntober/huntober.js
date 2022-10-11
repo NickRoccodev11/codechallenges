@@ -342,47 +342,45 @@ function moveUp(arr, el) {
     let outerIndex,
         innerIndex,
         placeHolder;
+
     for (i = 0; i < arr.length; i++) {
         if (arr[i].includes(el)) {
             outerIndex = i
+            innerIndex = arr[i].indexOf(el)
         }
     }
     if (outerIndex === arr.length - 1) {
         return arr;
     }
-    for (i = 0; i < arr[outerIndex].length; i++) {
-        if (arr[outerIndex][i] === el) {
-            innerIndex = i
-        }
-    }
+
     placeHolder = arr[outerIndex][innerIndex];
     arr[outerIndex][innerIndex] = arr[outerIndex + 1][innerIndex];
     arr[outerIndex + 1][innerIndex] = placeHolder;
+    
     return arr
 }
-// log(moveUp(myGrid, "i"))
+log(moveUp(myGrid, "c"))
 
 function moveDown(arr, el) {
 
     let outerIndex,
         innerIndex,
         placeHolder;
+
     for (i = 0; i < arr.length; i++) {
         if (arr[i].includes(el)) {
-            outerIndex = i
+            outerIndex = i,
+            innerIndex = arr[i].indexOf(el)
         }
+        // log("inner" + innerIndex)
     }
     if (outerIndex === 0) {
         return arr;
     }
-    for (i = 0; i < arr[outerIndex].length; i++) {
-        if (arr[outerIndex][i] === el) {
-            innerIndex = i
-        }
-    }
     placeHolder = arr[outerIndex][innerIndex];
     arr[outerIndex][innerIndex] = arr[outerIndex - 1][innerIndex];
     arr[outerIndex - 1][innerIndex] = placeHolder;
+   
     return arr
 }
-log(moveDown(myGrid, "e"))
+// log(moveDown(myGrid, "e"))
