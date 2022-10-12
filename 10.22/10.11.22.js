@@ -11,3 +11,12 @@ function powersOfTwo(n) {
         return answer
    }
    
+
+//    is Palindrome? return boolean if whether a string is a palindrome
+
+function isPalindrome(word){
+    let reversedString = word.split('').reverse().join('')
+    return word === reversedString 
+}
+
+l

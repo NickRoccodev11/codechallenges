@@ -1,55 +1,26 @@
 let log = console.log
+// ALWAYS DO PREP!!!   Parameters - Returns - Examples - Pseudocode
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+// Parameters - clarify all possibilities for params. think of edge cases. 
 
+//Return - what is it exactly that you are returning? boolean? array? obj? string? mutated original / copy? 
 
-myArr = ['hi', 'hello', 'howdy', 'hola', 'hej', 'hallo', 'heyyy']
+//Examples - talk through test cases, consider every outcome and log them with along with the answer 
+//  console.log(function(exampleA), 'true' ) //  console.log(function(exampleB), 'false' )
 
-// // function sortAandLength(arr){
-
-
-// // }
-
-// var name = ['David', 'Adam', 'John', 'Bob'];
-// var name.sort(function (first, second) {
-//    if (first > second) {
-//       return -1;
-//    }
-//    if (first < second) {
-//       return 1;
-//    }
-//    return 0;
-// });
-// console.log(name)
+// Pseudocode - 
 
 
-myArr = ['hi', 'hello', 'howdy', 'hola', 'hej', 'hallo', 'heyyy']
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function sortAandLength(arr) {
-    let newArr = []
 
-    newArr = arr.sort((a, b) => {
-        if (a.length < 4 && b.length > 3) {
-            return -1
-        } else if (a.length > 3 && b.length < 4) {
-            return 1
-        } else {
-            return 0
-        }
-
-    })
-   
-
-        newArr =  arr.sort((a, b) => {
-            if (a.includes("a") && !b.includes("a")) {
-                return -1
-            } else if (b.includes("a") && !a.includes("a")) {
-                return 1
-            } else {
-                return 0
-            }
-     })
-    return newArr
+function isPalindrome(word){
+    let reversedString = word.split('').reverse().join('')
+    return word === reversedString 
 }
 
-log(sortAandLength(myArr))
+log(isPalindrome('bob'), 'true')
+log(isPalindrome('racecar'),"true")
+log(isPalindrome('killalter'),'false')
+log(isPalindrome('starrats'), 'true')
+log(isPalindrome('whiskey'), 'false')

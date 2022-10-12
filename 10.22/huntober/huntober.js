@@ -345,19 +345,20 @@ function moveUp(arr, el) {
 
     for (i = 0; i < arr.length; i++) {
         if (arr[i].includes(el)) {
-            outerIndex = i
-            innerIndex = arr[i].indexOf(el)
+            outerIndex = i;
+            innerIndex = arr[i].indexOf(el);
         }
-    }
+    };
+
     if (outerIndex === arr.length - 1) {
         return arr;
-    }
+    };
 
     placeHolder = arr[outerIndex][innerIndex];
     arr[outerIndex][innerIndex] = arr[outerIndex + 1][innerIndex];
     arr[outerIndex + 1][innerIndex] = placeHolder;
-    
-    return arr
+
+    return arr;
 }
 // log(moveUp(myGrid, "c"))
 
@@ -369,18 +370,20 @@ function moveDown(arr, el) {
 
     for (i = 0; i < arr.length; i++) {
         if (arr[i].includes(el)) {
-            outerIndex = i,
-            innerIndex = arr[i].indexOf(el)
+            outerIndex = i;
+            innerIndex = arr[i].indexOf(el);
         }
-        // log("inner" + innerIndex)
+
     }
+
     if (outerIndex === 0) {
         return arr;
     }
+
     placeHolder = arr[outerIndex][innerIndex];
     arr[outerIndex][innerIndex] = arr[outerIndex - 1][innerIndex];
     arr[outerIndex - 1][innerIndex] = placeHolder;
-   
+
     return arr
 }
 // log(moveDown(myGrid, "e"))
