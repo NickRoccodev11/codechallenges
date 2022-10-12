@@ -8,19 +8,6 @@ let log = console.log
 //Examples - talk through test cases, consider every outcome and log them with along with the answer 
 //  console.log(function(exampleA), 'true' ) //  console.log(function(exampleB), 'false' )
 
-// Pseudocode - 
-
-
+// Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-function isPalindrome(word){
-    let reversedString = word.split('').reverse().join('')
-    return word === reversedString 
-}
-
-log(isPalindrome('bob'), 'true')
-log(isPalindrome('racecar'),"true")
-log(isPalindrome('killalter'),'false')
-log(isPalindrome('starrats'), 'true')
-log(isPalindrome('whiskey'), 'false')
