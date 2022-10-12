@@ -11,19 +11,52 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function vowelCount(strng) {
-    const vowelArr = ["a", "e", "o", "i", "u"],
-        toLower = strng.toLowerCase();
-    let count = 0;
-
-    for (i = 0; i < strng.length; i++) {
-        if (vowelArr.includes(toLower[i])) {
-            count++
+function mostFrequent(string) {
+    let charMap = {};
+    let count=0;
+    for (i = 0; i < string.length; i++) {
+        if (!charMap[string[i]]) {
+            charMap[string[i]] = 1
+        } else {
+            charMap[string[i]] += 1
+            count = charMap[string[i]]
+        }
+        if (charMap[string[i]] > count) {
+            count = charMap[string[i]]
         }
     }
-    return count
+    let arr = Object.getOwnPropertyNames(charMap)
+
+    for (i = 0; i < string.length; i++) {
+        if (charMap[string[i]] === count) {
+            return arr[i]
+        }
+    }
+
+
 }
 
-log(vowelCount("hello"))
-log(vowelCount("by"))
-log(vowelCount("arial"))
+log(mostFrequent("hellohh"))
+
+function mostFrequent2(string) {
+    let curCount = 0,
+        finalCount = 0,
+        answer = '';
+
+    for (i = 0; i < string.length; i++) {
+        curCount = 1
+        for (j = 0; j < string.length; j++) {
+            if (string[i] === string[j] && i !== j) {
+                curCount += 1
+            }
+        }
+        if (curCount > finalCount) {
+            finalCount = curCount
+            answer = string[i]
+        }
+        curCount = 0
+
+    }
+    return answer
+}
+log(mostFrequent2("helloogggg"))
