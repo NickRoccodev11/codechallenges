@@ -18,5 +18,5 @@ function isPalindrome(word){
     let reversedString = word.split('').reverse().join('')
     return word === reversedString 
 }
-
-l
+// EVEN SLICKER
+const isPalindrome2 = word => word === word.split('').reverse().join('')
