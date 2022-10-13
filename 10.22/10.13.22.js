@@ -26,3 +26,22 @@ function domainName(str) {
 log(domainName("http://github.com/carbonfive/raygun"))
 log(domainName("http://www.zombie-bites.com"))
 log( domainName("https://www.cnet.com"))
+
+
+// return longest word in string
+
+
+function longest(str) {
+    let leng = 0;
+    let longestWord = ""
+    let strArr = str.split(" ");
+    for (i = 0; i < strArr.length; i++) {
+        if (strArr[i].length > leng) {
+            leng = strArr[i].length;
+            longestWord = strArr[i];
+        }
+    }
+    return longestWord
+}
+
+log(longest("the rain in spain falls mainly on the plain"))

@@ -11,35 +11,22 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-log(Math.floor(Math.random() * 3))
 
-let myGrid = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
-
-function randomInPlace(arr) {
-    let placeHolder;
-    let random;
-    for (i = 0; i < arr.length; i++) {
-        random = Math.floor(Math.random() * 3)
-        placeHolder = arr[i];
-        arr[i] = arr[random];
-        arr[random] = placeHolder;
-        for (j = 0; j < arr.length; j++) {
-            random = Math.floor(Math.random() * 3)
-            placeHolder = arr[i][j];
-            arr[i][j] = arr[i][random];
-            arr[i][random] = placeHolder;
+function longest(str) {
+    let leng = 0;
+    let longestWord = ""
+    let strArr = str.split(" ");
+    // log(strArr)
+    for (i = 0; i < strArr.length; i++) {
+        if (strArr[i].length > leng) {
+            leng = strArr[i].length;
+            longestWord = strArr[i];
         }
     }
-    return arr
+    return longestWord
 }
-log(randomInPlace(myGrid))
 
-
-
-
-
-
-
+log(longest("the rain in spain falls mainly on the plain"))
 
 
 
