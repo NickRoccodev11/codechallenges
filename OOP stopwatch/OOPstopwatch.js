@@ -11,38 +11,49 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Write a function that when given a URL as a string, parses out
-//  just the domain name and returns it as a string. 
-// For example:
+log(Math.floor(Math.random() * 3))
 
-// domainName("http://github.com/carbonfive/raygun") == "github" 
-// domainName("http://www.zombie-bites.com") == "zombie-bites"
-// domainName("https://www.cnet.com") == "cnet
+let myGrid = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
 
-// function domainName(strng) {
-//     let newString = ""
-//     for (i = 0; i < strng.length; i++) {
-//         if (strng[i] === "/" || strng[i] === ".") {
-//             newString += " "
-//         }else{
-//             newString+= strng[i]
-//         }
-//     }
-//     let stringArr = newString.split(" ")
-//     let comIndex = stringArr.indexOf("com")
-//     return stringArr[comIndex -1]
-// }
-
-
-function domainName(str) {
-    let regex = /[//.]/g
-    spaceStringArr = str.replace(regex, " ").split(" ")
-
-    return spaceStringArr[spaceStringArr.indexOf("com") - 1]
-
+function randomInPlace(arr) {
+    let placeHolder;
+    let random;
+    for (i = 0; i < arr.length; i++) {
+        random = Math.floor(Math.random() * 3)
+        placeHolder = arr[i];
+        arr[i] = arr[random];
+        arr[random] = placeHolder;
+        for (j = 0; j < arr.length; j++) {
+            random = Math.floor(Math.random() * 3)
+            placeHolder = arr[i][j];
+            arr[i][j] = arr[i][random];
+            arr[i][random] = placeHolder;
+        }
+    }
+    return arr
 }
+log(randomInPlace(myGrid))
 
 
-log(domainName("http://github.com/carbonfive/raygun"))
-log(domainName("http://www.zombie-bites.com"))
-log(domainName("https://www.cnet.com"))
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// To calculate Big O, there are five steps you should follow:
+
+// Break your algorithm/function into individual operations
+
+// Calculate the Big O of each operation
+
+// Add up the Big O of each operation together
+
+// Remove the constants
+
+// Find the highest order term — this will be what we consider the Big O 
+// of our algorithm/function

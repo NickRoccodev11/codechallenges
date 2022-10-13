@@ -387,3 +387,31 @@ function moveDown(arr, el) {
     return arr
 }
 // log(moveDown(myGrid, "e"))
+
+
+
+// DAY 5 DAy 5 DAY 5 DAy 5
+
+// Please create a function that will take in an array like we've been working with all week 
+// (X-inner arrays of X-primitive values each) and shuffle it up in place.
+//  Do your best to have a thorough, random shuffle in a single call of your function.
+
+
+function randomInPlace(arr) {
+    let placeHolder;
+    let random;
+    for (i = 0; i < arr.length; i++) {
+        random = Math.floor(Math.random() * 3)
+        placeHolder = arr[i];
+        arr[i] = arr[random];
+        arr[random] = placeHolder;
+        for (j = 0; j < arr.length; j++) {
+            random = Math.floor(Math.random() * 3)
+            placeHolder = arr[i][j];
+            arr[i][j] = arr[i][random];
+            arr[i][random] = placeHolder;
+        }
+    }
+    return arr
+}
+// log(randomInPlace(myGrid))
