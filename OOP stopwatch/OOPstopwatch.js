@@ -11,52 +11,48 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// function mostFrequentAgain(string) {
+//     let charMap = {}
+//     let greatest = 0;
+//     let char = ""
+
+//     for (char of string) {
+//         if (!charMap[char]) {
+//             charMap[char] = 1
+//         } else {
+//             charMap[char]++
+//         }
+//     }
+//     for (prop in charMap) {
+//         if (charMap[prop] > greatest) {
+//             greatest = charMap[prop];
+//             char = prop;
+//         }
+//     }
+//     return char
+// }
+
+// log(mostFrequentAgain("hellohhggggg"))
+
 function mostFrequent(string) {
-    let charMap = {};
-    let count=0;
-    for (i = 0; i < string.length; i++) {
-        if (!charMap[string[i]]) {
-            charMap[string[i]] = 1
-        } else {
-            charMap[string[i]] += 1
-            count = charMap[string[i]]
-        }
-        if (charMap[string[i]] > count) {
-            count = charMap[string[i]]
-        }
-    }
-    let arr = Object.getOwnPropertyNames(charMap)
+    let charMap = {},
+        charArr = [],
+        valueArr = [],
+        most = 0;
 
-    for (i = 0; i < string.length; i++) {
-        if (charMap[string[i]] === count) {
-            return arr[i]
+    for(char of string){
+        if(!charMap[char]){
+            charMap[char] = 1;
+        }else{
+            charMap[char]++;
         }
-    }
+    };
 
+    charArr = Object.keys(charMap);
+    valueArr = Object.values(charMap);
+    most = Math.max(...valueArr);
 
+    return charArr[valueArr.indexOf(most)]
 }
 
-log(mostFrequent("hellohh"))
-
-function mostFrequent2(string) {
-    let curCount = 0,
-        finalCount = 0,
-        answer = '';
-
-    for (i = 0; i < string.length; i++) {
-        curCount = 1
-        for (j = 0; j < string.length; j++) {
-            if (string[i] === string[j] && i !== j) {
-                curCount += 1
-            }
-        }
-        if (curCount > finalCount) {
-            finalCount = curCount
-            answer = string[i]
-        }
-        curCount = 0
-
-    }
-    return answer
-}
-log(mostFrequent2("helloogggg"))
+log(mostFrequent("gagakklbalcdaeerarixaxxaxaxxaxxarrapraaa"))
