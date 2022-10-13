@@ -11,48 +11,28 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// function mostFrequentAgain(string) {
-//     let charMap = {}
-//     let greatest = 0;
-//     let char = ""
+// Write a function that when given a URL as a string, parses out
+//  just the domain name and returns it as a string. 
+// For example:
 
-//     for (char of string) {
-//         if (!charMap[char]) {
-//             charMap[char] = 1
-//         } else {
-//             charMap[char]++
-//         }
-//     }
-//     for (prop in charMap) {
-//         if (charMap[prop] > greatest) {
-//             greatest = charMap[prop];
-//             char = prop;
-//         }
-//     }
-//     return char
-// }
+// domainName("http://github.com/carbonfive/raygun") == "github" 
+// domainName("http://www.zombie-bites.com") == "zombie-bites"
+// domainName("https://www.cnet.com") == "cnet
 
-// log(mostFrequentAgain("hellohhggggg"))
-
-function mostFrequent(string) {
-    let charMap = {},
-        charArr = [],
-        valueArr = [],
-        most = 0;
-
-    for(char of string){
-        if(!charMap[char]){
-            charMap[char] = 1;
+function domainName(strng) {
+    let newString = ""
+    for (i = 0; i < strng.length; i++) {
+        if (strng[i] === "/" || strng[i] === ".") {
+            newString += " "
         }else{
-            charMap[char]++;
+            newString+= strng[i]
         }
-    };
-
-    charArr = Object.keys(charMap);
-    valueArr = Object.values(charMap);
-    most = Math.max(...valueArr);
-
-    return charArr[valueArr.indexOf(most)]
+    }
+    let stringArr = newString.split(" ")
+    let comIndex = stringArr.indexOf("com")
+    return stringArr[comIndex -1]
 }
 
-log(mostFrequent("gagakklbalcdaeerarixaxxaxaxxaxxarrapraaa"))
+log(domainName("http://github.com/carbonfive/raygun"))
+log(domainName("http://www.zombie-bites.com"))
+log( domainName("https://www.cnet.com"))
