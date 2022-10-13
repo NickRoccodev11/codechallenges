@@ -19,20 +19,30 @@ let log = console.log
 // domainName("http://www.zombie-bites.com") == "zombie-bites"
 // domainName("https://www.cnet.com") == "cnet
 
-function domainName(strng) {
-    let newString = ""
-    for (i = 0; i < strng.length; i++) {
-        if (strng[i] === "/" || strng[i] === ".") {
-            newString += " "
-        }else{
-            newString+= strng[i]
-        }
-    }
-    let stringArr = newString.split(" ")
-    let comIndex = stringArr.indexOf("com")
-    return stringArr[comIndex -1]
+// function domainName(strng) {
+//     let newString = ""
+//     for (i = 0; i < strng.length; i++) {
+//         if (strng[i] === "/" || strng[i] === ".") {
+//             newString += " "
+//         }else{
+//             newString+= strng[i]
+//         }
+//     }
+//     let stringArr = newString.split(" ")
+//     let comIndex = stringArr.indexOf("com")
+//     return stringArr[comIndex -1]
+// }
+
+
+function domainName(str) {
+    let regex = /[//.]/g
+    spaceStringArr = str.replace(regex, " ").split(" ")
+
+    return spaceStringArr[spaceStringArr.indexOf("com") - 1]
+
 }
+
 
 log(domainName("http://github.com/carbonfive/raygun"))
 log(domainName("http://www.zombie-bites.com"))
-log( domainName("https://www.cnet.com"))
+log(domainName("https://www.cnet.com"))
