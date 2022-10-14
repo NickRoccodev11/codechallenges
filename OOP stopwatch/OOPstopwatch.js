@@ -11,24 +11,26 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let phrase = "The rain in Spain falls mainly swimmingly on the plain"
 
 function longest(str) {
-    let leng = 0;
-    let longestWord = ""
-    let strArr = str.split(" ");
-    // log(strArr)
-    for (i = 0; i < strArr.length; i++) {
-        if (strArr[i].length > leng) {
-            leng = strArr[i].length;
-            longestWord = strArr[i];
+    return str.split(" ").reduce((acc, cur) => {
+        if (cur.length > acc.length) {
+            return cur
+        } else {
+            return acc
         }
-    }
-    return longestWord
+    }, "")
+}
+// log(longest(phrase))
+
+function longest2(str){
+    return str.split(" ").sort((wordA,wordB)=> {
+        return wordB.length - wordA.length
+    })[0]
 }
 
-log(longest("the rain in spain falls mainly on the plain"))
-
-
+log(longest2(phrase))
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
