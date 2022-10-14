@@ -11,26 +11,25 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let phrase = "The rain in Spain falls mainly swimmingly on the plain"
+let phrase = "Buffalo girls won't you come out tonight and dance by the light of the moon"
 
-function longest(str) {
-    return str.split(" ").reduce((acc, cur) => {
-        if (cur.length > acc.length) {
-            return cur
-        } else {
-            return acc
-        }
-    }, "")
-}
-// log(longest(phrase))
-
-function longest2(str){
-    return str.split(" ").sort((wordA,wordB)=> {
-        return wordB.length - wordA.length
-    })[0]
+function replaceWord(str, word, replacement) {
+    return str.replace(word, replacement)
 }
 
-log(longest2(phrase))
+log(replaceWord(phrase, "tonight", "tomorrow"))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
