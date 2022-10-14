@@ -11,15 +11,24 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let phrase = "Buffalo girls won't you come out tonight and dance by the light of the moon"
+let phrase2 = "Buffalo girls won't you come out Tonight and dance by the light of the moon"
+let phrase3 = "Buffalo girls won't you come out tonight and dance by the light of the moon"
 
 function replaceWord(str, word, replacement) {
-    return str.replace(word, replacement)
+
+    let strArr = str.split(" ")
+    let firstLetter = strArr[strArr.indexOf(word)][0]
+    if (firstLetter === firstLetter.toUpperCase()) {
+        let capitalized;
+        capitalized = replacement[0].toUpperCase() + replacement.slice(1)
+        return str.replace(word, capitalized)
+    } else {
+        return str.replace(word, replacement)
+    }
 }
 
-log(replaceWord(phrase, "tonight", "tomorrow"))
-
-
+log(replaceWord(phrase2, "Tonight", "tomorrow"))
+log(replaceWord(phrase3, "tonight", "tomorrow"))
 
 
 
