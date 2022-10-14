@@ -1,3 +1,5 @@
+
+
 let log = console.log
 // ALWAYS DO PREP!!!   Parameters - Returns - Examples - Pseudocode
 
@@ -11,31 +13,29 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let phrase2 = "Buffalo girls won't you come out Tonight and dance by the light of the moon"
-let phrase3 = "Buffalo girls won't you come out tonight and dance by the light of the moon"
-
-function replaceWord(str, word, replacement) {
-
-    let strArr = str.split(" ")
-    let firstLetter = strArr[strArr.indexOf(word)][0]
-    if (firstLetter === firstLetter.toUpperCase()) {
-        let capitalized;
-        capitalized = replacement[0].toUpperCase() + replacement.slice(1)
-        return str.replace(word, capitalized)
-    } else {
-        return str.replace(word, replacement)
+function igLatinPay(str) {
+    let iterations = str.length
+    let vowels = ["a", "e", "i", "o", "u"]
+    let consonants = ""
+    for (i = 0; i < iterations; i++) {
+        if (vowels.includes(str[i]) && i === 0) {
+            return str + "way"
+        } else if (vowels.includes(str[i]) && i !== 0) {
+            break;
+        } else {
+            consonants += str[i]
+        }
     }
+    return str.slice(consonants.length) + consonants + "ay"
 }
 
-log(replaceWord(phrase2, "Tonight", "tomorrow"))
-log(replaceWord(phrase3, "tonight", "tomorrow"))
 
 
 
-
-
-
-
+log(igLatinPay("stove"), "ovestay")
+log(igLatinPay("oven"), "ovenway")
+log(igLatinPay("hover"), "overhay")
+log(igLatinPay("street"), "eetstray")
 
 
 
