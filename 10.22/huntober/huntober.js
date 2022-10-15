@@ -401,12 +401,12 @@ function randomInPlace(arr) {
     let placeHolder;
     let random;
     for (i = 0; i < arr.length; i++) {
-        random = Math.floor(Math.random() * arr.length)
+        random = Math.floor(Math.random() * arr.length )
         placeHolder = arr[i];
         arr[i] = arr[random];
         arr[random] = placeHolder;
         for (j = 0; j < arr.length; j++) {
-            random = Math.floor(Math.random() * arr.length)
+            random = Math.floor(Math.random() * arr.length - 1)
             placeHolder = arr[i][j];
             arr[i][j] = arr[i][random];
             arr[i][random] = placeHolder;

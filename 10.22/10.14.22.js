@@ -102,10 +102,10 @@ log(anagram("pooh", "hoop"), "true")
 
 
 function igLatinPay(str) {
-    let iterations = str.length
+
     let vowels = ["a", "e", "i", "o", "u"]
     let consonants = ""
-    for (i = 0; i < iterations; i++) {
+    for (i = 0; i < str.length; i++) {
         if (vowels.includes(str[i]) && i === 0) {
             return str + "way"
         } else if (vowels.includes(str[i]) && i !== 0) {
@@ -117,6 +117,22 @@ function igLatinPay(str) {
     return str.slice(consonants.length) + consonants + "ay"
 }
 
+function pigLatin(str) {
+    let vowels = ["a", "e", "i", "o", "u"]
+    let vowelIndex;
+    if (vowels.includes(str[0])) {
+        return str + "way"
+    } else {
+        for (char of str) {
+            if (vowels.includes(char)){
+                vowelIndex = str.indexOf(char)
+            }
+        }
+    }
+    return str.slice(vowelIndex) + str.slice(0,vowelIndex) + "ay"
+}
+
+log(pigLatin(string))
 
 
 
@@ -126,3 +142,9 @@ log(igLatinPay("hover"), "overhay")
 log(igLatinPay("street"), "eetstray")
 
 
+// AND SOLUTION: 
+
+function igLatinPay(str) {
+
+
+}

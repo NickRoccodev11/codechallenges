@@ -12,30 +12,29 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function igLatinPay(str) {
-    let iterations = str.length
+function pigLatin(str) {
     let vowels = ["a", "e", "i", "o", "u"]
-    let consonants = ""
-    for (i = 0; i < iterations; i++) {
-        if (vowels.includes(str[i]) && i === 0) {
-            return str + "way"
-        } else if (vowels.includes(str[i]) && i !== 0) {
-            break;
-        } else {
-            consonants += str[i]
+    let vowelIndex;
+    if (vowels.includes(str[0])) {
+        return str + "way"
+    } else {
+        for (char of str) {
+            if (vowels.includes(char)){
+                vowelIndex = str.indexOf(char)
+            }
         }
     }
-    return str.slice(consonants.length) + consonants + "ay"
+    return str.slice(vowelIndex) + str.slice(0,vowelIndex) + "ay"
 }
 
+log(pigLatin("string"))
 
 
 
-log(igLatinPay("stove"), "ovestay")
-log(igLatinPay("oven"), "ovenway")
-log(igLatinPay("hover"), "overhay")
-log(igLatinPay("street"), "eetstray")
+// log(igLatinPay("stove"), "ovestay")
+// log(igLatinPay("oven"), "ovenway")
+// log(igLatinPay("hover"), "overhay")
+// log(igLatinPay("street"), "eetstray")
 
 
 
