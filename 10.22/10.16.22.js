@@ -25,3 +25,26 @@ function chunkArray(arr, num) {
 // log(chunkArray(arr, 5), "[[1,2,3,4,5][6,7,8,9,10][11,12,13]]")
 // log(chunkArray([1, 2, 3, 4], 5), "[[1,2,3,4]]")
 // log(chunkArray([1, 2, 3, 4, 5, 6], 2), "[[1,2][3,4][5,6]]")
+
+
+// My answer with recursion
+
+let answer = []
+function chunkArray(arr, num) {
+    if (arr <= 0) {
+        return answer;
+    } else {
+        answer.push(arr.slice(0, num));
+        return chunkArray(arr.slice(num),num)
+
+    }
+}
+
+// tutorial answer with recursion  (answer does not have to be in global name space)
+function chunkArray(array, size) {
+    if(array.length <= size){
+        return [array]
+    }
+    return [array.slice(0,size), ...chunkArray(array.slice(size), size)]
+ }
+

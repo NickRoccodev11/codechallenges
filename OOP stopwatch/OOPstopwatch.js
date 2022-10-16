@@ -13,28 +13,22 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
+let answer = []
 function chunkArray(arr, num) {
-    let answer = [];
-    let arrIsPushed = false
-    do {
-        if (arr.length > num) {
-            answer.push(arr.slice(0, num));
-            arr = arr.slice(num)
-        } else {
-            answer.push(arr.slice(0, arr.length));
-            arrIsPushed = true;
-        }
-    } while (!arrIsPushed)
-    return answer
+    if (arr <= 0) {
+        return answer;
+    } else {
+        answer.push(arr.slice(0, num));
+        return chunkArray(arr.slice(num),num)
+
+    }
 }
+let bob = [1,2,3,4]
+log(bob.slice(5))
 
-log(chunkArray(arr, 5), "[[1,2,3,4,5][6,7,8,9,10][11,12,13]]")
-log(chunkArray([1, 2, 3, 4], 5), "[[1,2,3,4]]")
+// // log(chunkArray(arr, 5), "[[1,2,3,4,5][6,7,8,9,10][11,12,13]]")
+// log(chunkArray([1, 2, 3, 4], 5), "[[1,2,3,4]]")
 log(chunkArray([1, 2, 3, 4, 5, 6], 2), "[[1,2][3,4][5,6]]")
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
