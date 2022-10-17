@@ -44,6 +44,9 @@ log(reverseInteger(-123)) // should return -321
 log(reverseInteger(900)) // should return 9
 log(reverseInteger(9001)) // should return 1009
 log(reverseInteger(-100)) // should return 1009
+let myNum = "00009";
+
+log(parseInt(myNum))
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

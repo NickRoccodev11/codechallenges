@@ -119,3 +119,25 @@ log(reverseInteger(-123)) // should return -321
 log(reverseInteger(900)) // should return 9
 log(reverseInteger(9001)) // should return 1009
 log(reverseInteger(-100)) // should return 1009
+
+//NOTE parseInt will remove the negative sign at the end of a number string ("321-" => 123 )
+//parseInt also takes care of our trailing zeros! this means 
+// all the conditonal checks in my answer are unccessary
+
+let myNum = "00005";
+
+log(parseInt(myNum)) // 5
+
+// answer ( similar, but without checks for negative or trailing 0's)
+
+// Reverses a string
+function reverseString(text) {
+    return [...text].reduce((acc, char) => char + acc, '')
+}
+
+// Reverses an integer
+function reverseInteger(num) {
+    let reversedNumber = parseInt(reverseString(num.toString()))
+
+    return (reversedNumber * Math.sign(num))
+}
