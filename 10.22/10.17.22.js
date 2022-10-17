@@ -1,8 +1,8 @@
 // algo 16 remove all falsy values from a list 
 
 
-function falsyBouncer(arr){
-    return arr.filter(el=> el  )
+function falsyBouncer(arr) {
+    return arr.filter(el => el)
 }
 
 
@@ -41,3 +41,45 @@ function whereIBelong(arr, num) {
     arr.sort((a, b) => a - b)
     return arr.indexOf(num)
 }
+
+// FASTEST: use the for loop
+
+function whereIBelong(arr, num) {
+    var counter = 0
+    for (i = 0; i < arr.length; i++) {
+        if (num > arr[i]) {
+            counter++;
+        }
+    }
+    return counter
+}
+
+// 18: Return the first element from the given array that passes the test specified by the provided function. 
+// Both the array and function are passed into the function as arguments as shown below:
+// arrayFilter(arr, func)
+
+
+// my answer
+// function arrayFilter(arr, func) {
+//     let answer;
+//     arr.forEach(el => {
+//         if (!answer && func(el)) {
+//             answer = el
+//         }
+//     });
+//     return answer
+// }
+
+function arrayFilter(arr, func) {
+    let answer;
+    for (i = 0; i < arr.length; i++) {
+        if (func(arr[i])) {
+            return arr[i]
+        }
+    }
+    return false
+}
+
+arr = [1, 2, 4, 5, 7]
+let func = el => el % 3 === 0
+log(arrayFilter(arr, func))
