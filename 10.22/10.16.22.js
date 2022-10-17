@@ -4,6 +4,7 @@
 
 
 //REMEMBER : SLICE SECOND ARGUMNENT IS INCLUSIVE (slice(0,2) ===  [0,1,2])
+//Also, specifying an index to end at that is greater than arr.length does not result in error. your condition is not neccessary
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
@@ -40,7 +41,7 @@ function chunkArray(arr, num) {
     }
 }
 
-// tutorial answer with recursion  (answer does not have to be in global name space)
+// tutorial answer with recursion  ('answer' does not have to be in global name space)
 function chunkArray(array, size) {
     if(array.length <= size){
         return [array]

@@ -12,23 +12,46 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-let answer = []
-function chunkArray(arr, num) {
-    if (arr <= 0) {
-        return answer;
-    } else {
-        answer.push(arr.slice(0, num));
-        return chunkArray(arr.slice(num),num)
 
-    }
+// function mergeArrays(...arrays) {
+//     let jointArray = []
+//         arrays.forEach(array=>{
+//             jointArray = [...jointArray, ...array]
+//         })
+//         return [...new Set(jointArray)]
+// }
+
+
+// function mergeArrays2() {
+//     let arrays = Array.from(arguments);
+//     console.log(arrays)
+//    // some more code here
+// }
+
+// function mergeArrays(...arrays) {
+//     let jointArray = []
+
+//     arrays.forEach(array => {
+//         jointArray = [...jointArray, ...array]
+//     })
+//     const uniqueArray = jointArray.filter((item,index) =>  jointArray.indexOf(item) === index )
+//     return uniqueArray
+// }
+
+
+
+
+// log(mergeArrays([1, 2, 3, 3, 6, 7, 3], [1, 4, 5, 2], [5,3],[8,8,8,8], [9,1,2,3,4,5])) // should return [1,2,3,4,5]
+
+function falsyBouncer(arr){
+    return arr.filter(el=> el  )
 }
-let bob = [1,2,3,4]
-log(bob.slice(5))
 
-// // log(chunkArray(arr, 5), "[[1,2,3,4,5][6,7,8,9,10][11,12,13]]")
-// log(chunkArray([1, 2, 3, 4], 5), "[[1,2,3,4]]")
-log(chunkArray([1, 2, 3, 4, 5, 6], 2), "[[1,2][3,4][5,6]]")
+
+log(falsyBouncer([1, 0, null, '', 5, "hello", NaN])) // should return [1,5]
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
