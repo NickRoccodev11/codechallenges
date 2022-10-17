@@ -139,5 +139,27 @@ function reverseString(text) {
 function reverseInteger(num) {
     let reversedNumber = parseInt(reverseString(num.toString()))
 
+    //Math.sign return 1,-1, or 0 depending on sign of provided number. multiply by it
     return (reversedNumber * Math.sign(num))
 }
+
+// 20 Given an array of two numbers, return the cummulative sum of the two numbers 
+// and all the numbers between them.
+
+function rangeSum([lo, hi]) {
+    let range = []
+    for (i = lo; i <= hi; i++) {
+        range.push(i)
+    }
+    return range.reduce((a, b) => a + b)
+}
+// rather than create an array and then reduce it, create a running total and return that!
+// gauss' sum with a range that doesn't start at one
+
+function rangeSum2([lo, hi]) {
+    return (lo + hi) * (hi - lo + 1) / 2
+}
+
+
+
+log(rangeSum2([1, 5]))
