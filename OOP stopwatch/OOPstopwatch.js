@@ -13,21 +13,13 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function range(arr) {
-    let arrayRange = []
-    for (i = arr[0]; i <= arr[hi]; i++) {
-        arrayRange.push(i)
-    }
-    return arrayRange
-}
 
-function rangeSum(arr) {
-
+function sumMix(arr){
+    return arr.reduce((acc,cur)=> Number(cur) + acc, 0 )
 }
 
 
-log(rangeSum(1, 9))
-
+log(sumMix([9, 3, '7', '3']))
 
 
 
