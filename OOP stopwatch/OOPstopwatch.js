@@ -13,25 +13,20 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function rangeSum([lo, hi]) {
-    let range = []
-    for (i = lo; i <= hi; i++) {
-        range.push(i)
+function range(arr) {
+    let arrayRange = []
+    for (i = arr[0]; i <= arr[hi]; i++) {
+        arrayRange.push(i)
     }
-    return range.reduce((a, b) => a + b)
+    return arrayRange
 }
 
-// gauss sum with a range that doesn't start at one
+function rangeSum(arr) {
 
-function rangeSum2([lo, hi]) {
-    return (lo + hi) * (hi - lo + 1) / 2
 }
 
 
-
-log(rangeSum2([1, 5]))
-
-
+log(rangeSum(1, 9))
 
 
 
