@@ -13,17 +13,16 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function uniqueSort(arr) {
-    const unique = {};
-    for (el of arr) {
-        if (!unique[el]) {
-            unique[el] = true
-        }
-    };
-        return Object.keys(unique).sort()
-};
 
-log(uniqueSort([5,5,4,3,5,2,4,1,4,3]))
+function joinElements(arr,char){
+    let result=''
+    for(i=0; i<arr.length; i++){
+        result  += arr[i] + char
+    }
+    return result
+}
+
+log(joinElements(["s","cr","tcod"],"e"))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
