@@ -39,3 +39,18 @@ while(mostFrequetArray.length < k){
 }
     return mostFrequetArray
 };
+
+
+// algos tutorial: return sorted array of unique numbers
+
+function uniqueSort(arr) {
+    const unique = {};
+    for (el of arr) {
+        if (!unique[el]) {
+            unique[el] = true
+        }
+    };
+        return Object.keys(unique).sort()
+};
+
+log(uniqueSort([5,5,4,3,5,2,4,1,4,3]))

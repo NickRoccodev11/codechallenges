@@ -13,42 +13,17 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-/**
- * @param {string[]} words
- * @param {number} k
- * @return {string[]}
- */
-var topKFrequent = function (words, k) {
-    let wordmap = {}
-    let mostFrequetArray = [];
-    words.sort();
-    for (char of words) {
-        if (!wordmap[char]) {
-            wordmap[char] = 1
-        } else {
-            wordmap[char]++
+function uniqueSort(arr) {
+    const unique = {};
+    for (el of arr) {
+        if (!unique[el]) {
+            unique[el] = true
         }
-    }
-    let wordArray = Object.keys(wordmap);
-    let valueArray = Object.values(wordmap);
-    let hiFreq = Math.max(...valueArray);
-while(mostFrequetArray.length < k){
-    for (i = 0; i < wordArray.length; i++) {
-        if (valueArray[i] === hiFreq) {
-            mostFrequetArray.push(wordArray[i])
-            if(mostFrequetArray.length===k){
-                return mostFrequetArray
-                
-            }
-        }
-    }
-    hiFreq--;
-}
-    return mostFrequetArray
+    };
+        return Object.keys(unique).sort()
 };
 
-log(topKFrequent(["i","love","leetcode","i","love","coding"],1))
+log(uniqueSort([5,5,4,3,5,2,4,1,4,3]))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
