@@ -123,3 +123,46 @@ function joinElements(arr,char){
 }
 
 log(joinElements(["s","cr","tcod"],"e"))
+
+// factorial with recursion
+
+function recursiveFactorial(n){
+    if(n===1){
+        return n
+    }else{
+        return n * recursiveFactorial(n-1)
+    }
+}
+
+log(recursiveFactorial(5))
+
+// memoize your factorial function
+
+function memoize(cb) {
+    let cache = {}
+    return (n) => {
+        if (!cache[n]) {
+            cache[n] = cb(n)
+            return cache[n]
+        };
+        return `${cache[n]} is the factorial of ${n}`
+    }
+}
+
+
+
+function recursiceFactorial(n){
+    if(n===1){
+        return n
+    }else{
+        return n * recursiceFactorial(n-1)
+    }
+}
+
+memoizedFactorial = memoize(recursiceFactorial);
+
+log(memoizedFactorial(5))
+log(memoizedFactorial(5))
+log(memoizedFactorial(12))
+log(memoizedFactorial(12))
+
