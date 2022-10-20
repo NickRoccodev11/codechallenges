@@ -13,14 +13,37 @@ let log = console.log
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-function getAverage(arr) {
-    return Math.floor(arr.reduce((acc, cur) => cur + acc, 0)/arr.length)
+
+function repeats(arr) {
+    let arrMap = {}
+
+    for (num of arr) {
+        if (!arrMap[num]) {
+            arrMap[num] = 1
+        } else {
+            arrMap[num]++
+        }
+    }
+    let total = 0;
+    for (number of arr) {
+        if (arrMap[number] === 1) {
+            total += number
+        }
+    }
+    return total
+
 }
 
-log(getAverage([2,2,2,2]))
-log(getAverage([1,2,3,4,5,]))
-log(getAverage([1,1,1,1,1,1,1,2]))
 
+log(
+    repeats([4, 5, 7, 5, 4, 8]),
+    repeats([9, 10, 19, 13, 19, 13]),
+    repeats([16, 0, 11, 4, 8, 16, 0, 11]),
+    repeats([5, 17, 18, 11, 13, 18, 11, 13]),
+    repeats([5, 10, 19, 13, 10, 13])
+)
+
+log('15,19,12,22,24')
 
 
 

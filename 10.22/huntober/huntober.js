@@ -594,9 +594,50 @@ log(totalDaysLeftUntil(new Date(2055, 12, 20), new Date(2034, 04, 19)))
 // getAverage([1,1,1,1,1,1,1,2]),1)
 
 function getAverage(arr) {
-    return Math.floor(arr.reduce((acc, cur) => cur + acc, 0)/arr.length)
+    return Math.floor(arr.reduce((acc, cur) => cur + acc, 0) / arr.length)
 }
 
-log(getAverage([2,2,2,2]))
-log(getAverage([1,2,3,4,5,]))
-log(getAverage([1,1,1,1,1,1,1,2]))
+log(getAverage([2, 2, 2, 2]))
+log(getAverage([1, 2, 3, 4, 5,]))
+log(getAverage([1, 1, 1, 1, 1, 1, 1, 2]))
+
+
+// // You will be given an array of numbers in which two numbers occur once and
+//  the rest occur only twice. Your task will be to return the sum of the numbers 
+//  that occur only once.
+
+// For example, repeats([4,5,7,5,4,8]) = 
+// 15 because only the numbers 7 and 8 occur once, and their sum is 15.
+//  Every other number occurs twice.
+
+
+function repeats(arr) {
+    let arrMap = {}
+
+    for (num of arr) {
+        if (!arrMap[num]) {
+            arrMap[num] = 1
+        } else {
+            arrMap[num]++
+        }
+    }
+    let total = 0;
+    for (number of arr) {
+        if (arrMap[number] === 1) {
+            total += number
+        }
+    }
+    return total
+
+}
+
+
+log(
+    repeats([4, 5, 7, 5, 4, 8]),
+    repeats([9, 10, 19, 13, 19, 13]),
+    repeats([16, 0, 11, 4, 8, 16, 0, 11]),
+    repeats([5, 17, 18, 11, 13, 18, 11, 13]),
+    repeats([5, 10, 19, 13, 10, 13])
+)
+
+log('15,19,12,22,24')
