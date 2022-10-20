@@ -611,6 +611,30 @@ log(getAverage([1, 1, 1, 1, 1, 1, 1, 2]))
 //  Every other number occurs twice.
 
 
+// QUADRATIC SOLUTION
+
+function repeats(arr) {
+    let total = 0;
+    let isDouble = false;
+
+    for (i = 0; i < arr.length; i++) {
+        for (k = 0; k < arr.length; k++) {
+            if (arr[i] === arr[k] && i !== k) {
+                isDouble = true
+            }
+        }
+        if (!isDouble) {
+            total += arr[i]
+        }
+        isDouble = false
+    }
+    return total
+}
+
+
+//LINEAR SOLUTION
+
+
 function repeats(arr) {
     let arrMap = {}
 
