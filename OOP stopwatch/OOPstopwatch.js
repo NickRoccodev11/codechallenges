@@ -1,5 +1,4 @@
 
-
 let log = console.log
 // ALWAYS DO PREP!!!   Parameters - Returns - Examples - Pseudocode
 
@@ -12,35 +11,6 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function memoize(cb) {
-    let cache = {}
-    return (n) => {
-        if (!cache[n]) {
-            cache[n] = cb(n)
-            return cache[n]
-        };
-        return `${cache[n]} is the factorial of ${n}`
-    }
-}
-
-
-
-function recursiceFactorial(n){
-    if(n===1){
-        return n
-    }else{
-        return n * recursiceFactorial(n-1)
-    }
-}
-
-memoizedFactorial = memoize(recursiceFactorial);
-
-log(memoizedFactorial(5))
-log(memoizedFactorial(5))
-log(memoizedFactorial(12))
-log(memoizedFactorial(12))
-
 
 
 
