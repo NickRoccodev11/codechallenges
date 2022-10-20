@@ -655,6 +655,13 @@ function repeats(arr) {
 
 }
 
+//METHODS ANSWER
+
+function repeats(arr){
+    return arr.filter(num=> arr.indexOf(num)===arr.lastIndexOf(num))
+    .reduce((a,c)=> a+c, 0)
+}
+
 
 log(
     repeats([4, 5, 7, 5, 4, 8]),

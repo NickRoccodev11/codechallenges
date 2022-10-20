@@ -256,11 +256,8 @@ const makeChange2 = (amount, coinsArr) => {
     return billsUsed
 }
 
-
-
-
-log(makeChange2(40, [5, 10, 25]), "3")
-log(makeChange2(60, [10,20,30]), "2")
-log(makeChange2(50, [5,10,20]), "3")
-log(makeChange2(15, [60,5,20]), "3")
-log(makeChange2(5, [1,4,5]), "1")
+// log(makeChange2(40, [5, 10, 25]), "3")
+// log(makeChange2(60, [10,20,30]), "2")
+// log(makeChange2(50, [5,10,20]), "3")
+// log(makeChange2(15, [60,5,20]), "3")
+// log(makeChange2(5, [1,4,5]), "1")
