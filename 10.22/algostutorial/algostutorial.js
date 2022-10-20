@@ -175,20 +175,61 @@ function merge(l, r) {
     }
     return c.concat(l.slice()).concat(r.slice())
 }
+let partiallySorted = [2, 3, 1, 5, 4, 6, 7, 8, 9]
 
 // log(mergeSort(unsorted))
 
 function bubbleSort(arr) {
+    let sorted = true
     for (i = 0; i < arr.length; i++) {
         for (j = 0; j < arr.length; j++) {
-            if (arr[j] > arr[j+1]) {
+            if (arr[j] > arr[j + 1]) {
                 let x = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = x
+                arr[j] = arr[j + 1];
+                arr[j + 1] = x;
+                sorted = false
             }
         }
+        if (sorted) {
+            return arr
+        }
+        sorted = true
     }
     return arr
 }
 
-log(bubbleSort(unsorted))
+// log(bubbleSort(partiallySorted))
+
+
+// GREEDY ALGO : ThE MAKE CHANGE PROBLEM
+//input: amount owed
+// output: least amount of bills needed to make change
+// demoninations= 5, 10 ,25
+
+const makeChange = amount => {
+    let amountLeft = amount,
+        billsUsed = 0;
+
+    while (amountLeft > 0) {
+        if (amountLeft >= 25) {
+            amountLeft -= 25
+            billsUsed++
+            log(`spent 25, left: ${amountLeft}`)
+        } else if (amountLeft >= 10) {
+            amountLeft -= 10;
+            billsUsed++
+            log(`spent 10, left: ${amountLeft}`)
+        } else {
+            amountLeft -= 5;
+            billsUsed++
+            log(`spent 5, left: ${amountLeft}`)
+        }
+    }
+    return billsUsed
+} 
+
+log(makeChange(40), "3")
+log(makeChange(45), "3")
+log(makeChange(50), "2")
+log(makeChange(15), "2")
+log(makeChange(5), "1")
