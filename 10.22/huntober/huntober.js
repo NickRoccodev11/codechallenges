@@ -477,8 +477,8 @@ let myExampleFunction = arr => {
 
 function comp1(a, b) {
     const c = new Date()
-    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000*60*60*24))
-    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000*60*60*24))
+    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000 * 60 * 60 * 24))
+    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000 * 60 * 60 * 24))
     const as = a.toDateString()
     const bs = b.toDateString()
     if (da * 2 <= db) {
@@ -494,34 +494,34 @@ function comp1(a, b) {
 
 function comp2(a, b) {
     const c = new Date()
-    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000*60*60*24))
-    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000*60*60*24))
+    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000 * 60 * 60 * 24))
+    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000 * 60 * 60 * 24))
     const as = a.toDateString()
     const bs = b.toDateString()
     if (da < db) {
-        const x = Math.floor(db/da)
+        const x = Math.floor(db / da)
         return `Looks like ${bs} is ${x} times farther away than ${as}.`
     } else if (da === db) {
         return `Same exact date there, mate.`
     } else {
-        const x = Math.floor(da/db)
+        const x = Math.floor(da / db)
         return `Looks like ${as} is ${x} times farther away than ${bs}.`
     }
 }
 
 function tot(a, b) {
     const c = new Date()
-    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000*60*60*24))
-    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000*60*60*24))
+    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000 * 60 * 60 * 24))
+    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000 * 60 * 60 * 24))
     const as = a.toDateString()
     const bs = b.toDateString()
-    const x = db-da
+    const x = db - da
     return `You have ${da} days left until ${as}, and ${db} days left until ${bs}. There are ${x} days between them.`
 }
 
 // feel free to plug these example dates into your functions
-const dateA = new Date(2022,09,26)
-const dateB = new Date(2022,11,25)
+const dateA = new Date(2022, 09, 26)
+const dateB = new Date(2022, 11, 25)
 
 //MY ANSWER:
 
@@ -566,7 +566,7 @@ function howManyTimesFartherAway(date1, date2) {
         return `Looks like ${date1String} is ${howManyTimesFarther(timeElapsedsince1, timeElapsedsince2)} times farther away than ${date2String}.`
     }
 }
-log(howManyTimesFartherAway(new Date(2055,12,20), new Date(2034,04,19)))
+log(howManyTimesFartherAway(new Date(2055, 12, 20), new Date(2034, 04, 19)))
 function daysBetween(day1, day2) {
     return Math.abs(day1 - day2)
 }
@@ -577,8 +577,26 @@ function totalDaysLeftUntil(date1, date2) {
     const timeElapsedsince2 = timeElapsedSince(date2)
     const date1String = date1.toDateString()
     const date2String = date2.toDateString()
-    return `You have ${timeElapsedsince1} days left until ${date1String}, and ${timeElapsedsince2} days left until ${date2String}. There are ${daysBetween(timeElapsedsince2,timeElapsedsince1)} days between them.`
+    return `You have ${timeElapsedsince1} days left until ${date1String}, and ${timeElapsedsince2} days left until ${date2String}. There are ${daysBetween(timeElapsedsince2, timeElapsedsince1)} days between them.`
 }
-log(totalDaysLeftUntil(new Date(2055,12,20), new Date(2034,04,19)))
+log(totalDaysLeftUntil(new Date(2055, 12, 20), new Date(2034, 04, 19)))
 
+// It's the academic year's end, fateful moment of your school report.
+//  The averages must be calculated. All the students come to you and entreat 
+//  you to calculate their average for them. Easy ! You just need to write a script.
 
+// Return the average of the given array rounded down to its nearest integer.
+
+// The array will never be empty.
+
+// getAverage([2,2,2,2]),2)
+// getAverage([1,2,3,4,5,]),3);
+// getAverage([1,1,1,1,1,1,1,2]),1)
+
+function getAverage(arr) {
+    return Math.floor(arr.reduce((acc, cur) => cur + acc, 0)/arr.length)
+}
+
+log(getAverage([2,2,2,2]))
+log(getAverage([1,2,3,4,5,]))
+log(getAverage([1,1,1,1,1,1,1,2]))
