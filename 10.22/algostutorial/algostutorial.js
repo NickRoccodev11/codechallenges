@@ -150,7 +150,7 @@ function binarySearch(arr, target) {
 //  MERGE SORT MERGE SORT
 
 
-let unsorted = [9, 7, 6, 5, 3, 10, 4, 8]
+let unsorted = [22, 1, 9, 7, 6, 5, 3, 10, 4, 8]
 
 function mergeSort(arr) {
     if (arr.length <= 1) {
@@ -176,7 +176,19 @@ function merge(l, r) {
     return c.concat(l.slice()).concat(r.slice())
 }
 
+// log(mergeSort(unsorted))
 
+function bubbleSort(arr) {
+    for (i = 0; i < arr.length; i++) {
+        for (j = 0; j < arr.length; j++) {
+            if (arr[j] > arr[j+1]) {
+                let x = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = x
+            }
+        }
+    }
+    return arr
+}
 
-
-log(mergeSort(unsorted))
+log(bubbleSort(unsorted))

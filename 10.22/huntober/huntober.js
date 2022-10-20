@@ -421,26 +421,28 @@ const log = console.log
 
 // simplify this:
 
-// function myExampleFunction(arr) {
-//     if (arr != null) {
-//         if (arr.length !== 0) {
-//             if (arr[0].length !== 0) {
-//                 if (arr.length > 10) {
-//                     arr.push('maximum')
-//                 } else if (arr.length === 10) {
-//                     arr.push('maximum')
-//                 } else {
-//                     if (arr[0] === 'must be maximum') {
-//                         arr.push('failure')
-//                     } else if (arr[0] === 'flexible') {
-//                         arr.push('success')
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     return arr
-// }
+function myExampleFunction1(arr) {
+    if (arr != null) {
+        if (arr.length !== 0) {
+            if (arr[0].length !== 0) {
+                if (arr.length > 10) {
+                    arr.push('maximum')
+                } else if (arr.length === 10) {
+                    arr.push('maximum')
+                } else {
+                    if (arr[0] === 'must be maximum') {
+                        arr.push('failure')
+                    } else if (arr[0] === 'flexible') {
+                        arr.push('success')
+                    }
+                }
+            }
+        }
+    }
+    return arr
+}
+
+
 let arr1 = ["flexible", "hi"]
 let arr2 = ["must be maximum", "hi", "hi"]
 let arr3 = ["", 12, "hi"]
@@ -450,10 +452,7 @@ let arr6 = []
 let arr7 = null
 
 
-
-
-
-
+//simplified: 
 let myExampleFunction = arr => {
     if (arr === null || arr.length === 0 || arr[0].length === 0) return arr;
     if (arr.length >= 10) {
@@ -466,10 +465,120 @@ let myExampleFunction = arr => {
     return arr
 }
 
-log(myExampleFunction(arr1), '["flexible","hi", "success"]')
-log(myExampleFunction(arr2), '["must be maximum","hi","hi","failure"]')
-log(myExampleFunction(arr3), '["", 12,"hi"]')
-log(myExampleFunction(arr4), '["must be maximum", 12, "hi",1,1,1,1,1,1,1, "max"]')
-log(myExampleFunction(arr5), '["must be maximum", 12, "hi", 1, 1, 1, 1, 1, 1, 1,"eleventh","max"]')
-log(myExampleFunction(arr6), '[]')
-log(myExampleFunction(arr7), 'null')
+// log(myExampleFunction(arr1), '["flexible","hi", "success"]')
+// log(myExampleFunction(arr2), '["must be maximum","hi","hi","failure"]')
+// log(myExampleFunction(arr3), '["", 12,"hi"]')
+// log(myExampleFunction(arr4), '["must be maximum", 12, "hi",1,1,1,1,1,1,1, "max"]')
+// log(myExampleFunction(arr5), '["must be maximum", 12, "hi", 1, 1, 1, 1, 1, 1, 1,"eleventh","max"]')
+// log(myExampleFunction(arr6), '[]')
+// log(myExampleFunction(arr7), 'null')
+
+// CLEAN UP THIS CODE: 
+
+function comp1(a, b) {
+    const c = new Date()
+    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000*60*60*24))
+    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000*60*60*24))
+    const as = a.toDateString()
+    const bs = b.toDateString()
+    if (da * 2 <= db) {
+        return `If you thought ${as} was a long wait, wait until you see how long it is until ${bs}.`
+    } else if (da < db) {
+        return `Don't worry, ${bs} isn't too much farther away than ${as} in the scheme of things.`
+    } else if (da === db) {
+        return `They're the same number of days away!`
+    } else {
+        return `You know ${as} is closer, right?`
+    }
+}
+
+function comp2(a, b) {
+    const c = new Date()
+    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000*60*60*24))
+    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000*60*60*24))
+    const as = a.toDateString()
+    const bs = b.toDateString()
+    if (da < db) {
+        const x = Math.floor(db/da)
+        return `Looks like ${bs} is ${x} times farther away than ${as}.`
+    } else if (da === db) {
+        return `Same exact date there, mate.`
+    } else {
+        const x = Math.floor(da/db)
+        return `Looks like ${as} is ${x} times farther away than ${bs}.`
+    }
+}
+
+function tot(a, b) {
+    const c = new Date()
+    const da = Math.ceil(Math.abs(c.getTime() - a.getTime()) / (1000*60*60*24))
+    const db = Math.ceil(Math.abs(c.getTime() - b.getTime()) / (1000*60*60*24))
+    const as = a.toDateString()
+    const bs = b.toDateString()
+    const x = db-da
+    return `You have ${da} days left until ${as}, and ${db} days left until ${bs}. There are ${x} days between them.`
+}
+
+// feel free to plug these example dates into your functions
+const dateA = new Date(2022,09,26)
+const dateB = new Date(2022,11,25)
+
+//MY ANSWER:
+
+
+function timeElapsedSince(date) {
+    const c = new Date()
+    return Math.ceil(Math.abs(c.getTime() - date.getTime()) / (1000 * 60 * 60 * 24))
+}
+
+function howMuchFartherAway(date1, date2) {
+    let timeElapsedsince1 = timeElapsedSince(date1)
+    let timeElapsedsince2 = timeElapsedSince(date2)
+    const date1String = date1.toDateString()
+    const date2String = date2.toDateString()
+    if (timeElapsedsince1 * 2 <= timeElapsedsince2) {
+        return `If you thought ${date1String} was a long wait, wait until you see how long it is until ${date2String}.`
+    } else if (timeElapsedsince1 < timeElapsedsince2) {
+        return `Don't worry, ${date2String} isn't too much farther away than ${date1String} in the scheme of things.`
+    } else if (date1String === date2String) {
+        return `They're the same number of days away!`
+    } else {
+        return `You know ${date1String} is closer, right?`
+    }
+}
+// log(howMuchFartherAway(new Date(2034, 09, 26), new Date(2034, 10, 26)))
+
+function howManyTimesFarther(time1, time2) {
+    return Math.floor(time1 / time2)
+}
+
+function howManyTimesFartherAway(date1, date2) {
+
+    const timeElapsedsince1 = timeElapsedSince(date1)
+    const timeElapsedsince2 = timeElapsedSince(date2)
+    const date1String = date1.toDateString()
+    const date2String = date2.toDateString()
+    if (timeElapsedsince1 < timeElapsedsince2) {
+        return `Looks like ${date2String} is ${howManyTimesFarther(timeElapsedsince2, timeElapsedsince1)} times farther away than ${date1String}.`
+    } else if (timeElapsedsince1 === timeElapsedsince2) {
+        return `Same exact date there, mate.`
+    } else {
+        return `Looks like ${date1String} is ${howManyTimesFarther(timeElapsedsince1, timeElapsedsince2)} times farther away than ${date2String}.`
+    }
+}
+log(howManyTimesFartherAway(new Date(2055,12,20), new Date(2034,04,19)))
+function daysBetween(day1, day2) {
+    return Math.abs(day1 - day2)
+}
+
+function totalDaysLeftUntil(date1, date2) {
+    const c = new Date()
+    const timeElapsedsince1 = timeElapsedSince(date1)
+    const timeElapsedsince2 = timeElapsedSince(date2)
+    const date1String = date1.toDateString()
+    const date2String = date2.toDateString()
+    return `You have ${timeElapsedsince1} days left until ${date1String}, and ${timeElapsedsince2} days left until ${date2String}. There are ${daysBetween(timeElapsedsince2,timeElapsedsince1)} days between them.`
+}
+log(totalDaysLeftUntil(new Date(2055,12,20), new Date(2034,04,19)))
+
+
