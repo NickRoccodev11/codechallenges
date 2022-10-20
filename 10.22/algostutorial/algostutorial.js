@@ -214,22 +214,53 @@ const makeChange = amount => {
         if (amountLeft >= 25) {
             amountLeft -= 25
             billsUsed++
-            log(`spent 25, left: ${amountLeft}`)
         } else if (amountLeft >= 10) {
             amountLeft -= 10;
             billsUsed++
-            log(`spent 10, left: ${amountLeft}`)
         } else {
             amountLeft -= 5;
             billsUsed++
-            log(`spent 5, left: ${amountLeft}`)
         }
     }
     return billsUsed
-} 
+}
 
-log(makeChange(40), "3")
-log(makeChange(45), "3")
-log(makeChange(50), "2")
-log(makeChange(15), "2")
-log(makeChange(5), "1")
+// log(makeChange(40), "3")
+// log(makeChange(45), "3")
+// log(makeChange(50), "2")
+// log(makeChange(15), "2")
+// log(makeChange(5), "1")
+
+// NOW WITH PASSED IN COIN VALUES!
+
+
+const makeChange2 = (amount, coinsArr) => {
+
+    let coin = coinsArr.sort((a, b) => b - a)
+
+    let amountLeft = amount,
+        billsUsed = 0;
+
+    while (amountLeft > 0) {
+        if (amountLeft >= coin[0]) {
+            amountLeft -= coin[0];
+            billsUsed++
+        } else if (amountLeft >= coin[1]) {
+            amountLeft -= coin[1];
+            billsUsed++
+        } else {
+            amountLeft -= coin[2];
+            billsUsed++
+        }
+    }
+    return billsUsed
+}
+
+
+
+
+log(makeChange2(40, [5, 10, 25]), "3")
+log(makeChange2(60, [10,20,30]), "2")
+log(makeChange2(50, [5,10,20]), "3")
+log(makeChange2(15, [60,5,20]), "3")
+log(makeChange2(5, [1,4,5]), "1")
