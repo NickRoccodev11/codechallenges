@@ -657,9 +657,9 @@ function repeats(arr) {
 
 //METHODS ANSWER
 
-function repeats(arr){
-    return arr.filter(num=> arr.indexOf(num)===arr.lastIndexOf(num))
-    .reduce((a,c)=> a+c, 0)
+function repeats(arr) {
+    return arr.filter(num => arr.indexOf(num) === arr.lastIndexOf(num))
+        .reduce((a, c) => a + c, 0)
 }
 
 
