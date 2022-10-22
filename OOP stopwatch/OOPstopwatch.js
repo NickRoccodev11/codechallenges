@@ -11,11 +11,26 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var removeDuplicates = function(nums) {
+    let k = 0
+    for(i=0; i<nums.length; i++){
+        for(j=0; j<nums.length; j++){
+            if(i!==j && nums[i]===nums[j]){
+                nums[j] = "_";
+                k++
+            }
+        }
+    }
+    return k, nums
+};
+
+log(removeDuplicates([1,1,2]))
 
 
-let bob = [1,2,3]
-
-log(bob.slice(0,0))
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
