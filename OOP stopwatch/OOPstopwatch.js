@@ -11,24 +11,23 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @param {number[]} nums
- * @return {number}
- */
- var removeDuplicates = function(nums) {
-    let k = 0
-    for(i=0; i<nums.length; i++){
-        for(j=0; j<nums.length; j++){
-            if(i!==j && nums[i]===nums[j]){
-                nums[j] = "_";
-                k++
-            }
+var runningSum = function (nums) {
+    let sumArr = []
+    let total = 0;
+    for (i = 0; i <= nums.length; i++) {
+        for (j = 0; j < i; j++) {
+            total += nums[j]
         }
+        if (i !== 0) {
+            sumArr.push(total)
+        }
+        total = 0
     }
-    return k, nums
+    return sumArr
 };
 
-log(removeDuplicates([1,1,2]))
+
+log(runningSum([34, -13, 12, -59, 27, -63, 1, 94, 84, 54, 9, 57, 53, 11, 85, -17, -78, -85, -84, 5, 43, -44, -48, -38]))
 
 
 
