@@ -99,9 +99,9 @@ function memoizeB(cb) {
     return (n) => {
         if (!cache[n]) {
             cache[n] = cb(n)
-            return `${n}! =  ${cache[n]} added to cache `
+            return `${n} : ${cache[n]} added to cache `
         };
-        return `${cache[n]} is the factorial of ${n}`
+        return `${cache[n]} is stored at ${n}`
     }
 }
 
