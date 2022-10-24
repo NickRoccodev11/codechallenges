@@ -11,14 +11,22 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Make this work: duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
+var isIsomorphic = function(s, t) {
+   let stringMap = {}
+   for (i=0;i<s.length; i++){
+    if(!stringMap[s[i]] && !Object.values(stringMap).includes(t[i])){
+        stringMap[s[i]] = t[i]
+    }
+   }
+   for (i=0;i<s.length; i++){
+    if(stringMap[s[i]]!== t[i]){
+        return false
+    }
+   }
+   return true
+ };
 
-function duplicate(arr){
-    return arr.concat(arr)
-}
-
-log(duplicate([1,2,3]))
-
+ log(isIsomorphic("badc", "baba"))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:

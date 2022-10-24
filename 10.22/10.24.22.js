@@ -50,3 +50,28 @@ function duplicate(arr){
 }
 
 log(duplicate([1,2,3]))
+
+
+// check if two strings are isomorphic
+//foo bar - false 
+//paper title = true
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+ var isIsomorphic = function(s, t) {
+    let stringMap = {}
+    for (i=0;i<s.length; i++){
+     if(!stringMap[s[i]] && !Object.values(stringMap).includes(t[i]) ){
+         stringMap[s[i]] = t[i]
+     }
+    }
+    for (i=0;i<s.length; i++){
+     if(stringMap[s[i]]!== t[i]){
+         return false
+     }
+    }
+    return true
+  };
