@@ -11,24 +11,24 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given an array of digital numbers, return a new array of length number containing the 
-// last even numbers from the original array (in the same order).
-//  The original array will be not empty and will contain at least "number" even numbers.
+var pivotIndex = function (nums) {
+    for (i = 0; i < nums.length; i++) {
+        if (i === 0) {
+            if (nums.slice(1).reduce((a, b) => a + b) === 0) {
+                return 0
+            }
+        } else {
+            if (nums.slice(i + 1).reduce((a, b) => a + b, 0) === nums.slice(0, i).reduce((a, b) => a + b, 0)) {
+                return i
+            }
 
-// // For example:
-
-// ([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
-// ([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]
-// ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
-
-
-const lastEvens = (arr, n) => {
-    return arr.filter(el=> el% 2 ===0 ).slice(-n)
+        }
+    }
+    return -1
 }
-
-log(lastEvens([1, 2, 3, 4, 5, 6, 7, 8, 9],3)) //4,6,8
-log(lastEvens([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2)) // [-8,26]
-log(lastEvens([6, -25, 3, 7, 5, 5, 7, -3, 23], 1)) // [6]
+log(pivotIndex([0, 0, 0]))
+log(pivotIndex([1, 7, 3, 6, 5, 6])) //3
+log(pivotIndex([1, 2, 3])) //-1
 
 
 
