@@ -12,17 +12,18 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var pivotIndex = function (nums) {
-    for (i = 0; i < nums.length; i++) {
-        if (i === 0) {
-            if (nums.slice(1).reduce((a, b) => a + b) === 0) {
-                return 0
-            }
-        } else {
-            if (nums.slice(i + 1).reduce((a, b) => a + b, 0) === nums.slice(0, i).reduce((a, b) => a + b, 0)) {
-                return i
-            }
+    let totalSum = 0;
+    for (number of nums) {
+        totalSum += number
+    }
+    let leftSum = 0
 
+    for (i = 0; i < nums.length; i++) {
+       
+        if (leftSum * 2 === totalSum - nums[i]) {
+            return i
         }
+        leftSum += nums[i]
     }
     return -1
 }
