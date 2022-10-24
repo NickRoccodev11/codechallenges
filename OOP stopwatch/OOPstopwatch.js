@@ -11,27 +11,13 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var pivotIndex = function (nums) {
-    let totalSum = 0;
-    for (number of nums) {
-        totalSum += number
-    }
-    let leftSum = 0
+// Make this work: duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 
-    for (i = 0; i < nums.length; i++) {
-       
-        if (leftSum * 2 === totalSum - nums[i]) {
-            return i
-        }
-        leftSum += nums[i]
-    }
-    return -1
+function duplicate(arr){
+    return arr.concat(arr)
 }
-log(pivotIndex([0, 0, 0]))
-log(pivotIndex([1, 7, 3, 6, 5, 6])) //3
-log(pivotIndex([1, 2, 3])) //-1
 
-
+log(duplicate([1,2,3]))
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
