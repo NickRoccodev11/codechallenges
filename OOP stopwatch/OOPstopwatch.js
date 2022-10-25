@@ -11,19 +11,7 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function solve(arr) {
-    return arr.map(subArr => new Set(subArr)).reduce((a, c) => c.size * a, 1)
 
-}
-
-
-
-log(
-    solve([[1, 2], [4, 4], [5, 6, 6]]),
-    solve([[1, 2], [4, 4], [5, 6, 6]]),
-    solve([[1, 2], [3, 4], [5, 6]]),
-    solve([[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]))
-log("4,4,8,72")
 
 
 
