@@ -686,9 +686,32 @@ log('15,19,12,22,24')
 
 
 const lastEvens = (arr, n) => {
-    return arr.filter(el=> el% 2 ===0 ).slice(-n)
+    return arr.filter(el=> el % 2 ===0 ).slice(-n)
 }
 
 log(lastEvens([1, 2, 3, 4, 5, 6, 7, 8, 9],3)) //4,6,8
 log(lastEvens([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2)) // [-8,26]
 log(lastEvens([6, -25, 3, 7, 5, 5, 7, -3, 23], 1)) // [6]
+
+
+//
+// Return the number of unique arrays that can be formed by picking exactly
+//  one element from each subarray.
+
+// For example: solve([[1,2],[4],[5,6]]) = 4, 
+// because it results in only 4 possibilites. 
+// They are [1,4,5],[1,4,6],[2,4,5],[2,4,6].
+
+function solve(arr) {
+    return arr.map(subArr => new Set(subArr)).reduce((a, c) => c.size * a, 1)
+
+}
+
+
+
+log(
+    solve([[1, 2], [4, 4], [5, 6, 6]]),
+    solve([[1, 2], [4, 4], [5, 6, 6]]),
+    solve([[1, 2], [3, 4], [5, 6]]),
+    solve([[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]))
+log("4,4,8,72")

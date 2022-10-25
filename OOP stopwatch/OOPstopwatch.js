@@ -11,22 +11,21 @@ let log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var isIsomorphic = function(s, t) {
-   let stringMap = {}
-   for (i=0;i<s.length; i++){
-    if(!stringMap[s[i]] && !Object.values(stringMap).includes(t[i])){
-        stringMap[s[i]] = t[i]
-    }
-   }
-   for (i=0;i<s.length; i++){
-    if(stringMap[s[i]]!== t[i]){
-        return false
-    }
-   }
-   return true
- };
+function solve(arr) {
+    return arr.map(subArr => new Set(subArr)).reduce((a, c) => c.size * a, 1)
 
- log(isIsomorphic("badc", "baba"))
+}
+
+
+
+log(
+    solve([[1, 2], [4, 4], [5, 6, 6]]),
+    solve([[1, 2], [4, 4], [5, 6, 6]]),
+    solve([[1, 2], [3, 4], [5, 6]]),
+    solve([[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]))
+log("4,4,8,72")
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
