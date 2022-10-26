@@ -566,7 +566,7 @@ function howManyTimesFartherAway(date1, date2) {
         return `Looks like ${date1String} is ${howManyTimesFarther(timeElapsedsince1, timeElapsedsince2)} times farther away than ${date2String}.`
     }
 }
-log(howManyTimesFartherAway(new Date(2055, 12, 20), new Date(2034, 04, 19)))
+// log(howManyTimesFartherAway(new Date(2055, 12, 20), new Date(2034, 04, 19)))
 function daysBetween(day1, day2) {
     return Math.abs(day1 - day2)
 }
@@ -579,7 +579,7 @@ function totalDaysLeftUntil(date1, date2) {
     const date2String = date2.toDateString()
     return `You have ${timeElapsedsince1} days left until ${date1String}, and ${timeElapsedsince2} days left until ${date2String}. There are ${daysBetween(timeElapsedsince2, timeElapsedsince1)} days between them.`
 }
-log(totalDaysLeftUntil(new Date(2055, 12, 20), new Date(2034, 04, 19)))
+// log(totalDaysLeftUntil(new Date(2055, 12, 20), new Date(2034, 04, 19)))
 
 // It's the academic year's end, fateful moment of your school report.
 //  The averages must be calculated. All the students come to you and entreat 
@@ -597,9 +597,9 @@ function getAverage(arr) {
     return Math.floor(arr.reduce((acc, cur) => cur + acc, 0) / arr.length)
 }
 
-log(getAverage([2, 2, 2, 2]))
-log(getAverage([1, 2, 3, 4, 5,]))
-log(getAverage([1, 1, 1, 1, 1, 1, 1, 2]))
+// log(getAverage([2, 2, 2, 2]))
+// log(getAverage([1, 2, 3, 4, 5,]))
+// log(getAverage([1, 1, 1, 1, 1, 1, 1, 2]))
 
 
 // // You will be given an array of numbers in which two numbers occur once and
@@ -663,15 +663,15 @@ function repeats(arr) {
 }
 
 
-log(
-    repeats([4, 5, 7, 5, 4, 8]),
-    repeats([9, 10, 19, 13, 19, 13]),
-    repeats([16, 0, 11, 4, 8, 16, 0, 11]),
-    repeats([5, 17, 18, 11, 13, 18, 11, 13]),
-    repeats([5, 10, 19, 13, 10, 13])
-)
+// log(
+//     repeats([4, 5, 7, 5, 4, 8]),
+//     repeats([9, 10, 19, 13, 19, 13]),
+//     repeats([16, 0, 11, 4, 8, 16, 0, 11]),
+//     repeats([5, 17, 18, 11, 13, 18, 11, 13]),
+//     repeats([5, 10, 19, 13, 10, 13])
+// )
 
-log('15,19,12,22,24')
+// log('15,19,12,22,24')
 
 //
 // Given an array of digital numbers, return a new array of length number containing the 
@@ -689,9 +689,9 @@ const lastEvens = (arr, n) => {
     return arr.filter(el => el % 2 === 0).slice(-n)
 }
 
-log(lastEvens([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)) //4,6,8
-log(lastEvens([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2)) // [-8,26]
-log(lastEvens([6, -25, 3, 7, 5, 5, 7, -3, 23], 1)) // [6]
+// log(lastEvens([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)) //4,6,8
+// log(lastEvens([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2)) // [-8,26]
+// log(lastEvens([6, -25, 3, 7, 5, 5, 7, -3, 23], 1)) // [6]
 
 
 //
@@ -710,9 +710,34 @@ let solve = arr => arr.map(subArr => new Set(subArr)).reduce((a, c) => c.size * 
 let solve2 = arr => arr.reduce((a, c) => new Set(c).size * a, 1)
 
 
+// log(
+//     solve2([[1, 2], [4, 4], [5, 6, 6]]),
+//     solve2([[1, 2], [4, 4], [5, 6, 6]]),
+//     solve2([[1, 2], [3, 4], [5, 6]]),
+//     solve2([[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]))
+// log("4,4,8,72")
+//////////////////////////////////////////////////////////////////////////////
+
+// Given an array of integers , Find the Nth smallest element in this array 
+// of integers.
+
+// Notes
+// Array/list size is at least 3 .
+
+// Array/list's numbers could be a mixture of positives , negatives and zeros .
+
+// Repetition in array/list's numbers could occur , so don't Remove Duplications .
+
+// nthSmallest({3,1,2} ,2) ==> return (2) 
+// nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+// nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+// nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
+
+const nthSmallest = (arr, n) => arr.sort((a, b) => a - b)[n-1]
+
+
 log(
-    solve2([[1, 2], [4, 4], [5, 6, 6]]),
-    solve2([[1, 2], [4, 4], [5, 6, 6]]),
-    solve2([[1, 2], [3, 4], [5, 6]]),
-    solve2([[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]))
-log("4,4,8,72")
+    nthSmallest([3, 1, 2], 2),
+    nthSmallest([15, 20, 7, 10, 4, 3], 3),
+    nthSmallest([15, 20, 7, 10, 4, 3], 3),
+    nthSmallest([177, 225, 243, -169, -12, -5, 2, 92], 5))
