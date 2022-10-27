@@ -774,11 +774,24 @@ const parenClose = str => {
 
 //UPDATE: YOU CAN USE MAP's THIRD PARAMETER : THE ARRAY REFERENCE !
 
-const paren = str => str.toLowerCase().split('')
+const paren3 = str => str.toLowerCase().split('')
     .map((char, idx, arr) => arr.indexOf(char) === arr.lastIndexOf(char) ? "(" : ")")
     .join('')
 
 
+// NOW WITH A HASH MAP
+
+const paren = str => {
+    let strMap = {};
+    for (char of str) {
+        if (!strMap[char.toLowerCase()]) {
+            strMap[char.toLowerCase()] = 1
+        } else {
+            strMap[char.toLowerCase()]++
+        }
+    }
+    return str.split('').map(char => strMap[char.toLowerCase()] > 1 ? ")" : "(").join('')
+}
 
 
 // log(paren("din"))
@@ -805,7 +818,7 @@ const paren = str => str.toLowerCase().split('')
 
 
 function isSub(s, t) {
-    if(s.length !== 0 && t.length === 0 ){
+    if (s.length !== 0 && t.length === 0) {
         return false
     }
     let start = 0;
@@ -813,7 +826,7 @@ function isSub(s, t) {
         for (j = start; j < t.length; j++) {
             if (s[i] === t[j]) {
                 start = j + 1;
-                if(j === t.length - 1 && i < s.length-1){
+                if (j === t.length - 1 && i < s.length - 1) {
                     return false
                 }
                 break;
@@ -827,6 +840,6 @@ function isSub(s, t) {
 }
 
 
-log(isSub("aaaaaa", "bbaaaa"), "false")
-log(isSub("acb", "ahbgdc"), "false")
+// log(isSub("aaaaaa", "bbaaaa"), "false")
+// log(isSub("acb", "ahbgdc"), "false")
 
