@@ -733,11 +733,38 @@ let solve2 = arr => arr.reduce((a, c) => new Set(c).size * a, 1)
 // nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
 // nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
 
-const nthSmallest = (arr, n) => arr.sort((a, b) => a - b)[n-1]
+const nthSmallest = (arr, n) => arr.sort((a, b) => a - b)[n - 1]
 
 
-log(
-    nthSmallest([3, 1, 2], 2),
-    nthSmallest([15, 20, 7, 10, 4, 3], 3),
-    nthSmallest([15, 20, 7, 10, 4, 3], 3),
-    nthSmallest([177, 225, 243, -169, -12, -5, 2, 92], 5))
+// log(
+//     nthSmallest([3, 1, 2], 2),
+//     nthSmallest([15, 20, 7, 10, 4, 3], 3),
+//     nthSmallest([15, 20, 7, 10, 4, 3], 3),
+//     nthSmallest([177, 225, 243, -169, -12, -5, 2, 92], 5))
+
+
+///
+
+
+// The goal of this exercise is to convert a string to a new string where each
+//  character in the new string is "(" if that character appears only once in the
+//   original string, or ")" if that character appears more than once in the original
+//    string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+
+const paren = str =>{
+  let arr =  str.toLowerCase().split('')
+  return arr.map(char => arr.indexOf(char) === arr.lastIndexOf(char) ? "(" : ")").join('') 
+}
+
+
+log(paren("din"))
+log(paren("recede"))
+log(paren("Success"))
+log(paren("(( @"))
+log(paren("Bob"))
