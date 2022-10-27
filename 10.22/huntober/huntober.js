@@ -757,10 +757,28 @@ const nthSmallest = (arr, n) => arr.sort((a, b) => a - b)[n - 1]
 // "Success"  =>  ")())())"
 // "(( @"     =>  "))((" 
 
-const paren = str =>{
-  let arr =  str.toLowerCase().split('')
-  return arr.map(char => arr.indexOf(char) === arr.lastIndexOf(char) ? "(" : ")").join('') 
+// NOTE : THIS doesn't work because referencing "str" inside of map refers to str as it was 
+// originally passed in, not as it exists currently in the return chain
+
+const parenNo = str => {
+    return str.toLowerCase().split('')
+        .map(char => str.indexOf(char) === str.lastIndexOf(char) ? "(" : ")").join('')
 }
+
+// instead save it to a variable to reference it as a lowercase
+
+const parenClose = str => {
+    let arr = str.toLowerCase().split('')
+    return arr.map(char => arr.indexOf(char) === arr.lastIndexOf(char) ? "(" : ")").join('')
+}
+
+//UPDATE: YOU CAN USE MAP's THIRD PARAMETER : THE ARRAY REFERENCE !
+
+const paren = str => str.toLowerCase().split('')
+    .map((char, idx, arr) => arr.indexOf(char) === arr.lastIndexOf(char) ? "(" : ")")
+    .join('')
+
+
 
 
 log(paren("din"))
