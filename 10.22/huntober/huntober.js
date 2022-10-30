@@ -896,7 +896,26 @@ function stockList(listOfArt, listOfCat) {
 }
 log(stockList(["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"],
     ["A", "B", "C", "D"]))
-  //"(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
+//"(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
 
-  // ANOTHER TAKE
+// ANOTHER TAKE
 //   FROM CODEWARS
+
+function stockList(listOfArt, listOfCat) {
+    if (!listOfArt.length || !listOfCat.length) return ''
+    return listOfCat.map(w => {
+        const s = listOfArt.reduce((a, b) => a + (b.charAt(0) === w ? +b.split(' ')[1] : 0), 0)
+        return `(${w} : ${s})`
+    }).join(' - ')
+}
+
+// factorial recursion
+
+const factorial = n => {
+    if (n === 0) {
+        return 1;
+    }
+    else {
+        return n * factorial(n - 1)
+    }
+}
