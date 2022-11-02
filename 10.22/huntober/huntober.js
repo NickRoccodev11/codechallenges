@@ -894,8 +894,8 @@ function stockList(listOfArt, listOfCat) {
     }
     return resArr.join(" - ")
 }
-log(stockList(["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"],
-    ["A", "B", "C", "D"]))
+// log(stockList(["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"],
+//     ["A", "B", "C", "D"]))
 //"(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
 
 // ANOTHER TAKE
@@ -932,4 +932,47 @@ const factorial = n => {
 // "Example Input" ==> "iNPUT eXAMPLE"
 // You may assume the input only contain English alphabet and spaces.
 
+const stringer = str => {
+    return str.split('').map(char => {
+        if (char.toLowerCase() === char) {
+            return char.toUpperCase()
 
+        } else if (char.toUpperCase() === char) {
+            return char.toLowerCase()
+
+        }
+    }).join('').split(" ").reverse().join(" ")
+
+
+}
+
+// log(stringer("Example Input    l"))
+
+// leons answer
+function transformStr(str) {
+    let reverersedString = str.split(" ").reverse().join(" ")
+    let transformString = reverersedString.map(l => l === l.toUpperCase() ?
+        l.toLowerCase() : l.toUpperCase())
+    return transformString
+}
+
+
+// // 
+// Given a string of words (x), you need to return an array of the words,
+//  sorted alphabetically by the final character in each.
+
+// If two words have the same last letter, they returned array should show 
+// them in the order they appeared in the given string.
+
+// All inputs will be valid.
+
+// last('man i need a taxi up to ubud'), ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
+// last('what time are we climbing up the volcano'),
+//  ['time', 'are', 'we', 'the', 'climbing', 'volcano', 'up', 'what']
+// last('take me to semynak'), ['take', 'me', 'semynak', 'to'] 
+
+const alphabetLast = x => x.split(" ").sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1))
+
+
+log(alphabetLast('what time are we climbing up the volcano'))
+log(alphabetLast('man i need a taxi up to ubud'))
