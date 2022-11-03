@@ -12,8 +12,37 @@ let log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+ var isValid = function(s) {
+    let checked = []
+    for(i=0;i<s.length; i++){
+        log(s[i] + "i")
+        for(j=0; j<s.length; j++)
+        log(s[j] + "j")
+       if( s[i]=== "("  && j[i] === ")" 
+       && !checked.includes(i)
+       && !checked.includes(j)){
+           checked.push(i);
+           checked.push(j);
+       }else if ( s[i]=== "{"  && j[i] === "}" 
+       && !checked.includes(i)
+       && !checked.includes(j)){
+           checked.push(i);
+           checked.push(j);
+       }else if  ( s[i]=== "["  && j[i] === "]" 
+       && !checked.includes(i)
+       && !checked.includes(j)){
+           checked.push(i);
+           checked.push(j);
+       }
+    }
+    log(checked)
+    return checked.length === s.length 
+   };
+   log(isValid("()"))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
