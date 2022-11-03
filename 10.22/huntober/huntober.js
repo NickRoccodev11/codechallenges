@@ -971,8 +971,16 @@ function transformStr(str) {
 //  ['time', 'are', 'we', 'the', 'climbing', 'volcano', 'up', 'what']
 // last('take me to semynak'), ['take', 'me', 'semynak', 'to'] 
 
-const alphabetLast = x => x.split(" ").sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1))
+// const alphabetLast = x => x.split(" ").sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1))
 
 
-log(alphabetLast('what time are we climbing up the volcano'))
-log(alphabetLast('man i need a taxi up to ubud'))
+// log(alphabetLast('what time are we climbing up the volcano'))
+// log(alphabetLast('man i need a taxi up to ubud'))
+
+
+//return ms of time elapsed
+function past(h, m, s){
+   log(h,m,s)
+    return (h * 3600000)+ (m*60000) + (m*1000)
+   }
+log(past(1,1,1))   
