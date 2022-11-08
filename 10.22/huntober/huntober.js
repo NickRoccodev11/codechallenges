@@ -781,11 +781,11 @@ function transformStr(str) {
 
 
 //return ms of time elapsed
-function past(h, m, s){
-   log(h,m,s)
-    return (h * 3600000)+ (m*60000) + (m*1000)
-   }
-log(past(1,1,1))   
+function past(h, m, s) {
+    log(h, m, s)
+    return (h * 3600000) + (m * 60000) + (m * 1000)
+}
+log(past(1, 1, 1))
 
 //if x is not a number, return error. else return x times 50 plus 6
 const problem = x => typeof x === "number" ? x * 50 + 6 : "Error"
@@ -797,7 +797,7 @@ const problem = x => typeof x === "number" ? x * 50 + 6 : "Error"
 // time = 6.7---> litres = 3
 // time = 11.8--> litres = 5
 
-const litres = time => Math.floor(time*.5)
+const litres = time => Math.floor(time * .5)
 
 // This problem has lots of gotchas when considering time complexity! 
 // Def. don't miss this standup if you want to get better at technical interviews! 
@@ -820,5 +820,36 @@ const litres = time => Math.floor(time*.5)
 // findDeletedNumber([1,2,3,4,5,6,7,8,9], [5,7,6,9,4,8,1,2,3]), 0, 'No deletion')
 
 
-const findDeletedNumber = (ordered, unordered) => ordered.reduce((a,b)=> a+b,0) - unordered.reduce((a,b)=> a+b,0)
+const findDeletedNumber = (ordered, unordered) => ordered.reduce((a, b) => a + b, 0) - unordered.reduce((a, b) => a + b, 0)
 
+//In this kata, your task will be to replace sad emoticons with funny ones.
+
+// The emoticons, will be represented from:
+
+// Eyes: marked as :, ; or =
+// Nose (optional): marked as - or ~
+// Mouth: marked as ( or [
+// " =( " becomes " =) "
+
+function smile(text) {
+    let textArr = text.split('')
+    for (i = 0; i < textArr.length; i++) {
+        if (textArr[i] === ";" ||
+            textArr[i] === ":" ||
+            textArr[i] === "=") {
+            if (textArr[i + 1] === "~" ||
+                textArr[i + 1] === "-") {
+                if (textArr[i + 2] === "[") {
+                    textArr[i + 2] = "]"
+                } else if (textArr[i + 2] === "(") {
+                    textArr[i + 2] = ")"
+                }
+            } else if (textArr[i + 1] === "(") {
+                textArr[i + 1] = ")"
+            } else if (textArr[i + 1] === "[") {
+                textArr[i + 1] = "]"
+            }
+        }
+    }
+    return textArr.join('')
+}
