@@ -910,7 +910,14 @@ const arrayDiff = (arr, remArr) => {
     return removedArr
 }
 
+// Leons solution 
+function arrayDiff2(a,b){
+    let newSet = new Set(b)
+    return a.filter(n=> !newSet.has(n))
+}
+
 log(arrayDiff([1, 8, 2], []), "[1,8,2]")
 log(arrayDiff([3, 4, 3], [3]), '[4]')
 log(arrayDiff([3, 4, 5, 6, 7, 8, 89], [89, 4, 3, 5, 6, 7]), '[8]')
 log(arrayDiff([3, 4, 5], []), '[3,4,5]')
+log(arrayDiff([3, 4, 5], [6]), '[3,4,5]')
