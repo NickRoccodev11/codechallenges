@@ -853,3 +853,23 @@ function smile(text) {
     }
     return textArr.join('')
 }
+
+// convert form data characters to avoid XSS
+
+function htmlspecialchars(formData) {
+    let formArr = formData.split('');
+    for (i = 0; i < formArr.length; i++) {
+        if (formArr[i] === ">") {
+            formArr[i] = "&gt;"
+        } else if (formArr[i] === "<") {
+            formArr[i] = "&lt;"
+        } else if (formArr[i] === "&") {
+            formArr[i] = "&amp;"
+        } else if (formArr[i] === "\"") {
+            formArr[i] = "&quot;"
+        }
+    }
+    return formArr.join('')
+}
+
+log(htmlspecialchars("<&><\">"))
