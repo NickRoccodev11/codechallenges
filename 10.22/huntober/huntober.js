@@ -785,7 +785,7 @@ function past(h, m, s) {
     log(h, m, s)
     return (h * 3600000) + (m * 60000) + (m * 1000)
 }
-log(past(1, 1, 1))
+// log(past(1, 1, 1))
 
 //if x is not a number, return error. else return x times 50 plus 6
 const problem = x => typeof x === "number" ? x * 50 + 6 : "Error"
@@ -872,7 +872,7 @@ function htmlspecialchars(formData) {
     return formArr.join('')
 }
 
-log(htmlspecialchars("<&><\">"))
+// log(htmlspecialchars("<&><\">"))
 
 //
 // Implement a difference function, which subtracts one list from another and returns the result.
@@ -911,13 +911,43 @@ const arrayDiff = (arr, remArr) => {
 }
 
 // Leons solution 
-function arrayDiff2(a,b){
+function arrayDiff2(a, b) {
     let newSet = new Set(b)
-    return a.filter(n=> !newSet.has(n))
+    return a.filter(n => !newSet.has(n))
 }
 
-log(arrayDiff([1, 8, 2], []), "[1,8,2]")
-log(arrayDiff([3, 4, 3], [3]), '[4]')
-log(arrayDiff([3, 4, 5, 6, 7, 8, 89], [89, 4, 3, 5, 6, 7]), '[8]')
-log(arrayDiff([3, 4, 5], []), '[3,4,5]')
-log(arrayDiff([3, 4, 5], [6]), '[3,4,5]')
+// log(arrayDiff([1, 8, 2], []), "[1,8,2]")
+// log(arrayDiff([3, 4, 3], [3]), '[4]')
+// log(arrayDiff([3, 4, 5, 6, 7, 8, 89], [89, 4, 3, 5, 6, 7]), '[8]')
+// log(arrayDiff([3, 4, 5], []), '[3,4,5]')
+// log(arrayDiff([3, 4, 5], [6]), '[3,4,5]')
+
+
+
+// handshake
+
+function getParticipants(handshakes) {
+    // if there are no handshakes, there are no attanedees
+    if (handshakes === 0) {
+        return 0
+    }
+
+    // recursive function to determine total number of handshakes n attendees can make
+    const potential = (people) => {
+        if (people === 1) {
+            return 0
+        } else {
+            return (people - 1) + potential(people - 1)
+        }
+    }
+
+    //starting with 1 attendant, we increase until we reach or surpass the number of handshakes
+    let attendees = 1
+    while (potential(attendees) < handshakes) {
+        attendees++
+    }
+    return attendees
+}
+
+
+
