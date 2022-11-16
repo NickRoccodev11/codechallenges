@@ -11,26 +11,46 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// DESCRIPTION:
-// In this simple exercise, you will create a program that will take two lists of integers,
-//  a and b. Each list will consist of 3 positive integers above 0, 
-//  representing the dimensions of cuboids a and b. 
-//  You must find the difference of the cuboids' volumes regardless of which is bigger.
+// You need to create a function that when provided with a triplet, 
+// returns the index of the numerical element that lies between the other two elements.
 
-// For example, if the parameters passed are ([2, 2, 3], [5, 4, 1]),
-//  the volume of a is 12 and the volume of b is 20. Therefore, the function should return 8.
+// The input to the function will be an array of three distinct numbers.
 
-// Your function will be tested with pre-made examples as well as random ones.
+// For example:
 
-// If you can, try writing it in one line of code.
+// gimme([2, 3, 1]) => 0
+// 2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
 
-const findDifference = (a, b) => Math.abs(a.reduce((a, c) => a * c, 1) - b.reduce((a, c) => a * c, 1))
+// Another example (just to make sure it is clear):
 
-log(findDifference([3, 2, 5], [1, 4, 4])) //14
-log(findDifference([9, 7, 2], [5, 2, 2])) //106
+// gimme([5, 10, 14]) => 1
+// 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
+
+// constant time solution
+const gimme = (trip) => {
+    if (trip[0] > trip[1] && trip[0] < trip[2] ||
+        trip[0] < trip[1] && trip[0] > trip[2]) {
+        return 0
+    } else if (trip[1] > trip[0] && trip[1] < trip[2] ||
+        trip[1] < trip[0] && trip[1] > trip[2]) {
+        return 1
+    } else {
+        return 2
+    }
+}
+
+//because this problem will only ever involve 3 numbers, here is a cleaner but slower solution
+
+const gimme2 = (trip) => {
+    let compare = [...trip],
+        sorted = trip.sort((a, b) => a - b)
+    return compare.indexOf(sorted[1])
+}
 
 
-
+log(gimme([2, 3, 1])) //0
+log(gimme([5, 10, 14])) //1
+log(gimme([75, -2, 14])) //2
 
 
 
