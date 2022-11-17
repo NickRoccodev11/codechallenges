@@ -9,50 +9,34 @@ const log = console.log
 //  console.log(function(exampleA), 'true' ) //  console.log(function(exampleB), 'false' )
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// You need to create a function that when provided with a triplet, 
-// returns the index of the numerical element that lies between the other two elements.
+// Given an array of strings of the same letter type. 
+// Return a new array, which will differ in that the length of each 
+// element is equal to the average length of the elements of the previous array.
 
-// The input to the function will be an array of three distinct numbers.
+// A few examples:
 
-// For example:
+// ['u', 'y'] =>  ['u', 'y'] // average length is 1
+// ['aa', 'bbb', 'cccc'] => ['aaa', 'bbb', 'ccc'] // average length is 3
+// ['aa', 'bb', 'ddd', 'eee'] => ['aaa', 'bbb', 'ddd', 'eee']
+// average length is 2.5 round up to 3
+// If the average length is not an integer, use Math.round().
+// The input array's length > 1
+//You should return a new array
 
-// gimme([2, 3, 1]) => 0
-// 2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
-
-// Another example (just to make sure it is clear):
-
-// gimme([5, 10, 14]) => 1
-// 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
-
-// constant time solution
-const gimme = (trip) => {
-    if (trip[0] > trip[1] && trip[0] < trip[2] ||
-        trip[0] < trip[1] && trip[0] > trip[2]) {
-        return 0
-    } else if (trip[1] > trip[0] && trip[1] < trip[2] ||
-        trip[1] < trip[0] && trip[1] > trip[2]) {
-        return 1
-    } else {
-        return 2
+const averageLength = arr => {
+    let newArr = []
+    let average = Math.round(arr.reduce((a, c) => c.length + a, 0) / arr.length)
+    for (i = 0; i < arr.length; i++) {
+        newArr.push(arr[i][0].repeat(average))
     }
+    return newArr
 }
 
-//because this problem will only ever involve 3 numbers, here is a cleaner but slower solution
-
-const gimme2 = (trip) => {
-    let compare = [...trip],
-        sorted = trip.sort((a, b) => a - b)
-    return compare.indexOf(sorted[1])
-}
-
-
-log(gimme([2, 3, 1])) //0
-log(gimme([5, 10, 14])) //1
-log(gimme([75, -2, 14])) //2
-
-
+log(averageLength(['u', 'y']))
+log(averageLength(['aa', 'bbb', 'cccc']))
+log(averageLength(['aa', 'bb', 'ccc', 'ddd']))
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
