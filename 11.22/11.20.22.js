@@ -11,26 +11,25 @@ var twoSum = function (nums, target) {
 
     for (i = 0; i < nums.length; i++) {
         for (j = i + 1; j < nums.length; j++) {
-            if (i + j === target) {
+            if (nums[i] + nums[j] === target) {
                 return [i, j];
             }
         }
     }
 };
 
-log(twoSum([2,7,7,2,9],9))
+
+// hashmap solution - linear time/storage
 
 
-// hashmap solution 
-
-// var twoSum = function (nums, target) {
-//     const sumMap = {}
-//     for (i = 0; i < nums.length; i++) {
-//         let num = nums[i];
-//         if (sumMap[target - num] !== undefined) {
-//             return [sumMap[target - num], i]
-//         } else {
-//             sumMap[num] = i
-//         }
-//     }
-// };
+var twoSum = function (nums, target) {
+    const sumMap = {}
+    for (i = 0; i < nums.length; i++) {
+        let num = nums[i];
+        if (sumMap[target - num] !== undefined) {
+            return [sumMap[target - num], i]
+        } else {
+            sumMap[num] = i
+        }
+    }
+};
