@@ -30,3 +30,8 @@ const duplicate = (str) => {
 }
 
 log(duplicate("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
+
+// this is a time you can reference the array in your cb for filter, 
+// rather than creating a separate array for reference
+
+const duplicate2 = (s) => s.split(" ").filter((el, idx, arr) => el != arr[idx-1]).join(" ")

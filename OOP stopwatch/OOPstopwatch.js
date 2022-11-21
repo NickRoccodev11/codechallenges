@@ -12,13 +12,9 @@ const log = console.log
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+const duplicate2 = (s) => s.split(" ").filter((el, idx, arr) => el != arr[idx-1]).join(" ")
 
-const duplicate = (str) => {
-    let arr = str.split(" ")
-    return str.split(" ").filter((el, idx) => arr[idx] !== arr[idx - 1]).join(" ")
-}
-
-log(duplicate("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
+log(duplicate2("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
 
 
 
