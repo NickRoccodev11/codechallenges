@@ -11,6 +11,24 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+const duplicate = (str) => {
+    let arr = str.split(" ")
+    return str.split(" ").filter((el, idx) => arr[idx] !== arr[idx - 1]).join(" ")
+}
+
+log(duplicate("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
+
+
+
+
+
+
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 

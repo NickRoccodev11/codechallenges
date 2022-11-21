@@ -4,14 +4,29 @@
 //  An empty list should return true.
 
 
-function none(arr, fun){
-    if(arr.length == 0){
-      return true
+function none(arr, fun) {
+    if (arr.length == 0) {
+        return true
     }
-     for(i=0; i<arr.length; i++){
-       if(fun(arr[i])){
-         return false 
-       }
-     }
-     return true
-   }
+    for (i = 0; i < arr.length; i++) {
+        if (fun(arr[i])) {
+            return false
+        }
+    }
+    return true
+}
+
+//Your task is to remove all consecutive duplicate words from a string,
+//  leaving only first words entries. For example:
+
+// "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+
+// --> "alpha beta gamma delta alpha beta gamma delta"
+
+
+const duplicate = (str) => {
+    let arr = str.split(" ")
+    return str.split(" ").filter((el, idx) => arr[idx] !== arr[idx - 1]).join(" ")
+}
+
+log(duplicate("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
