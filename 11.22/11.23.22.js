@@ -30,3 +30,17 @@ var merge = function (nums1, m, nums2, n) {
 }
 
 log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
+
+
+// Given a non-empty array of integers nums, every element appears twice except for one. 
+// Find that single one.
+
+// You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var singleNumber = (nums) => nums.filter((el,i,a)=> a.indexOf(el) === a.lastIndexOf(el) )[0]
