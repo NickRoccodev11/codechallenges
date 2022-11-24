@@ -11,17 +11,22 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function (nums1, m, nums2, n) {
+ nums1 =nums1.slice(0,m).concat(nums2).sort((a,b)=> a-b)
+// for(i=0;i<nums1.length;i++){
+//     nums1[i] = compare[i]
+// }
+log(nums1)
+}
 
-const duplicate2 = (s) => s.split(" ").filter((el, idx, arr) => el != arr[idx-1]).join(" ")
-
-log(duplicate2("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
-
-
-
-
-
-
-
+log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
 
 
 
