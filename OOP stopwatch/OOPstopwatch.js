@@ -10,46 +10,25 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @param {string} s
- * @return {number}
- */
-var longestPalindrome = function (s) {
-    //all even numbers can be used
-    //if a letter is odd, letter-1 can be used
-    //One odd value can be used for center, 
-    // if there are no single letters, an odd amount of letters can be used once. 
-    // create a map of letters and their frequency
-    // create an array from the values, iterate
-    // create a "center" variable = false
-    // if center is false and we reach an odd value, use it and change center = true
-    // after center is true, if a value is > 2 and odd, use val-1 to be added to total
-    let center = false,
-        total = 0,
-        freqMap = {};
-    for (letter of s) {
-        if (!freqMap[letter]) {
-            freqMap[letter] = 1;
-        } else {
-            freqMap[letter]++;
-        }
-    }
-    let valArray = Object.values(freqMap)
-    for (i = 0; i < valArray.length; i++) {
-        if (!center && valArray[i] % 2 !== 0) {
-            total += valArray[i];
-            center = true
-        } else if (center && valArray[i] % 2 !== 0) {
-            total += valArray[i] - 1;
-        } else {
-            total += valArray[i];
-        }
-    }
-    return total
-};
-log(longestPalindrome("abccccdd"))
-log(longestPalindrome("a"))
-log(longestPalindrome("abbcccccddddd"))//11 bccddaddccb
+// You will be given an array of strings and your task is to 
+// remove all consecutive duplicate letters from each string in the array.
+
+// For example:
+
+// dup(["abracadabra","allottee","assessee"]) = ["abracadabra","alote","asese"].
+// dup(["kelless","keenness"]) = ["keles","kenes"].
+// Strings will be lowercase only, no spaces 
+
+// dup(["ccooddddddewwwaaaaarrrrsssss","piccaninny","hubbubbubboo"]),['codewars','picaniny','hubububo'])
+// dup(["abracadabra","allottee","assessee"]),['abracadabra','alote','asese'])
+// dup(["kelless","keenness"]), ['keles','kenes'])
+
+
+const dup = (arr) =>  arr.map(string => string.split('').filter((letter, index, array) => letter !== array[index - 1]).join(''))
+log(dup(["abracadabra", "allottee", "assessee"]))
+log(dup(["kelless", "keenness"]))
+log(dup(["ccooddddddewwwaaaaarrrrsssss", "piccadilly", "hubbubbubboo"]))
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
