@@ -10,41 +10,39 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given an integer num, repeatedly add all its digits until 
-// the result has only one digit, and return it.
 
-
-
-// Example 1:
-
-// Input: num = 38
-// Output: 2
-// Explanation: The process is
-// 38 --> 3 + 8 --> 11
-// 11 --> 1 + 1 --> 2 
-// Since 2 has only one digit, return it.
-// Example 2:
-
-// Input: num = 0
-// Output: 0
-
-// **
-//  * @param {number} num
-//  * @return {number}
-//  */
-var addDigits = function (num) {
-    let ns = num.toString()
-    while (ns.length > 1) {
-        let nsArr = ns.split('');
-        ns = nsArr.reduce((a, c) => a + parseInt(c), 0).toString()
+/**
+ * @param {string} pattern
+ * @param {string} s
+ * @return {boolean}
+ */
+ var wordPattern = function (pattern, s) {
+    let sArr = s.split(" ")
+    if (pattern.length !== sArr.length) {
+        return false
     }
-    return parseInt(ns)
+    let pMap = {};
+    for (i = 0; i < pattern.length; i++) {
+        if (!pMap[pattern[i]]) {
+            if (sArr.indexOf(sArr[i]) === sArr[i]) {
+                return false
+            }
+            pMap[pattern[i]] = sArr[i]
+        } else {
+            if (pMap[pattern[i]] !== sArr[i]) {
+                return false;
+            }
+        }
+    }
+    return true;
 };
 
-log(addDigits(38)) //2
-log(addDigits(0)) //0
-log(addDigits(436)) //4
-
+log(wordPattern("abba", "dog cat cat dog")) //t
+log(wordPattern("abca", "dog cat fish dog")) //t
+log(wordPattern("aaaa", "dog dog dog dog")) //t
+log(wordPattern("abba", "dog cat dog cat")) //f
+log(wordPattern("abba", "dog cat cat dog dog ")) //f
+log(wordPattern("abba", "dog dog dog dog")) //f
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:

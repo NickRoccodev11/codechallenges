@@ -26,3 +26,4 @@ log(averageLength(['u', 'y']))
 log(averageLength(['aa', 'bbb', 'cccc']))
 log(averageLength(['aa', 'bb', 'ccc', 'ddd']))
 
+ 
