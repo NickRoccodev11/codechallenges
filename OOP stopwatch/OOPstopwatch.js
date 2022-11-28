@@ -10,39 +10,47 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 /**
- * @param {string} pattern
  * @param {string} s
- * @return {boolean}
+ * @return {number}
  */
- var wordPattern = function (pattern, s) {
-    let sArr = s.split(" ")
-    if (pattern.length !== sArr.length) {
-        return false
-    }
-    let pMap = {};
-    for (i = 0; i < pattern.length; i++) {
-        if (!pMap[pattern[i]]) {
-            if (sArr.indexOf(sArr[i]) === sArr[i]) {
-                return false
-            }
-            pMap[pattern[i]] = sArr[i]
+var longestPalindrome = function (s) {
+    //all even numbers can be used
+    //if a letter is odd, letter-1 can be used
+    //One odd value can be used for center, 
+    // if there are no single letters, an odd amount of letters can be used once. 
+    // create a map of letters and their frequency
+    // create an array from the values, iterate
+    // create a "center" variable = false
+    // if center is false and we reach an odd value, use it and change center = true
+    // after center is true, if a value is > 2 and odd, use val-1 to be added to total
+    let center = false,
+        total = 0,
+        freqMap = {};
+    for (letter of s) {
+        if (!freqMap[letter]) {
+            freqMap[letter] = 1;
         } else {
-            if (pMap[pattern[i]] !== sArr[i]) {
-                return false;
-            }
+            freqMap[letter]++;
         }
     }
-    return true;
+    let valArray = Object.values(freqMap)
+    for (i = 0; i < valArray.length; i++) {
+        if (!center && valArray[i] % 2 !== 0) {
+            total += valArray[i];
+            center = true
+        } else if (center && valArray[i] % 2 !== 0) {
+            total += valArray[i] - 1;
+        } else {
+            total += valArray[i];
+        }
+    }
+    return total
 };
+log(longestPalindrome("abccccdd"))
+log(longestPalindrome("a"))
+log(longestPalindrome("abbcccccddddd"))//11 bccddaddccb
 
-log(wordPattern("abba", "dog cat cat dog")) //t
-log(wordPattern("abca", "dog cat fish dog")) //t
-log(wordPattern("aaaa", "dog dog dog dog")) //t
-log(wordPattern("abba", "dog cat dog cat")) //f
-log(wordPattern("abba", "dog cat cat dog dog ")) //f
-log(wordPattern("abba", "dog dog dog dog")) //f
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
