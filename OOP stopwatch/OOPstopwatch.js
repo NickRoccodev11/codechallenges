@@ -10,24 +10,20 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// You will be given an array of strings and your task is to 
-// remove all consecutive duplicate letters from each string in the array.
 
-// For example:
+function nextPal(val) {
+    val++;
+    while (val !== parseInt(val.toString().split('').reverse().join(''))) {
+        val++
+    }
+    return val
+}
 
-// dup(["abracadabra","allottee","assessee"]) = ["abracadabra","alote","asese"].
-// dup(["kelless","keenness"]) = ["keles","kenes"].
-// Strings will be lowercase only, no spaces 
+log(nextPal(11), 22)
+log(nextPal(188), 191)
+log(nextPal(191), 202)
+log(nextPal(2541), 2552)
 
-// dup(["ccooddddddewwwaaaaarrrrsssss","piccaninny","hubbubbubboo"]),['codewars','picaniny','hubububo'])
-// dup(["abracadabra","allottee","assessee"]),['abracadabra','alote','asese'])
-// dup(["kelless","keenness"]), ['keles','kenes'])
-
-
-const dup = (arr) =>  arr.map(string => string.split('').filter((letter, index, array) => letter !== array[index - 1]).join(''))
-log(dup(["abracadabra", "allottee", "assessee"]))
-log(dup(["kelless", "keenness"]))
-log(dup(["ccooddddddewwwaaaaarrrrsssss", "piccadilly", "hubbubbubboo"]))
 
 
 
