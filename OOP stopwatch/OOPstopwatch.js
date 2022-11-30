@@ -10,21 +10,31 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Your job is to figure out the index of which vowel is missing from a given string:
 
-function nextPal(val) {
-    val++;
-    while (val !== parseInt(val.toString().split('').reverse().join(''))) {
-        val++
+// A has an index of 0,
+// E has an index of 1,
+// I has an index of 2,
+// O has an index of 3,
+// U has an index of 4.
+// Notes: There is no need for string validation and every sentence given will contain all vowles but one.
+//  Also, you won't need to worry about capitals.
+
+// Examples
+// "John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
+// "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
+
+const missingVowel = s => {
+    let vowels = ["a", "e", "i", "o", "u"]
+    for (letter of vowels) {
+        if (!s.includes(letter)) {
+            return vowels.indexOf(letter)
+        }
     }
-    return val
+return false
 }
-
-log(nextPal(11), 22)
-log(nextPal(188), 191)
-log(nextPal(191), 202)
-log(nextPal(2541), 2552)
-
-
+log(missingVowel("John Doe hs seven red pples under his bsket" ))
+log(missingVowel("Bb Smith sent us six neatly arranged range bicycles" ))
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
