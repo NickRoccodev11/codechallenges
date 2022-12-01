@@ -10,31 +10,27 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Your job is to figure out the index of which vowel is missing from a given string:
 
-// A has an index of 0,
-// E has an index of 1,
-// I has an index of 2,
-// O has an index of 3,
-// U has an index of 4.
-// Notes: There is no need for string validation and every sentence given will contain all vowles but one.
-//  Also, you won't need to worry about capitals.
+// Given a number as an input, print out every integer from 1 to that number.
+//  However, when the integer is divisible by 2, print out “Fizz”; when it’s divisible by 3, 
+// print out “Buzz”; when it’s divisible by both 2 and 3, print out “Fizz Buzz”.
 
-// Examples
-// "John Doe hs seven red pples under his bsket"          =>  0  ; missing: "a"
-// "Bb Smith sent us six neatly arranged range bicycles"  =>  3  ; missing: "o"
-
-const missingVowel = s => {
-    let vowels = ["a", "e", "i", "o", "u"]
-    for (letter of vowels) {
-        if (!s.includes(letter)) {
-            return vowels.indexOf(letter)
+const fizzBuzz = n => {
+    for (i = 1; i <= n; i++) {
+        if (i % 2 === 0 && i % 3 === 0) {
+            console.log("Fizzbuzz!")
+        } else if (i % 3 === 0) {
+            console.log("Buzz!")
+        } else if (i % 2 === 0) {
+            console.log("Fizz!")
+        } else {
+            console.log(i)
         }
     }
-return false
 }
-log(missingVowel("John Doe hs seven red pples under his bsket" ))
-log(missingVowel("Bb Smith sent us six neatly arranged range bicycles" ))
+
+log(fizzBuzz(100))
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
