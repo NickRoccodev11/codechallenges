@@ -33,8 +33,8 @@
 
 
 
-
-const howManyJewels = (jewels, stones) => {
+// using a set
+const howManyJewels1 = (jewels, stones) => {
     let jSet = new Set(jewels),
         total = 0;
         for(i=0; i < stones.length; i++){
@@ -44,6 +44,27 @@ const howManyJewels = (jewels, stones) => {
         }
     return total
     }
+
+    // using a hash map
+    const howManyJewels = (jewels, stones) => {
+        let jMap ={}
+            total = 0;
+            for(char of jewels){
+                if(!jMap[char]){
+                    jMap[char] = char
+                }
+            }
+
+            for(i=0; i < stones.length; i++){
+                if (jMap[stones[i]]){
+                    total++
+                }
+            }
+        return total
+        }
+
+
+
     log(howManyJewels("aA", "aAAbbbb"), 3)
     log(howManyJewels("z", "ZZ"), 0)
     log(howManyJewels("aBc", "aAbBccC"), 4)
