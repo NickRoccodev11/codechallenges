@@ -11,48 +11,31 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// ou're given strings jewels representing the types of stones that are jewels, 
-// and stones representing the stones you have. Each character in stones is a type of stone you have.
-//  You want to know how many of the stones you have are also jewels.
 
-// Letters are case sensitive, so "a" is considered a different type of stone from "A".
+// Count all the occurring characters in a string. If you have a string like aba, 
+// then the result should be {'a': 2, 'b': 1}.
 
-// Example 1:
-
-// Input: jewels = "aA", stones = "aAAbbbb"
-// Output: 3
-// Example 2:
-
-// Input: jewels = "z", stones = "ZZ"
-// Output: 0
+// What if the string is empty? Then the result should be empty object literal, {}.
 
 
-// Constraints:
-
-// 1 <= jewels.length, stones.length <= 50
-// jewels and stones consist of only English letters.
-// All the characters of jewels are unique.
-
-// const howManyJewels = (jewels, stones) => {
-//     let jList = jewels.split(""),
-//         total = 0;
-//     stones.split('').forEach(char => jList.includes(char) ? total++ : false);
-//     return total
-// }
-
-const howManyJewels = (jewels, stones) => {
-let jSet = new Set(jewels),
-    total = 0;
-    for(i=0; i < stones.length; i++){
-        if (jSet.has(stones[i])){
-            total++
+const charFrequency = s => {
+    let sMap = {};
+    for (char of s) {
+        if (!sMap[char]) {
+            sMap[char] = 1
+        } else {
+            sMap[char]++
         }
     }
-return total
+    return sMap
 }
-log(howManyJewels("aA", "aAAbbbb"), 3)
-log(howManyJewels("z", "ZZ"), 0)
-log(howManyJewels("aBc", "aAbBccC"), 4)
+
+log(charFrequency("aBba"))
+log(charFrequency(""))
+log(charFrequency("zzzzbabj"))
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
