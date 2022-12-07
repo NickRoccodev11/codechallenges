@@ -18,11 +18,19 @@ const log = console.log
 
 // const reverseS = s => s.split('').reverse().join('')
 
+// const reverseS = s => {
+//     let sArr = s.split(''),
+//         reversed = "";
+//     for (letter of s) {
+//         reversed += sArr.pop()
+//     }
+//     return reversed
+// }
+
 const reverseS = s => {
-    let sArr = s.split(''),
-        reversed = "";
+    let reversed = "";
     for (letter of s) {
-        reversed += sArr.pop()
+        reversed = letter + reversed
     }
     return reversed
 }

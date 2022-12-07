@@ -13,6 +13,14 @@ const reverseS = s => {
     return reversed
 }
 
+const reverseNoMethods = s => {
+    let reversed = "";
+    for (letter of s) {
+        reversed = letter + reversed
+    }
+    return reversed
+}
+
 //Important: make sure to reference the original string
 //  in your loop termination expression
 
