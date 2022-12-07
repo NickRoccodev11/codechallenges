@@ -21,7 +21,7 @@ const reverseNoMethods = s => {
     return reversed
 }
 
-//Important: make sure to reference the original string
+//Important:  if you do the pop() technique, make sure to reference the original string
 //  in your loop termination expression
 
 // const reverseS = s => {
