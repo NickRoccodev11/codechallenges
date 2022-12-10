@@ -10,15 +10,39 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function lastSurvivors(str) {
+    let strArr = str.split('').sort(),
+        run = true;
 
-let swans = ["red", "blue", "green"]
-let ducks = ["black","gold", "silver"]
+    while (run) {
+        for (i = 0; i < strArr.length; i++) {
+            if (strArr[i] === strArr[i + 1]) {
+                if (strArr[i] === "z") {
+                    front = strArr.slice(0, i)
+                    end = strArr.slice(i + 2)
+                    strArr = front.concat(end)
+                    strArr.push("a")
+                } else {
+                    newLetter = strArr[i].charCodeAt(0) + 1
+                    front = strArr.slice(0, i)
+                    end = strArr.slice(i + 2)
+                    strArr = front.concat(end)
+                    strArr.push(String.fromCharCode(newLetter))
+                }
+            }
+        }
 
-for (swan of swans){
-    console.log(swan)
-    console.log(ducks[swan])
+        let compare = new Set(strArr);
+        if (compare.size === strArr.length) {
+            run = false
+        } else {
+            strArr.sort()
+        }
+    }
+    return strArr.join('')
 }
 
+log(lastSurvivors("zzbbnlllljhjm"))
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

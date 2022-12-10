@@ -1,41 +1,57 @@
-// Given two Arrays in which values are the power of each soldier, return true if you 
-// survive the attack or false if you perish.
+// DESCRIPTION:
+// Substitute two equal letters by the next letter of the alphabet (two letters convert to one):
 
-// CONDITIONS
+// "aa" => "b", "bb" => "c", .. "zz" => "a".
+// The equal letters do not have to be adjacent.
+// Repeat this operation until there are no possible substitutions left.
+// Return a string.
 
-// Each soldier attacks the opposing soldier in the same index of the array.
-//  The survivor is the number with the highest value.
-// If the value is the same they both perish
-// If one of the values is empty(different array lengths) the non-empty value soldier survives.
-// To survive the defending side must have more survivors than the attacking side.
-// In case there are the same number of survivors in both sides, the winner is the 
-// team with the highest initial attack power.
-//  If the total attack power of both sides is the same return true.
-// The initial attack power is the sum of all the values in each array.
+// Example:
+
+// let str = "zzzab"
+//     str = "azab"
+//     str = "bzb"
+//     str = "cz"
+// return "cz"
+// Notes
+// The order of letters in the result is not important.
+// The letters "zz" transform into "a".
+// There will only be lowercase letters.
+// If you like this kata, check out another one: Last Survivor Ep.3
 
 
 
-function hasSurvived(attackers, defenders) {
-    let longest = attackers.length >= defenders.length
-        ? attackers.length : defenders.length;
 
-    let aS = 0, dS = 0;
 
-    for (i = 0; i < longest; i++) {
-        if (attackers[i] > defenders[i] ||
-            (attackers[i] && !defenders[i])) {
-            aS++
-        } else if (attackers[i] < defenders[i] ||
-            (!attackers[i] && defenders[i])) {
-            dS++
+
+function lastSurvivors(str) {
+    let strArr = str.split('').sort(),
+        run = true;
+
+    while (run) {
+        for (i = 0; i < strArr.length; i++) {
+            if (strArr[i] === strArr[i + 1]) {
+                if (strArr[i] === "z") {
+                    front = strArr.slice(0, i)
+                    end = strArr.slice(i + 2)
+                    strArr = front.concat(end)
+                    strArr.push("a")
+                } else {
+                    newLetter = strArr[i].charCodeAt(0) + 1
+                    front = strArr.slice(0, i)
+                    end = strArr.slice(i + 2)
+                    strArr = front.concat(end)
+                    strArr.push(String.fromCharCode(newLetter))
+                }
+            }
+        }
+
+        let compare = new Set(strArr);
+        if (compare.size === strArr.length) {
+            run = false
+        } else {
+            strArr.sort()
         }
     }
-
-    if (aS === dS) {
-        let aTotal = attackers.reduce((a, c) => a + c, 0)
-        let dTotal = defenders.reduce((a, c) => a + c, 0)
-        return aTotal <= dTotal
-    } else {
-        return aS < dS
-    }
+    return strArr.join('')
 }
