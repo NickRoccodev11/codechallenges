@@ -10,28 +10,8 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * @param {string} s
- * @return {string}
- */
-var reverseVowels = function (s) {
-    let sArr = s.split(''),
-        vowels = ["a", "e", "i", "o", "u",
-            "A", "E", "I", "O", "U"],
-        sVows = []
-    sArr.forEach(el => {
-        vowels.includes(el) && sVows.push(el)
-    });
-    log(sVows)
-    let answer = sArr.map(el => vowels.includes(el)
-        ? el = sVows.pop() : el).join('')
-    log(answer)
-};
-
-log(reverseVowels("hello"))
-
-
+let test = "moOse"
+log(test.toLowerCase())
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
