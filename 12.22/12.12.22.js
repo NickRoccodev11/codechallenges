@@ -104,3 +104,42 @@ log(max("hello, world"))
         return n; 
         })
  };
+
+//  You are given an integer array nums and two integers limit and goal. The array nums has an interesting property that abs(nums[i]) <= limit.
+
+//  Return the minimum number of elements you need to add to make the sum of the array equal to goal. The array must maintain its property that abs(nums[i]) <= limit.
+ 
+//  Note that abs(x) equals x if x >= 0, and -x otherwise.
+
+
+// this solution is correct, but times out with larger numbers
+ /**
+ * @param {number[]} nums
+ * @param {number} limit
+ * @param {number} goal
+ * @return {number}
+ */
+var minElements = function(nums, limit, goal) {
+    let curr = nums.reduce((a,c)=> a+c, 0);
+    let min = 0;
+    while(curr !== goal){
+        if(curr < goal){
+            if(goal - curr < limit ){
+                min++
+                return min
+            }else{
+               curr += limit;
+               min++ 
+            }
+        }else{
+            if(curr - goal < limit ){
+                min++
+                return min
+        }else{
+            curr -= limit;
+            min++
+            }
+        }
+    }
+    return min
+};
