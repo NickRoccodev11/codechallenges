@@ -143,3 +143,19 @@ var minElements = function(nums, limit, goal) {
     }
     return min
 };
+
+// Beats 87% of answers for time!!!!
+
+ var minElements = function(nums, limit, goal) {
+    let curr = nums.reduce((a,c)=> a+c, 0);
+    let min = 0;
+    let diff = 0;
+   if((curr <= 0 && goal <= 0) ||
+      (curr >= 0 && goal >= 0) ){
+          diff = Math.abs(goal - curr);
+   }else {
+       diff = Math.abs(goal) + Math.abs(curr)
+   }
+   return Math.ceil(diff/limit)
+};
+
