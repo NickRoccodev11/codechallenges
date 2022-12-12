@@ -38,3 +38,21 @@ function solve(a, b) {
 // "Dermatoglyphics" --> true "aba" --> false "moOse" --> false (ignore letter case)
 
 const isIsogram = str => new Set(str.toLowerCase()).size === str.length
+
+// Task 3
+
+// You are given an input (n) which represents the amount of lines you are given.
+// Your job is to figure out what is the maximum amount of perpendicular bisectors you can make using these lines.
+function maxBisectors(n) {
+    let bisec = 0,
+        increment = 0;
+
+    for (i = 1; i <= n; i++) {
+        bisec += increment;
+        if ( i === 1 ||
+             i % 2 !== 0) {
+            increment++
+        }
+    }
+    return bisec;
+}
