@@ -27,14 +27,7 @@ const log = console.log
 // Input: nums = [1,1,1,3,3,4,3,2,4,2]
 // Output: true
 
-const unique = nums => {
-    for (i = 0; i < nums.length; i++) {
-        if (i !== nums.lastIndexOf(nums[i])) {
-            return true
-        }
-    }
-    return false
-}
+const unique = nums => new Set(nums).size !== nums.length 
 
 log(unique([1, 2, 3, 1]), true)
 log(unique([1, 2, 3, 4]), false)
