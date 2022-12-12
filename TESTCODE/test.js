@@ -10,37 +10,35 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Given a string of characters, return the character that appears the most often.
 
-// describe("Max Character", () => {
-//  it("Should return max character", () => {
-//   assert.equal(max("Hello World!"), "l");
-//  });
-// });
+// Given an integer array nums, return true if any value appears at least twice in
+//  the array, and return false if every element is distinct.
 
-// No String or Array Methods (well brute force it first, but then no methods)! 
+// Example 1:
 
-const max = s => {
-    let charMap = {}
-    for (char of s) {
-        if (charMap[char]) {
-            charMap[char]++
-        } else {
-            charMap[char] = 1
+// Input: nums = [1,2,3,1]
+// Output: true
+// Example 2:
+
+// Input: nums = [1,2,3,4]
+// Output: false
+// Example 3:
+
+// Input: nums = [1,1,1,3,3,4,3,2,4,2]
+// Output: true
+
+const unique = nums => {
+    for (i = 0; i < nums.length; i++) {
+        if (i !== nums.lastIndexOf(nums[i])) {
+            return true
         }
     }
-    let most = 0,
-        letter = null;
-    for (char in charMap) {
-        if (charMap[char] > most) {
-            most = charMap[char]
-            letter = char
-        }
-    }
-    return letter
+    return false
 }
 
-log(max("hello, world"))
+log(unique([1, 2, 3, 1]), true)
+log(unique([1, 2, 3, 4]), false)
+log(unique([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]), true)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
