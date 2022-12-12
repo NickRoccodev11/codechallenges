@@ -55,4 +55,37 @@ function hasSurvived(attackers, defenders) {
  * @param {number} n
  * @return {boolean}
  */
- var canWinNim = n => n % 4 === 0 ? false : true
+var canWinNim = n => n % 4 === 0 ? false : true
+
+
+//  to solve:
+// walk through test cases to discern pattern
+
+//1  2  3  4  5  6  7  8  9  10  11 12 <== number left
+
+//1  2  3  x  1  2  3  x  1  2   3  x <== take this many to win
+
+// TASK 3
+// REVERSE ONLY THE VOWELS OF A STRING!
+
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function (s) {
+    let sArr = s.split(''),
+        vowels = ["a", "e", "i", "o", "u",
+            "A", "E", "I", "O", "U"],
+        sVows = []
+    sArr.forEach(el => {
+        vowels.includes(el) && sVows.push(el)
+    });
+    log(sVows)
+    let answer = sArr.map(el => vowels.includes(el)
+        ? el = sVows.pop() : el).join('')
+    log(answer)
+};
+
+log(reverseVowels("hello"))
+
