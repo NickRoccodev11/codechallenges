@@ -56,3 +56,51 @@ function maxBisectors(n) {
     }
     return bisec;
 }
+
+// Given a string of characters, return the character that appears the most often.
+
+// describe("Max Character", () => {
+//  it("Should return max character", () => {
+//   assert.equal(max("Hello World!"), "l");
+//  });
+// });
+
+// No String or Array Methods (well brute force it first, but then no methods)! 
+
+const max = s => {
+    let charMap = {}
+    for (char of s) {
+        if (charMap[char]) {
+            charMap[char]++
+        } else {
+            charMap[char] = 1
+        }
+    }
+    let most = 0,
+        letter = null;
+    for (char in charMap) {
+        if (charMap[char] > most) {
+            most = charMap[char]
+            letter = char
+        }
+    }
+    return letter
+}
+
+log(max("hello, world"))
+
+// given an array of numbers, return an array of a running total of each number 
+// summed with every number to it's left
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ var runningSum = function (nums) {
+    let acc = 0;
+    return nums.map((n,i,a) =>{
+        acc += n;
+        n = acc;
+        return n; 
+        })
+ };
