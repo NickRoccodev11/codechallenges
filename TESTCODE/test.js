@@ -30,14 +30,14 @@ const majority = a => {
     let numMap = {};
     for (num of a) {
         numMap[num] = numMap[num] + 1 || 1
-    }
-    if (numMap[num] > Math.floor(a.length / 2)) {
-        return num
+        if( numMap[num] > Math.floor(a.length / 2)){
+            return num
+        }
     }
 }
 
-log(majority([3, 2, 3]))
-log(majority([2, 2, 1, 1, 1, 2, 2]))
+log(majority([3, 3, 4]))
+// log(majority([2, 2, 1, 1, 1, 2, 2]))
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
