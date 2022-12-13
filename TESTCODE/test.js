@@ -11,28 +11,24 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Given an integer array nums, return true if any value appears at least twice in
-//  the array, and return false if every element is distinct.
+const unique = nums => {
+    let numMap = {}
 
-// Example 1:
+    for (number of nums) {
+        if (numMap[number]) {
+            return true
+        } else {
+            numMap[number] = true
+        }
+    }
+    return false
 
-// Input: nums = [1,2,3,1]
-// Output: true
-// Example 2:
+}
 
-// Input: nums = [1,2,3,4]
-// Output: false
-// Example 3:
-
-// Input: nums = [1,1,1,3,3,4,3,2,4,2]
-// Output: true
-
-const unique = nums => new Set(nums).size !== nums.length 
 
 log(unique([1, 2, 3, 1]), true)
 log(unique([1, 2, 3, 4]), false)
 log(unique([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]), true)
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 

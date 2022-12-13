@@ -49,8 +49,8 @@ function maxBisectors(n) {
 
     for (i = 1; i <= n; i++) {
         bisec += increment;
-        if ( i === 1 ||
-             i % 2 !== 0) {
+        if (i === 1 ||
+            i % 2 !== 0) {
             increment++
         }
     }
@@ -96,48 +96,48 @@ log(max("hello, world"))
  * @param {number[]} nums
  * @return {number[]}
  */
- var runningSum = function (nums) {
+var runningSum = function (nums) {
     let acc = 0;
-    return nums.map((n,i,a) =>{
+    return nums.map((n, i, a) => {
         acc += n;
         n = acc;
-        return n; 
-        })
- };
+        return n;
+    })
+};
 
 //  You are given an integer array nums and two integers limit and goal. The array nums has an interesting property that abs(nums[i]) <= limit.
 
 //  Return the minimum number of elements you need to add to make the sum of the array equal to goal. The array must maintain its property that abs(nums[i]) <= limit.
- 
+
 //  Note that abs(x) equals x if x >= 0, and -x otherwise.
 
 
 // this solution is correct, but times out with larger numbers
- /**
- * @param {number[]} nums
- * @param {number} limit
- * @param {number} goal
- * @return {number}
- */
-var minElements = function(nums, limit, goal) {
-    let curr = nums.reduce((a,c)=> a+c, 0);
+/**
+* @param {number[]} nums
+* @param {number} limit
+* @param {number} goal
+* @return {number}
+*/
+var minElements = function (nums, limit, goal) {
+    let curr = nums.reduce((a, c) => a + c, 0);
     let min = 0;
-    while(curr !== goal){
-        if(curr < goal){
-            if(goal - curr < limit ){
+    while (curr !== goal) {
+        if (curr < goal) {
+            if (goal - curr < limit) {
                 min++
                 return min
-            }else{
-               curr += limit;
-               min++ 
+            } else {
+                curr += limit;
+                min++
             }
-        }else{
-            if(curr - goal < limit ){
+        } else {
+            if (curr - goal < limit) {
                 min++
                 return min
-        }else{
-            curr -= limit;
-            min++
+            } else {
+                curr -= limit;
+                min++
             }
         }
     }
@@ -146,17 +146,17 @@ var minElements = function(nums, limit, goal) {
 
 // Beats 87% of answers for time!!!!
 
- var minElements = function(nums, limit, goal) {
-    let curr = nums.reduce((a,c)=> a+c, 0);
+var minElements = function (nums, limit, goal) {
+    let curr = nums.reduce((a, c) => a + c, 0);
     let min = 0;
     let diff = 0;
-   if((curr <= 0 && goal <= 0) ||
-      (curr >= 0 && goal >= 0) ){
-          diff = Math.abs(goal - curr);
-   }else {
-       diff = Math.abs(goal) + Math.abs(curr)
-   }
-   return Math.ceil(diff/limit)
+    if ((curr <= 0 && goal <= 0) ||
+        (curr >= 0 && goal >= 0)) {
+        diff = Math.abs(goal - curr);
+    } else {
+        diff = Math.abs(goal) + Math.abs(curr)
+    }
+    return Math.ceil(diff / limit)
 };
 
 
@@ -190,7 +190,24 @@ const unique1 = nums => {
 //alt
 
 
-const unique = nums => new Set(nums.size) !== nums.length
+const unique2 = nums => new Set(nums.size) !== nums.length
+
+// third
+
+
+const unique = nums => {
+    let numMap = {}
+
+    for (number of nums) {
+        if (numMap[number]) {
+            return true
+        } else {
+            numMap[number] = true
+        }
+    }
+    return false
+
+}
 
 
 log(unique([1, 2, 3, 1]), true)
