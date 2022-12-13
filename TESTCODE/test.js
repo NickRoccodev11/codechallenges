@@ -11,24 +11,32 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const unique = nums => {
-    let numMap = {}
-
-    for (number of nums) {
-        if (numMap[number]) {
-            return true
+var isIsomorphic = function (s, t) {
+    if (s.length !== t.length) {
+        return false
+    }
+    let sMap = {}
+    for (i = 0; i < s.length; i++) {
+        if (!sMap[s[i]]) {
+            if (Object.values(sMap).includes(t[i])) {
+                log("first")
+                log(s[i],t[i])
+                return false
+            }
+            sMap[s[i]] = t[i]
         } else {
-            numMap[number] = true
+            // log(s[i], t[i])
+            if (sMap[s[i]] !== t[i]) {
+                log("second")
+                return false
+            }
         }
     }
-    return false
+    return true
+};
 
-}
+log(isIsomorphic("paper", "title"))
 
-
-log(unique([1, 2, 3, 1]), true)
-log(unique([1, 2, 3, 4]), false)
-log(unique([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]), true)
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 

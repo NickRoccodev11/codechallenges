@@ -192,7 +192,7 @@ const unique1 = nums => {
 
 const unique2 = nums => new Set(nums).size !== nums.length
 
-// third
+// third, potentially fastest
 
 
 const unique = nums => {
