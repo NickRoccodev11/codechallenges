@@ -190,7 +190,7 @@ const unique1 = nums => {
 //alt
 
 
-const unique2 = nums => new Set(nums.size) !== nums.length
+const unique2 = nums => new Set(nums).size !== nums.length
 
 // third
 
