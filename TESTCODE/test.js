@@ -11,33 +11,54 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Given a magazine of words and a ransom note,
+//     determine if it’s possible to “cut out” and create the ransom note from the magazine words.
 
-// Given an array nums of size n, return the majority element.
+const magazine ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
 
-// The majority element is the element that appears more than
-//  ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+    // describe("Ransom Note", () => {
+    //     it("Should return true", () => {
+    //         assert.equal(ransomNote("sit ad est sint", magazine), true);
+    //     });
 
-// Example 1:
+    //     it("Should return false", () => {
+    //         assert.equal(ransomNote("sit ad est love", magazine), false);
+    //     });
 
-// Input: nums = [3,2,3]
-// Output: 3
-// Example 2:
+    //     it("Should return true", () => {
+    //         assert.equal(ransomNote("sit ad est sint in in", magazine), true);
+    //     });
 
-// Input: nums = [2,2,1,1,1,2,2]
-// Output: 2
+    //     it("Should return false", () => {
+    //         assert.equal(ransomNote("sit ad est sint in in in in", magazine), false);
+    //     });
+    // });
 
-const majority = a => {
-    let numMap = {};
-    for (num of a) {
-        numMap[num] = numMap[num] + 1 || 1
-        if( numMap[num] > Math.floor(a.length / 2)){
-            return num
+const ransomNote = (note, magazine) => {
+    let noteMap = {}
+    let magazineMap = {}
+    note = note.split(" ")
+    magazine = magazine.split(" ")
+    for (word of note) {
+        noteMap[word] = noteMap[word] + 1 || 1
+    }
+    for (word of magazine) {
+        magazineMap[word] = magazineMap[word] + 1 || 1
+    }
+
+    for (cutOut in noteMap) {
+        if (!magazineMap[cutOut]) {
+            return false
+        } else if (noteMap[cutOut] > magazineMap[cutOut]) {
+            return false
         }
     }
+    return true
 }
-
-log(majority([3, 3, 4]))
-// log(majority([2, 2, 1, 1, 1, 2, 2]))
+log(ransomNote("sit ad est sint", magazine), true);
+log(ransomNote("sit ad est love", magazine), false);
+log(ransomNote("sit ad est sint in in in in", magazine), false);
+log(ransomNote("sit ad est sint in in", magazine), true);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
