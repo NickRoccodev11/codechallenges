@@ -10,15 +10,33 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DiscoverOriginalPrice(75, 25) => 100.00M where 75 is the sale price (discounted price),
-//  25 is the sale percentage and 100 is the original price
-const DiscoverOriginalPrice = (salePrice, salePercent) => {
-    let originalPrice = salePrice / (1 - (salePercent * .01))
 
-    return originalPrice.toFixed(2)
-}
-log(DiscoverOriginalPrice(75, 25))
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function (nums1, nums2) {
+    let num1Map = {},
+        intersection = [];
+    for (num of nums1) {
+        if (!num1Map[num]) {
+            num1Map[num] = num
+        }
+    }
+    log(num1Map)
+    for (i = 0; i < nums2.length; i++) {
+        log(nums2[i] === num1Map[nums2[i]])
+        log(!intersection.includes(nums2[i]))
+        if(!intersection.includes(nums2[i])) {
+            intersection.push(nums2[i])
+        }
+    }
+    
+    return intersection
+};
 
+log(intersection([8, 0, 3], [0, 0]))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
