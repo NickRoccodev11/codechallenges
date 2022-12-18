@@ -38,11 +38,3 @@ const fib = (n) => {
     return arr[arr.length - 1]
 }
 
-log(fib(5))
-log(fib(6))
-log(fib(7))
-log(fib(8))
-log(fib(9))
-log(fib(10))
-log(fib(11))
-log(fib(12))
