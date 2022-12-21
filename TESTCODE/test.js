@@ -11,56 +11,33 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Given a magazine of words and a ransom note,
-//     determine if it’s possible to “cut out” and create the ransom note from the magazine words.
 
-const magazine ="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+// Given an array of numbers, return all pairs that add up to a given sum. 
+// The numbers can be used more than once.
 
-    // describe("Ransom Note", () => {
-    //     it("Should return true", () => {
-    //         assert.equal(ransomNote("sit ad est sint", magazine), true);
-    //     });
+// describe("Two Sum", () => {
+//  it("Should implement two sum", () => {
+//   assert.deepEqual(twoSum([1, 2, 2, 3, 4], 4), [[2, 2], [3, 1]]);
+//  });
+// });
 
-    //     it("Should return false", () => {
-    //         assert.equal(ransomNote("sit ad est love", magazine), false);
-    //     });
 
-    //     it("Should return true", () => {
-    //         assert.equal(ransomNote("sit ad est sint in in", magazine), true);
-    //     });
-
-    //     it("Should return false", () => {
-    //         assert.equal(ransomNote("sit ad est sint in in in in", magazine), false);
-    //     });
-    // });
-
-const ransomNote = (note, magazine) => {
-    let noteMap = {}
-    let magazineMap = {}
-    note = note.split(" ")
-    magazine = magazine.split(" ")
-    for (word of note) {
-        noteMap[word] = noteMap[word] + 1 || 1
+const twoSum = (arr, num) => {
+    let numMap = {}
+    let pairs = []
+    for (i = 0; i < arr.length; i++) {
+        numMap[i] = arr[i]
     }
-    for (word of magazine) {
-        magazineMap[word] = magazineMap[word] + 1 || 1
-    }
-
-    for (cutOut in noteMap) {
-        if (!magazineMap[cutOut]) {
-            return false
-        } else if (noteMap[cutOut] > magazineMap[cutOut]) {
-            return false
+    for (digit in numMap) {
+        if (arr.indexOf(num - numMap[digit]) !== -1 &&
+            arr.indexOf(num - numMap[digit]) !== digit) {
+            pairs.push([numMap[digit], numMap[digit] - num])
         }
     }
-    return true
+    return pairs
 }
-log(ransomNote("sit ad est sint", magazine), true);
-log(ransomNote("sit ad est love", magazine), false);
-log(ransomNote("sit ad est sint in in in in", magazine), false);
-log(ransomNote("sit ad est sint in in", magazine), true);
 
-
+log(twoSum([1,2,2,3,4], 4))
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
