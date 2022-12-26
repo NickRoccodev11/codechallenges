@@ -11,7 +11,6 @@ function freqSeq(str, sep) {
     for (char of str) {
         map[char] = map[char] + 1 || 1
     }
-    log(map)
     let statement = ""
 
     for (i = 0; i < str.length; i++) {
