@@ -10,23 +10,27 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @param {string[]} words
- * @return {string[]}
- */
-var removeAnagrams = function (words) {
-log(words[1].split('').sort().join(''))
+function freqSeq(str, sep) {
+    let map = {};
+     for (char of str){
+       map[char] = map[char] +1 || 1
+     }
+     log(map)
+     let statement= ""
+     
+     for(i=0;i<str.length;i++){
+       if(i === str.length - 1){
+       statement += map[str[i]] 
+         }else{
+           statement += map[str[i]].toString() + sep
+         }
+     }
+     
+     return statement
+   }
 
-    for (i = 0; i < words.length; i++) {
-        if (words[i - 1] !== undefined &&
-            words[i - 1].split('').sort() === words[i].split('').sort()) {
-            words = words.slice(0, i).concat(words.slice(i + 1))
-            i--;
-        }
-    }
-    return words
-}
-log(removeAnagrams(["abba", "baba", "bbaa", "cd", "cd"]))
+   log(freqSeq("helloworld","-"))
+   
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
