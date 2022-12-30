@@ -11,54 +11,31 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function findWaldo(crowd) {
-    // Return y (row) and x (column) coordinates of Waldo ([0,0] is top-left)
-
-    let map = {},
-        waldo = '';
-    for (i = 0; i < crowd.length; i++) {
-        for (occurence of crowd[i]) {
-            map[occurence] = map[occurence] + 1 || 1
-        }
+function order(words) {
+    if (words.length === 0) {
+        return ''
     }
-    log(map)
-    for (person in map) {
-        if (map[person] === 1) {
-            waldo = person
-        }
-        log(waldo)
-    }
-
-    for (i = 0; i < crowd.length; i++) {
-        for (j = 0; j < crowd[i].length; j++) {
-            if (crowd[i][j] === waldo) {
-                return [i, j]
+    let current = 1
+    let answer = []
+    let wordArr = words.split(" ")
+    while (answer.length < wordArr.length) {
+        for (i = 0; i < wordArr.length; i++) {
+            if (wordArr[i].includes(current.toString())) {
+                answer.push(wordArr[i]);
+                current++
             }
         }
     }
-    return [0, 0]
+
+    return answer.join(" ")
 }
-let beach =
-    [
-        "             ",           // Air
-        "         w   ",           // Air with a bird
-        "   w         ",           // Air with a bird
-        "~~~~~~~~~~~~~",           // Sea
-        ".~..~~.~~~..~",           // Waves on beach
-        "...P......P..",           // Beach with some people
-        "......P..P...",           // Beach with some people
-        "..PW........."            // Beach with Waldo and presumably a friend next to him
-    ];
+
+log(order("do2nt i1 fuck5 4a g3ive"))
 
 
-log(findWaldo(beach))
-
-
-
-
-
-
-
+// let arr4 = ["hi5", "hello", "whats", "up"]
+// let x = 5
+// log(arr4[0].includes(x.toString()))
 
 
 
