@@ -11,27 +11,9 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function order(words) {
-    if (words.length === 0) {
-        return ''
-    }
-    let current = 1
-    let answer = []
-    let wordArr = words.split(" ")
-    while (answer.length < wordArr.length) {
-        for (i = 0; i < wordArr.length; i++) {
-            if (wordArr[i].includes(current.toString())) {
-                answer.push(wordArr[i]);
-                current++
-            }
-        }
-    }
+let saying = "4 calling birds"
 
-    return answer.join(" ")
-}
-
-log(order("do2nt i1 fuck5 4a g3ive"))
-
+log(Number(saying))
 
 // let arr4 = ["hi5", "hello", "whats", "up"]
 // let x = 5
