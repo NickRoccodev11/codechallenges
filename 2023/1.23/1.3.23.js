@@ -24,3 +24,24 @@ var intersection1 = function (nums) {
     return commons.sort((a, b) => a - b)
 };
 
+// REASSIGNMENT VS RE-DECLARATION INSIDE OF FUNCTIONS
+
+
+
+let x = 1
+
+function reassign(){
+    x = 2
+}
+
+reassign();
+console.log(x) // 2 ... REASSIGNMENT CHANGES GLOBAL VALUE
+
+let y = 1
+
+function reassign2(){
+    let y  = 2
+}
+
+reassign2();
+console.log(y) // 1 ... REDECLARATION DOES NOT CHANGE GLOBAL VALUE
