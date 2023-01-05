@@ -29,3 +29,18 @@ const fibR = n => {
 
 // MEMOIZATION
 
+
+function fibM(n, prev = []) {
+    if (prev[n] != null) {
+        return prev[n]
+    }
+    let result;
+    if (n <= 2) {
+        result = 1
+    } else {
+        result = fibM(n - 1, prev) + fibM(n - 2, prev)
+    }
+    prev[n] = result
+    return result
+
+}

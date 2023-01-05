@@ -40,43 +40,57 @@ const log = console.log
 const fib = n => {
     if (n === 0) {
         return 0
-    } 
-    let sequence = [0,1] 
+    }
+    let sequence = [0, 1]
 
-    for(i=2;i<=n; i++){
-        sequence.push(sequence[i-2]+sequence[i-1])
+    for (i = 2; i <= n; i++) {
+        sequence.push(sequence[i - 2] + sequence[i - 1])
     }
-    return sequence[sequence.length-1]
+    return sequence[sequence.length - 1]
 }
-const fib2= n => {
-    if (n=== 0){
+const fib2 = n => {
+    if (n === 0) {
         return 0
-    }else if (n===1){
-        return 1 
-    }else{
-        
-        
-        return   fib2(n-1) + fib(n-2)
+    } else if (n === 1) {
+        return 1
+    } else {
+
+
+        return fib2(n - 1) + fib(n - 2)
     }
 }
+
+
 // return 1 
 // fib n-1 n = 1 + 2
 // fib n-1 n = 2 + 3
 // fib(n-1)n = 3 + 4
 // log fib 4
+function fibM(n, prev = []) {
+    if (prev[n] != null) {
+        return prev[n]
+    }
+    let result;
+    if (n <= 2) {
+        result = 1
+    } else {
+        result = fibM(n - 1, prev) + fibM(n - 2, prev)
+    }
+    prev[n] = result
+    return result
 
-
+}
 
 
 // log(fib(2))
 // log(fib(3))
-log(fib(10), "Answer")
+log(fib(30), "Answer")
 // log(fib(9))
 // log(fib(15))
 log("you:")
 // log(fib2(2))
 // log(fib2(3))
-log(fib2(10))
+log(fibM(30))
 // log(fib2(9))
 // log(fib2(15))
 
