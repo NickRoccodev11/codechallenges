@@ -10,33 +10,25 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number[]}
+ * @param {number[]} nums
+ * @return {number}
  */
-var nextGreaterElement = function (nums1, nums2) {
-    let ans = [],
-        num2Map = {};
-    for (i = 0; i < nums2.length; i++) {
-        for (j = i + 1; j < nums2.length; j++) {
-            if (nums2[i] < nums2[j]) {
-                num2Map[nums2[i]] = nums2[j]
-                break;
-            }
-        }
-        if (!num2Map[nums2[i]]) {
-            num2Map[nums2[i]] = -1
+var dominantIndex = function (nums) {
+    let dom = Math.max(...nums),
+        half = dom / 2;
+    log(dom, half)
+    for (i = 0; i < nums.length; i++) {
+        if (nums[i] > half && nums[i] !== dom) {
+            log(`i:${i} nums: ${nums[i]}`)
+            return -1
         }
     }
-    for (num of nums1) {
-        ans.push(num2Map[num])
-    }
-    return ans
+    return nums.indexOf(dom)
 };
 
-log(nextGreaterElement([1, 3, 5,2,4], [6,5,4,3,2,1,7]), [-1, 3, -1])
-
+log(dominantIndex([3, 6, 1, 0])) //1
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
