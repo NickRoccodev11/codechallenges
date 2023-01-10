@@ -10,25 +10,50 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 /**
- * @param {number[]} nums
- * @return {number}
+ * @param {string} licensePlate
+ * @param {string[]} words
+ * @return {string}
  */
-var dominantIndex = function (nums) {
-    let dom = Math.max(...nums),
-        half = dom / 2;
-    log(dom, half)
-    for (i = 0; i < nums.length; i++) {
-        if (nums[i] > half && nums[i] !== dom) {
-            log(`i:${i} nums: ${nums[i]}`)
-            return -1
+ var shortestCompletingWord = function(licensePlate, words) {
+    let plateMap = {},
+    possibles= [],
+    counter;
+    for(letter of licensePlate ){
+        if(letter.toLowerCase() !== letter ||
+        letter.toUpperCase()!== letter ){
+        plateMap[letter.toLowerCase()] = plateMap[letter.toLowerCase()]+1 || 1
         }
-    }
-    return nums.indexOf(dom)
+     }
+     
+     for(i=0;i<words.length; i++){
+         let pass = true;
+         let wordMap= {} 
+         for(letter of words[i]){
+             if(plateMap[letter]){
+                 wordMap[letter]= wordMap[letter]+1 || 1
+                 }
+         }
+         for(letter in plateMap){
+             if(!wordMap[letter] || wordMap[letter] < plateMap[letter]){
+                 pass = false
+             }
+         }
+         if(pass){
+            possibles.push(words[i])
+         }
+     }
+     log(possibles)
+     log( possibles.sort((a,b)=> a.length-b.length ))
+     if(possibles.length < 2){
+         return possibles[0]
+     }else{
+         return possibles.sort((a,b)=>a.length < b.length )[0]
+     }
 };
-
-log(dominantIndex([3, 6, 1, 0])) //1
+// "1s3 456"
+// ["looks","pest","stew","show"]
+log(shortestCompletingWord("1s3 456",["looks","pest","stew","show"]))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
