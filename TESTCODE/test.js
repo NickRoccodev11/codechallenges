@@ -10,50 +10,66 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// [1, 3, 2, 2, 5, 2, 3, 7]
+
+// 1, 2, 2, 2, 3, 3, 5, 7
+
+// [1, 3, 4, 5, 2, 6, 2, 7, 7, 7, 7, 8, 8, 8, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+// let obj = {
+//     1: 1,
+//     2: 11,
+//     3: 1,
+//     5: 1,
+//     6: 1,
+//     7: 4,
+//     8: 4,
+// }
+
+
+
+//the longest harmonious subsequence will always be the two numbers that are
+// - one apart
+// - most frequent
+
+// make map with key= num;  val = frequency
+// for in loop - 
+// if( current element + element[this key minus one]> total){
+//     total = el1 + el2
+//     answer = # of el1 + # of el2
+// }
+
 /**
- * @param {string} licensePlate
- * @param {string[]} words
- * @return {string}
+ * @param {number[]} nums
+ * @return {number}
  */
- var shortestCompletingWord = function(licensePlate, words) {
-    let plateMap = {},
-    possibles= [],
-    counter;
-    for(letter of licensePlate ){
-        if(letter.toLowerCase() !== letter ||
-        letter.toUpperCase()!== letter ){
-        plateMap[letter.toLowerCase()] = plateMap[letter.toLowerCase()]+1 || 1
+ var findLHS = function(nums) {
+    let numMap= {},
+    total = 0;
+    for (num of nums){
+        numMap[num] = numMap[num]+1 || 1
+    }
+    for(i=0; i<nums.length; i++){
+        if(numMap[i] + numMap[i-1] > total ){
+            total = numMap[i] + numMap[i-1];
         }
-     }
-     
-     for(i=0;i<words.length; i++){
-         let pass = true;
-         let wordMap= {} 
-         for(letter of words[i]){
-             if(plateMap[letter]){
-                 wordMap[letter]= wordMap[letter]+1 || 1
-                 }
-         }
-         for(letter in plateMap){
-             if(!wordMap[letter] || wordMap[letter] < plateMap[letter]){
-                 pass = false
-             }
-         }
-         if(pass){
-            possibles.push(words[i])
-         }
-     }
-     log(possibles)
-     log( possibles.sort((a,b)=> a.length-b.length ))
-     if(possibles.length < 2){
-         return possibles[0]
-     }else{
-         return possibles.sort((a,b)=>a.length < b.length )[0]
-     }
+    }
+    return total
 };
-// "1s3 456"
-// ["looks","pest","stew","show"]
-log(shortestCompletingWord("1s3 456",["looks","pest","stew","show"]))
+
+log(findLHS([1,2])) // 5
+
+
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
