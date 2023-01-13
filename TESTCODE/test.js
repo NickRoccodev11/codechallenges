@@ -11,61 +11,37 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// [1, 3, 2, 2, 5, 2, 3, 7]
-
-// 1, 2, 2, 2, 3, 3, 5, 7
-
-// [1, 3, 4, 5, 2, 6, 2, 7, 7, 7, 7, 8, 8, 8, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2]
-// let obj = {
-//     1: 1,
-//     2: 11,
-//     3: 1,
-//     5: 1,
-//     6: 1,
-//     7: 4,
-//     8: 4,
-// }
-
-
-
-//the longest harmonious subsequence will always be the two numbers that are
-// - one apart
-// - most frequent
-
-// make map with key= num;  val = frequency
-// for in loop - 
-// if( current element + element[this key minus one]> total){
-//     total = el1 + el2
-//     answer = # of el1 + # of el2
-// }
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
- var findLHS = function(nums) {
-    let numMap= {},
-    total = 0;
-    for (num of nums){
-        numMap[num] = numMap[num]+1 || 1
-    }
-    for(i=0; i<nums.length; i++){
-        if(numMap[i] + numMap[i-1] > total ){
-            total = numMap[i] + numMap[i-1];
+ var findShortestSubArray = function(nums) {
+    let degree = 0,
+        numMap= {},
+        dNums= [];
+        for (number of nums){
+            numMap[number] = numMap[number] + 1 || 1
+             numMap[number] > degree ? degree = numMap[number] : null
+        }
+        for( number in numMap){
+            if (numMap[number] === degree){
+                dNums.push(parseInt(number))
+            }
+        }
+        log(nums)
+        log(dNums)
+        log(nums.lastIndexOf(dNums[1]))
+        let ssa = 50001
+    for(i=0;i<dNums.length;i++){
+        log(`num: ${dNums[i]}   sa: ${nums.lastIndexOf(dNums[i]) - nums.indexOf(dNums[i])} ssa: ${ssa} `)
+        if(nums.lastIndexOf(dNums[i]) - nums.indexOf(dNums[i]) < ssa){
+            ssa = nums.lastIndexOf(dNums[i]) - nums.indexOf(dNums[i])
         }
     }
-    return total
+    return ssa + 1
 };
 
-log(findLHS([1,2])) // 5
-
-
-
-
-
-
-
-
+log(findShortestSubArray([1,2,2,3,1]))
 
 
 
