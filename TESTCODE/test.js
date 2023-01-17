@@ -11,33 +11,39 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- * @param {string} s
+ * @param {number[]} height
  * @return {number}
  */
-var lengthOfLongestSubstring = function (s) {
-    let curSub = '',
-        longest = 0;
-    for (i = 0; i < s.length; i++) {
-        for (j = i; j < s.length; j++) {
-            if (!curSub.includes(s[j])) {
-                curSub += s[j];
-                log(`curSub:${curSub}   i:${i}      j: ${j}`)
+var maxArea = function (height) {
+    let largest = 0,
+    sizeMap = {};
+    for (i = 0; i < height.length; i++) {
+        for (j = 0; j < height.length; j++) {
+            let compare = `${Math.min(i, j)}x${Math.max(i, j)}`
+            if (i === j || sizeMap[compare]) {
+                continue;
+            } else if (Math.min(height[i], height[j]) * Math.abs(i - j) > largest) {
+                largest = Math.min(height[i], height[j]) * Math.abs(i - j)
+                let name = `${Math.min(i, j)}x${Math.max(i, j)}`
+                sizeMap[name] = Math.min(height[i], height[j]) * Math.abs(i - j)
             } else {
-                if (curSub.length > longest) {
-                    longest = curSub.length;
-                    curSub = '';
-                    break;
-                } else {
-                    curSub =''
-                    break;
-                }
+                let name = `${Math.min(i, j)}x${Math.max(i, j)}`
+                sizeMap[name] = Math.min(height[i], height[j]) * Math.abs(i - j)
             }
-
         }
     }
-    return longest > curSub.length ? longest : curSub.length
+log(sizeMap)
+return largest
 };
-log(lengthOfLongestSubstring("jbpnbwwd"))
+
+
+log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
+
+
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
