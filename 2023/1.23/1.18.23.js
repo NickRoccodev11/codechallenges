@@ -25,3 +25,15 @@
     }
     return false
 };
+
+// standup challenge: factorials with recursion
+
+const factorial = (n) =>{
+    if(n===1){
+        return n
+    }else{
+        return n * factorial(n-1) 
+    }
+}
+
+log(factorial(10))

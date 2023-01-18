@@ -10,11 +10,16 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let compare = ["z","a","x"]
-compare.push(compare.shift())
-log(compare.join(''))
-log(compare)
 
+const factorial = (n) =>{
+    if(n===1){
+        return n
+    }else{
+        return n * factorial(n-1) 
+    }
+}
+
+log(factorial(10))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:

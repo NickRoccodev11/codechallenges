@@ -19,7 +19,7 @@ const fibR = n => {
     } else if (n === 1) {
         return 1
     } else {
-        return fib2(n - 1) + fib(n - 2)
+        return fibR(n - 1) + fibR(n - 2)
     }
 }
 
