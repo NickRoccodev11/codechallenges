@@ -10,38 +10,10 @@ const log = console.log
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @param {number[]} height
- * @return {number}
- */
-var maxArea = function (height) {
-    let largest = 0,
-    sizeMap = {};
-    for (i = 0; i < height.length; i++) {
-        for (j = 0; j < height.length; j++) {
-            let compare = `${Math.min(i, j)}x${Math.max(i, j)}`
-            if (i === j || sizeMap[compare]) {
-                continue;
-            } else if (Math.min(height[i], height[j]) * Math.abs(i - j) > largest) {
-                largest = Math.min(height[i], height[j]) * Math.abs(i - j)
-                let name = `${Math.min(i, j)}x${Math.max(i, j)}`
-                sizeMap[name] = Math.min(height[i], height[j]) * Math.abs(i - j)
-            } else {
-                let name = `${Math.min(i, j)}x${Math.max(i, j)}`
-                sizeMap[name] = Math.min(height[i], height[j]) * Math.abs(i - j)
-            }
-        }
-    }
-log(sizeMap)
-return largest
-};
-
-
-log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
-
-
-
-
+let compare = ["z","a","x"]
+compare.push(compare.shift())
+log(compare.join(''))
+log(compare)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
