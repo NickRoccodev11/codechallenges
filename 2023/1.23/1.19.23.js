@@ -23,8 +23,8 @@ times5(2)  //==> 10
 function fibonacciMemo(n) {
     let cache = { 0: 0, 1: 1, 2: 1 };
     return function inner(n) {
-       if(n===0) return 0;
-       
+        if (n === 0) return 0;
+
         if (cache[n]) {
             return cache[n]
         } else {
@@ -35,3 +35,39 @@ function fibonacciMemo(n) {
     }
 }
 const fibonnaci = fibonacciMemo()
+
+// make a generic memo function that you can pass a cb func to
+
+const genericMemo = (cb) => {
+    let cache = {}
+    return n => {
+        if (cache[n]) {
+            return ` value  already saved as ${cache[n]}`
+        } else {
+            let result = cb(n)
+            cache[n] = result
+            return ` ${n}:  ${result} has been added to cache`
+        }
+    }
+}
+
+//here's an example of a function we could use inside of our generic memoization closure
+const plusFive = (x) => {
+    return x + 5;
+}
+
+
+// here's the fibonacci function again, ready to be memoized
+const fib = n => {
+    if (n < 2) {
+        return 1
+    } else {
+        return fib(n - 1) + fib(n - 2)
+    }
+}
+
+// saving different variables for different applications of the memo pattern
+fibMemo = genericMemo(fib)
+addFive = genericMemo(plusFive)
+
+log(fibMemo(20))
