@@ -18,3 +18,20 @@ times5 = memoizedClosure(5)
 times10(2) //==> 20
 times5(2)  //==> 10
 
+
+// memoized version of fibonacci function
+function fibonacciMemo(n) {
+    let cache = { 0: 0, 1: 1, 2: 1 };
+    return function inner(n) {
+       if(n===0) return 0;
+       
+        if (cache[n]) {
+            return cache[n]
+        } else {
+            let fib = inner(n - 1) + inner(n - 2);
+            cache[n] = fib
+            return fib
+        }
+    }
+}
+const fibonnaci = fibonacciMemo()
