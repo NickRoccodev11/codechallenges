@@ -11,22 +11,21 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-function joinElements(array, joinString){
-    function recurse(idx, result){
-        result += array[idx];
-        if(idx===array.length-1){
-            return result
-        }else{
-            return recurse(idx+1, result+joinString)
+function iterativeAccumulator(array, joinString) {
+    let result = ''
+    for (i = 0; i < array.length; i++) {
+        if (i === 0) {
+            result = array[0]
+        } else if (i !== array.length - 1) {
+            result += joinString + array[i]
+        } else {
+            return result + joinString + array[i]
         }
     }
-        return recurse(0,'')
+
 }
 
-log(joinElements(["abr","c", "d", "br", "!" ], "a"))
-
-
+log(iterativeAccumulator(["b", "b", "y", "g", "!"], "a"))
 
 
 // - 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887
