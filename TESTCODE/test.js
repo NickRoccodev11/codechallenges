@@ -11,29 +11,33 @@ const log = console.log
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const mergeSplitter = (array) => {
-    if (array.length <= 1) {
-        return array
-    }
-    const middle = Math.floor(array.length / 2),
-        left = array.slice(0, middle),
-        right = array.slice(middle)
-    return mergeSort(mergeSplitter(left), mergeSplitter(right))
-}
+const bubbleSort = (array) => {
+    let changed = true
 
-const mergeSort = (left, right) => {
-    let sortedArr = [];
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            sortedArr.push(left.shift())
-        } else {
-            sortedArr.push(right.shift())
+    while (changed) {
+        changed = false;
+        for (i = 0; i < array.length; i++) {
+            if (array[i] > array[i + 1]) {
+                changed = true;
+                let placeHolder = array[i]
+                array[i] = array[i + 1]
+                array[i + 1] = placeHolder
+            }
         }
     }
-    return sortedArr.concat(left.slice()).concat(right.slice())
+    return array
 }
 
-log(mergeSplitter([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]))
+
+log(bubbleSort([9, 2, 5, 6, 4, 3, 7, 10, 1, 8]))
+             // 2  5  6  4  3  7  9  1  8  10
+             // 2  5  4  3  6  7  1  8  9  10
+             // 2  4  3  5  6  1  7  8  9  10
+            //  2  3  4  5  1  6  7  8  9  10
+            //  2  3  4  1  5  6  7  8  9  10
+            //  2  3  1  4  ....
+            //  2  1  3  4 ....
+            //  1  2  3  4 !!!
 
 // - 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887
 //////////////////////////////////////////////////////////////////////////////////////////////////
