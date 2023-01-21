@@ -47,3 +47,27 @@ const mergeSort = (left, right) => {
     }
     return sortedArr.concat(left.slice()).concat(right.slice())
 }
+
+// my guess at how bubblesort works
+// i was pretty close! but if you do nested for loops, than you can set the condition for j to
+// be (j < array.length - 1 - i)    
+
+const bubbleSort = (array) => {
+    let changed = true
+
+    while (changed) {
+        changed = false;
+        for (i = 0; i < array.length; i++) {
+            if (array[i] > array[i + 1]) {
+                changed = true;
+                let placeHolder = array[i]
+                array[i] = array[i + 1]
+                array[i + 1] = placeHolder
+            }
+        }
+    }
+    return array
+}
+
+
+log(bubbleSort([9, 2, 5, 6, 4, 3, 7, 10, 1, 8]))
