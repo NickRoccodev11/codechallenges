@@ -11,27 +11,32 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const bubbleSort = (array) => {
-    let switched;
-    for (i = 0; i < array.length; i++) {
-        switched = false;
-        for (j = 0; j < array.length - 1 - i; j++) {
-            if (array[j] > array[j + 1]) {
-                let switcher = array[j];
-                array[j] = array[j + 1],
-                    array[j + 1] = switcher
-                switched = true
-            }
-        }
-        if (!switched) {
-            return array
+
+
+function setReducer(input) {
+    if (input.length <= 1) {
+        return input[0]
+    }
+    let reducedArr = [],
+        count = 1
+    for (i = 0; i < input.length; i++) {
+        if (input[i] === input[i + 1]) {
+            count++
+        } else {
+            reducedArr.push(count)
+            count = 1;
         }
     }
-    return array
+    return setReducer(reducedArr)
 }
 
-log(bubbleSort([9, 6, 2, 4, 2, 7, 1, 8, 5, 3,100,95,-6]))
+log(setReducer([0, 4, 6, 8, 8, 8, 5, 5, 7])) // 2
 
+// 1 1 1 3 2 1
+// 3 1 1 1
+// 1 3
+// 1 1
+// 2
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
