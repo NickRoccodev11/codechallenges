@@ -12,30 +12,13 @@ const log = console.log;
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-function isSortedAndHow(array) {
-    let asc = true,
-        des = true;
+const _if = (bool, func1, func2) => bool ? func1 : func2
 
-    for (i = 0; i < array.length; i++) {
-        if (i !== array.length - 1 && array[i] > array[i + 1]) {
-            asc = false
-        } else if (i !== array.length - 1 && array[i] < array[i + 1]) {
-            des = false
-        }
-    }
-    if (!asc && !des) {
-        return "no"
-    } else if (asc) {
-        return "yes, ascending"
-    } else {
-        return "yes, descending"
-    }
 
-}
 
-log(isSortedAndHow([1, 2, 3, 4, 5, 6, 7]))
-log(isSortedAndHow([8, 7, 6, 5, 4, 3, 2, 1]))
-log(isSortedAndHow([8, 7, 6, 5, 9, 4, 3, 10]))
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
