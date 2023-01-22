@@ -71,3 +71,112 @@ const bubbleSort = (array) => {
 
 
 log(bubbleSort([9, 2, 5, 6, 4, 3, 7, 10, 1, 8]))
+
+
+//pretty close... here is bubblesort with an exit clause optimization
+//(if no values are switched after an entire j loop, you're done)
+
+
+const bubbleSort2 = (array) => {
+    let switched;
+    for (i = 0; i < array.length; i++) {
+        switched = false;
+        for (j = 0; j < array.length - 1 - i; j++) {
+            if (array[j] > array[j + 1]) {
+                let switcher = array[j];
+                array[j] = array[j + 1],
+                    array[j + 1] = switcher
+                switched = true
+            }
+        }
+        if (!switched) {
+            return array
+        }
+    }
+    return array
+}
+
+
+// greedy
+
+
+const greedy = (owed) => {
+    // 25,10, 5
+    let payout = 0,
+        coins = 0;
+
+    while (payout < owed) {
+        if (owed - payout >= 25) {
+            payout += 25
+            coins++
+        } else if (owed - payout >= 10) {
+            payout += 10
+            coins++
+        } else {
+            payout += 5
+            coins++
+        }
+    }
+    return coins
+}
+
+// what if coin values are 1,6, 10?
+
+const unGreedy = (owed) => {
+    // 1,6,10
+    let payout = 0,
+        coinArr = [],
+        compare = [1, 6, 10];
+
+    coinArr.push(owed)
+
+    let sixes = Math.floor(owed / 6),
+        sixLeftovr = owed % 6,
+        sixChoices = [];
+    for (i = 0; i < compare.length; i++) {
+        if ((sixLeftovr / compare[i]) % 1 === 0) {
+            sixChoices.push(sixLeftovr / compare[i])
+        }
+    }
+    coinArr.push(sixes + Math.min(...sixChoices))
+    let tens = Math.floor(owed / 10),
+        tenLeftovr = owed % 10;
+    log(tenLeftovr + "leftover")
+    let tenChoices = [];
+    for (i = 0; i < compare.length; i++) {
+        if ((tenLeftovr / compare[i]) % 1 === 0) {
+            tenChoices.push(tenLeftovr / compare[i])
+        }
+    }
+    coinArr.push(tens + Math.min(...tenChoices))
+    return Math.min(...coinArr)
+
+}
+
+// QUIKSORT
+
+const quikSort = (array) => {
+    if (array.length === 1) {
+        return array
+    }
+    let pivot = array[array.length - 1];
+    let left = [];
+    let right = []
+
+    for (i = 0; i < array.length - 1; i++) {
+        if (array[i] < pivot) {
+            left.push(array[i])
+        } else {
+            right.push(array[i])
+        }
+    }
+    if (left.length > 0 && right.length > 0) {
+        return [...quikSort(left), pivot, ...quikSort(right)];
+    } else if (left.length > 0) {
+        return [...quikSort(left), pivot];
+    } else {
+        return [pivot, ...quikSort(right)];
+    }
+}
+
+log(quikSort([-5, -9, 20, 56, 3, -100, 69, 57, 100, 1000, 456, -5, -1000, 56]))
