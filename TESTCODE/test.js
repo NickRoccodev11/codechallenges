@@ -12,31 +12,30 @@ const log = console.log;
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+function isSortedAndHow(array) {
+    let asc = true,
+        des = true;
 
-function setReducer(input) {
-    if (input.length <= 1) {
-        return input[0]
-    }
-    let reducedArr = [],
-        count = 1
-    for (i = 0; i < input.length; i++) {
-        if (input[i] === input[i + 1]) {
-            count++
-        } else {
-            reducedArr.push(count)
-            count = 1;
+    for (i = 0; i < array.length; i++) {
+        if (i !== array.length - 1 && array[i] > array[i + 1]) {
+            asc = false
+        } else if (i !== array.length - 1 && array[i] < array[i + 1]) {
+            des = false
         }
     }
-    return setReducer(reducedArr)
+    if (!asc && !des) {
+        return "no"
+    } else if (asc) {
+        return "yes, ascending"
+    } else {
+        return "yes, descending"
+    }
+
 }
 
-log(setReducer([0, 4, 6, 8, 8, 8, 5, 5, 7])) // 2
-
-// 1 1 1 3 2 1
-// 3 1 1 1
-// 1 3
-// 1 1
-// 2
+log(isSortedAndHow([1, 2, 3, 4, 5, 6, 7]))
+log(isSortedAndHow([8, 7, 6, 5, 4, 3, 2, 1]))
+log(isSortedAndHow([8, 7, 6, 5, 9, 4, 3, 10]))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:

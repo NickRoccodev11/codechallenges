@@ -40,3 +40,26 @@ function setReducer(input) {
     }
     return setReducer(reducedArr)
 }
+
+
+// a function that checks if an array is sorted, and in what order 
+
+function isSortedAndHow(array) {
+    let asc = true,
+        des = true;
+
+    for (i = 0; i < array.length; i++) {
+        if (i !== array.length - 1 && array[i] > array[i + 1]) {
+            asc = false
+        } else if (i !== array.length - 1 && array[i] < array[i + 1]) {
+            des = false
+        }
+    }
+    if (!asc && !des) {
+        return "no"
+    } else if (asc) {
+        return "yes, ascending"
+    } else {
+        return "yes, descending"
+    }
+}
