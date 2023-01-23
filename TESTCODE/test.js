@@ -11,27 +11,19 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @param {string} s
- * @return {boolean}
- */
- var isPalindrome = function(s) {
-    let alphaNums = s.split('').filter((el)=> {
-        if(el.toUpperCase() !== el.toLowerCase()){
-            return (el.toUpperCase())
-        }else if(parseInt(el)){
-            return el
-        }
-    } ) 
-log(alphaNums)
-log(alphaNums.reverse())
 
-    return alphaNums.reverse().join('') === alphaNums.join('')
+function covfefe(str){
+    let arr = str.split(" ")
+    
+    let covfefe = arr.map((el)=> el === "coverage" ? "covfefe" : el).join(' ')
+    
+    return covfefe.includes("covfefe") ? covfefe : covfefe + " covfefe"
+    }
+
+    log(covfefe("coverage coverage"))
 
 
-};
 
-log(isPalindrome("race a car"))
 
 
 
