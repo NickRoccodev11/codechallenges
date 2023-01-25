@@ -1,6 +1,6 @@
 
 //"zip" two arrays by inputing each element into the provided function
-// examp:   zipWith((a,b)=>a-b, [5,5,5], [1,2,3] )  :::> [4,3,2]  
+// examp:   zipWith((a,b)=>a-b, [5,5,5], [1,2,3] )  :::> [4,3,2]// 
 
 
 function zipWith(fn,a0,a1) {
