@@ -11,15 +11,30 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const mergeSplitter = (array) => {
+    if (array.length <= 1) {
+        return array
+    }
+    let middle = Math.floor(array.length / 2),
+        left = array.slice(0, middle),
+        right = array.slice(middle)
 
-const _if = (bool, func1, func2) => bool ? func1 : func2
+    return mergeSort(mergeSplitter(left), mergeSplitter(right))
+}
 
 
-
-
-
-
-
+const mergeSort = (left, right) => {
+    let sortedArr = [];
+    while (left.length && right.length) {
+        if (left[0] < right[0]) {
+            sortedArr.push(left.shift())
+        } else {
+            sortedArr.push(right.shift())
+        }
+    }
+    return sortedArr.concat(left.slice()).concat(right.slice())
+}
+log(mergeSplitter([9,3,6,2,1,6,5,7,8,9,0,4,3,]))
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
