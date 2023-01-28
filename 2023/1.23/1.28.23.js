@@ -1,5 +1,5 @@
 //turn a string into an array that contains the length of each
-//  word in the string separated by a space
+//  word in the string separated by a space 
 // "apple ban"  =>   ["apple 5", "ban 3"]
 
 
