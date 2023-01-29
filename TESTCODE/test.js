@@ -11,18 +11,30 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Object.defineProperty(Array.prototype, 'numberOfOccurrences',{ 
-    value : function numberOfOccurrences(element) {
-      let occurrences = 0
-      this.forEach((el)=> el === element ? occurrences++ : null )
-      return occurrences
-    }
-  });
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+ var isPalindrome = function(s) {
+    let alphaNums = s.split('').filter((el)=> {
+        if(el.toUpperCase() !== el.toLowerCase()){
+            return (el.toUpperCase())
+        }else if(parseInt(el)){
+            return el
+        }
+    } ) 
+log(alphaNums)
+log(alphaNums.reverse())
 
-let arr = [1,2,3,4,5,6,7,7,7,7,7,2]
+    return alphaNums.reverse().join('') === alphaNums.join('')
 
-log(arr.numberOfOccurrences(2))
-log(arr.numberOfOccurrences(7))
+
+};
+
+log(isPalindrome("race a car"))
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
