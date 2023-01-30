@@ -11,30 +11,71 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const mergeSplitter = (array) => {
-    if (array.length <= 1) {
-        return array
-    }
-    let middle = Math.floor(array.length / 2),
-        left = array.slice(0, middle),
-        right = array.slice(middle)
+/**
+ * @param {string} s
+ * @param {number} numRows
+ * @return {string}
+ */
+ var convert = function (s, numRows) {
+    let zig =[]
+    for(i=0; i<numRows; i++){
+       zig.push([])
+     };
+ 
+     let row = 0,
+     column = 0,
+     descending = true;
+ 
+     for(i=0; i< s.length; i++){
+         if(descending){
+             if(row < numRows ){
+                 zig[row][column] = s[i]
+                 row++;
+             }else{
+                 descending = false;
+                 column++;
+                 row--;
+                 i--;
+             }
+         }else if (row > 0){
+              row--;
+             zig[row][column]=s[i];
+             row !== 0 ? column++ : null
+             row === 1 ? row = 0 : null
+         }else{
+             descending = true; 
+             i--;
+ 
+         }
+     }
+     log(zig)
+     let finalStatement= ""
+ for(i=0; i<zig.length; i++){
+     for(j=0; j<zig[i].length; j++){
+         if(zig[i][j]!==undefined){
+             finalStatement+= zig[i][j]
+         }
+     }
+ }
+ return finalStatement
+ };
 
-    return mergeSort(mergeSplitter(left), mergeSplitter(right))
-}
-
-
-const mergeSort = (left, right) => {
-    let sortedArr = [];
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            sortedArr.push(left.shift())
-        } else {
-            sortedArr.push(right.shift())
-        }
-    }
-    return sortedArr.concat(left.slice()).concat(right.slice())
-}
-log(mergeSplitter([9,3,6,2,1,6,5,7,8,9,0,4,3,]))
+ log(convert("ABCD",2), "ACBD")
+ 
+ // rows = 0 
+ // if(letter){
+ //     zig[i][0] = 
+ //     rows++
+ // }
+ 
+ // rows; 5 word: dangl e b e rrysw i s h
+ // [
+ //     [D, "", "", "", R, "", "",""],
+ //     [A, "", "", E,  R, "" ,"", H],
+ //     [N, "", B, "",  Y, "", S, ""],
+ //     [G, E, "", "",  S,  I,"", ""],
+ //     [L,"", "", "",  W, "","", ""]
+ // ]
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
