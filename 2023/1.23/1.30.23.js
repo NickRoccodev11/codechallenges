@@ -16,3 +16,8 @@ function createPhoneNumber(numbers){
     }
     return ["(",...first,")", " ", ...second, "-", ...third].join('')
   }
+
+  // currying function-- create a function that takes an array returns another function which takes a
+//   number and returns an the array with each element multiplied by the number
+
+const multiplyAll = (array) => (n)=> array.map(el=> el * n)
