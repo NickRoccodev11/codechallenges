@@ -11,71 +11,27 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @param {string} s
- * @param {number} numRows
- * @return {string}
- */
- var convert = function (s, numRows) {
-    let zig =[]
-    for(i=0; i<numRows; i++){
-       zig.push([])
-     };
- 
-     let row = 0,
-     column = 0,
-     descending = true;
- 
-     for(i=0; i< s.length; i++){
-         if(descending){
-             if(row < numRows ){
-                 zig[row][column] = s[i]
-                 row++;
-             }else{
-                 descending = false;
-                 column++;
-                 row--;
-                 i--;
-             }
-         }else if (row > 0){
-              row--;
-             zig[row][column]=s[i];
-             row !== 0 ? column++ : null
-             row === 1 ? row = 0 : null
-         }else{
-             descending = true; 
-             i--;
- 
-         }
-     }
-     log(zig)
-     let finalStatement= ""
- for(i=0; i<zig.length; i++){
-     for(j=0; j<zig[i].length; j++){
-         if(zig[i][j]!==undefined){
-             finalStatement+= zig[i][j]
-         }
-     }
- }
- return finalStatement
- };
+// Try without recursion first and then get fancy. This problem really needs to be written out. Grab some paper! 
 
- log(convert("ABCD",2), "ACBD")
- 
- // rows = 0 
- // if(letter){
- //     zig[i][0] = 
- //     rows++
- // }
- 
- // rows; 5 word: dangl e b e rrysw i s h
- // [
- //     [D, "", "", "", R, "", "",""],
- //     [A, "", "", E,  R, "" ,"", H],
- //     [N, "", B, "",  Y, "", S, ""],
- //     [G, E, "", "",  S,  I,"", ""],
- //     [L,"", "", "",  W, "","", ""]
- // ]
+// Find the greatest common divisor of two positive integers. The integers can be large, so you need to find a clever solution.
+
+// The inputs x and y are always greater or equal to 1, so the greatest common divisor will always be an integer that is also greater or equal to 1.
+
+let arrayw = ["bat", "tab", "eat", "tea", "ate", "atb"]
+
+let myObj = {}
+
+for (i = 0; i < arrayw.length; i++) {
+    let current = arrayw[i].split('').sort().join('')
+    if (!myObj[current]) {
+        myObj[current] = [];
+        myObj[current].push(arrayw[i])
+    } else {
+        myObj[current].push(arrayw[i])
+    }
+}
+log(Object.values(myObj))
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
@@ -89,3 +45,27 @@ const log = console.log;
 
 // Find the highest order term — this will be what we consider the Big O 
 // of our algorithm/function
+
+
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function (strs) {
+    if (strs.length === 0) {
+        return [[""]]
+    }
+
+    let groups = {};
+
+    for (i = 0; i < strs.length; i++) {
+        let curr = strs[i].split('').sort().join('')
+        if (!groups[curr]) {
+            groups[curr] = [];
+            groups[curr].push(strs[i])
+        } else {
+            groups[curr].push(strs[i])
+        }
+    }
+    return Object.values(groups)
+};
