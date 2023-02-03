@@ -1,6 +1,6 @@
-// convert an object into an Array. the array should be sorted aphabetically by key
+// convert an object into an Array. the array should be sorted aphabetically by key.
 
-
+  
 function convertHashToArray(hash) {
     let arr = [],
         keys = Object.keys(hash).sort()
