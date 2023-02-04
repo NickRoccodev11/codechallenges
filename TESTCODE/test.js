@@ -17,20 +17,32 @@ const log = console.log;
 
 // The inputs x and y are always greater or equal to 1, so the greatest common divisor will always be an integer that is also greater or equal to 1.
 
-let arrayw = ["bat", "tab", "eat", "tea", "ate", "atb"]
-
-let myObj = {}
-
-for (i = 0; i < arrayw.length; i++) {
-    let current = arrayw[i].split('').sort().join('')
-    if (!myObj[current]) {
-        myObj[current] = [];
-        myObj[current].push(arrayw[i])
-    } else {
-        myObj[current].push(arrayw[i])
+class Queue {
+    constructor() {
+        this.storage = {},
+            this.head = 0,
+            this.tail = 0;
+    }
+    enqueue(element) {
+        this.storage[this.tail] = element;
+        this.tail++
+    }
+    dequeue() {
+        let removed = this.storage[this.head];
+        delete this.storage[this.head];
+        this.head++;
+        return removed
     }
 }
-log(Object.values(myObj))
+
+const birds = new Queue;
+birds.enqueue("parrot")
+birds.enqueue("pigeon")
+birds.enqueue("lark")
+
+console.log(birds)
+birds.dequeue()
+console.log(birds)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
@@ -45,27 +57,3 @@ log(Object.values(myObj))
 
 // Find the highest order term — this will be what we consider the Big O 
 // of our algorithm/function
-
-
-/**
- * @param {string[]} strs
- * @return {string[][]}
- */
-var groupAnagrams = function (strs) {
-    if (strs.length === 0) {
-        return [[""]]
-    }
-
-    let groups = {};
-
-    for (i = 0; i < strs.length; i++) {
-        let curr = strs[i].split('').sort().join('')
-        if (!groups[curr]) {
-            groups[curr] = [];
-            groups[curr].push(strs[i])
-        } else {
-            groups[curr].push(strs[i])
-        }
-    }
-    return Object.values(groups)
-};
