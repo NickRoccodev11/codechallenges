@@ -17,32 +17,34 @@ const log = console.log;
 
 // The inputs x and y are always greater or equal to 1, so the greatest common divisor will always be an integer that is also greater or equal to 1.
 
-class Queue {
-    constructor() {
+class Stack {
+    constructor(){
         this.storage = {},
-            this.head = 0,
-            this.tail = 0;
+        this.size= 0
     }
-    enqueue(element) {
-        this.storage[this.tail] = element;
-        this.tail++
+    push(element){
+        this.size++
+        this.storage[this.size] = element
     }
-    dequeue() {
-        let removed = this.storage[this.head];
-        delete this.storage[this.head];
-        this.head++;
+
+    pop(){
+        let removed = this.storage[this.size];
+        delete this.storage[this.size];
+        this.size--;
         return removed
     }
+    peek(){
+        return this.storage[this.size]
+    }
 }
+const birds = new Stack;
+birds.push("budgie")
+birds.push("sparrow")
+birds.push("hawk")
 
-const birds = new Queue;
-birds.enqueue("parrot")
-birds.enqueue("pigeon")
-birds.enqueue("lark")
-
-console.log(birds)
-birds.dequeue()
-console.log(birds)
+log(birds.peek())
+birds.pop()
+log(birds)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
