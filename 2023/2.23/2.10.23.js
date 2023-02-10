@@ -1,15 +1,14 @@
-const log = console.log;
-// ALWAYS DO PREP!!!   Parameters - Returns - Examples - Pseudocode
+// Given a string containing digits from 2-9 inclusive, return all possible letter 
+// combinations that the number could represent. Return the answer in any order.
 
-// Parameters - clarify all possibilities for params. think of edge cases. 
+// A mapping of digits to letters (just like on the telephone buttons) 
+// is given below. Note that 1 does not map to any letters.
 
-//Return - what is it exactly that you are returning? boolean? array? obj? string? mutated original / copy? 
 
-//Examples - talk through test cases, cosider every outcome and log them with along with the answer 
-//  console.log(function(exampleA), 'true' ) //  console.log(function(exampleB), 'false' )
+// Constraints:
 
-// Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 0 <= digits.length <= 4
+// digits[i] is a digit in the range ['2', '9'].
 
 var letterCombinations = function (digits) {
 
@@ -81,25 +80,3 @@ var letterCombinations = function (digits) {
     }
 
 };
-
-// log(letterCombinations(""))
-// log(letterCombinations("9"))
-log(letterCombinations("7979"))
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// To calculate Big O, there are five steps you should follow:
-
-// Break your algorithm/function into individual operations
-
-// Calculate the Big O of each operation
-
-// Add up the Big O of each operation together
-
-// Remove the constants
-
-// Find the highest order term — this will be what we consider the Big O 
-// of our algorithm/function
