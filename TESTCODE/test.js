@@ -11,19 +11,13 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let elems = [1,2,3,4,5,6,7,8,9]
 
-function covfefe(str){
-    let arr = str.split(" ")
-    
-    let covfefe = arr.map((el)=> el === "coverage" ? "covfefe" : el).join(' ')
-    
-    return covfefe.includes("covfefe") ? covfefe : covfefe + " covfefe"
-    }
+let num = 5
 
-    log(covfefe("coverage coverage"))
+elems.splice(elems.indexOf(num),1)
 
-
-
+log(elems)
 
 
 
