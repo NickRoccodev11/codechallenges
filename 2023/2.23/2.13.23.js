@@ -24,7 +24,7 @@ String.prototype.findParenMatch = function (pos) {
             }
         }
     } else {
-        // same as above but in reverse
+        // same as above but in reverse!
         for (i = pos - 1; i >= 0; i--) {
             if (this[i] === ")") {
                 levels++
