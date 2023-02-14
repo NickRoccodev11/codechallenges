@@ -10,51 +10,32 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-String.prototype.findParenMatch = function (pos) {
-    //return if pos is not a paren
-    if (this[pos] !== "(" &&
-        this[pos] !== ")") {
-        return -1
-    }
+function constructSubmatrix(matrix, rowsToDelete, columnsToDelete) {
+    let subMatrix = []
 
-    //keep track of levels of nested parens
-    let levels = 0
-
-    //two loops, one each for dealing with an open or closed paren as our argument 
-    if (this[pos] === "(") {
-
-        for (i = pos + 1; i < this.length; i++) {
-            if (this[i] === "(") {
-                //if we encounter another opener before our close, keep track of levels of nesting
-                levels++;
-            } else {
-                if (levels === 0) {
-                    // if we are on the level of the paren we're looking for, and it's a closer, return the index
-                    return i
-                }
-                levels--;
+    for (i = 0; i < matrix.length; i++) {
+        while (rowsToDelete.includes(i)) {
+            if(i=== matrix.length-1){
+                return subMatrix
             }
+            i++
         }
-    } else {
-        // same as above but in reverse
-        for (i = pos - 1; i >= 0; i--) {
-            if (this[i] === ")") {
-                levels++
-            } else {
-                if (levels === 0) {
-                    return i
-                }
-                levels--;
+        subMatrix.push([]);
+            for (j = 0; j < matrix[i].length; j++) {
+            
+            if (!columnsToDelete.includes(j)) {
+                subMatrix[subMatrix.length-1].push(matrix[i][j])
             }
-          
+            log(subMatrix)
         }
     }
-    return -1
-};
-log("(())))".findParenMatch(2), 1)
-log("(())))".findParenMatch(3), 0)
-log("(((())))))".findParenMatch(1), 6)
-log("(.)".findParenMatch(1), -1)
+    return subMatrix
+}
+
+
+
+log(constructSubmatrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [0], [2]))
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
