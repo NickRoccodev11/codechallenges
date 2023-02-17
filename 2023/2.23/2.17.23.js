@@ -1,16 +1,4 @@
-const log = console.log;
-// ALWAYS DO PREP!!!   Parameters - Returns - Examples - Pseudocode
-
-// Parameters - clarify all possibilities for params. think of edge cases. 
-
-//Return - what is it exactly that you are returning? boolean? array? obj? string? mutated original / copy? 
-
-//Examples - talk through test cases, cosider every outcome and log them with along with the answer 
-//  console.log(function(exampleA), 'true' ) //  console.log(function(exampleB), 'false' )
-
-// Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
-// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//BINARY SEARCH TREE
 
 class Node {
     constructor(value) {
@@ -139,29 +127,3 @@ class BST {
     }
 
 }
-
-let myBST = new BST(15)
-myBST.insert(3)
-myBST.insert(36)
-myBST.insert(2)
-myBST.insert(12)
-myBST.insert(28)
-myBST.insert(39)
-log(myBST.dfsInOrder())
-log(myBST.dfsPreOrder())
-log(myBST.dfsPostOrder())
-log(myBST.bfs())
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// To calculate Big O, there are five steps you should follow:
-
-// Break your algorithm/function into individual operations
-
-// Calculate the Big O of each operation
-
-// Add up the Big O of each operation together
-
-// Remove the constants
-
-// Find the highest order term — this will be what we consider the Big O 
-// of our algorithm/function
