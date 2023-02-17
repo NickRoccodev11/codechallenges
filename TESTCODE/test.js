@@ -10,147 +10,51 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null
-        this.right = null
-    }
-}
-
-class BST {
-    constructor(value) {
-        this.root = new Node(value)
-        this.count = 1;
-    }
-    size() {
-        return this.count
+String.prototype.findParenMatch = function (pos) {
+    //return if pos is not a paren
+    if (this[pos] !== "(" &&
+        this[pos] !== ")") {
+        return -1
     }
 
-    insert(value) {
-        this.count++
-        let newNode = new Node(value)
+    //keep track of levels of nested parens
+    let levels = 0
 
-        const searchTree = node => {
-            if (value < node.value) {
-                if (!node.left) {
-                    node.left = newNode
-                } else {
-                    searchTree(node.left)
+    //two loops, one each for dealing with an open or closed paren as our argument 
+    if (this[pos] === "(") {
+
+        for (i = pos + 1; i < this.length; i++) {
+            if (this[i] === "(") {
+                //if we encounter another opener before our close, keep track of levels of nesting
+                levels++;
+            } else {
+                if (levels === 0) {
+                    // if we are on the level of the paren we're looking for, and it's a closer, return the index
+                    return i
                 }
-            } else if (value > node.value) {
-                if (!node.right) {
-                    node.right = newNode
-                } else {
-                    searchTree(node.right)
+                levels--;
+            }
+        }
+    } else {
+        // same as above but in reverse
+        for (i = pos - 1; i >= 0; i--) {
+            if (this[i] === ")") {
+                levels++
+            } else {
+                if (levels === 0) {
+                    return i
                 }
+                levels--;
             }
+          
         }
-        searchTree(this.root)
     }
-    min() {
-        let currentNode = this.root
-        while (currentNode.left) {
-            currentNode = currentNode.left
-        }
-        return currentNode.value
-    }
-
-    max() {
-        let currentNode = this.root
-        while (currentNode.right) {
-            currentNode = currentNode.right
-        }
-        return currentNode.value
-    }
-    contains(value) {
-        let currentNode = this.root
-
-        while (currentNode) {
-            if (value === currentNode.value) {
-                return true
-            }
-            if (value < currentNode.value) {
-                currentNode = currentNode.left
-            } else if (value > currentNode.value) {
-                currentNode = currentNode.right
-            }
-        }
-        return false
-    }
-    //depth first search = branch by branch
-
-    //left, root, right
-    dfsInOrder() {
-        let result = [];
-
-        const traverse = node => {
-            if (node.left) traverse(node.left)
-            result.push(node.value)
-            if (node.right) traverse(node.right)
-        }
-        traverse(this.root)
-        return result
-    }
-
-    // root, left, right
-    dfsPreOrder() {
-        let result = [];
-        const traverse = node => {
-            result.push(node.value)
-            if (node.left) traverse(node.left)
-            if (node.right) traverse(node.right)
-        }
-        traverse(this.root)
-        return result
-    }
-
-    //left, right, root
-    dfsPostOrder() {
-        let result = [];
-        const traverse = node => {
-            if (node.left) traverse(node.left)
-            if (node.right) traverse(node.right)
-            result.push(node.value)
-        }
-        traverse(this.root)
-        return result
-    }
-    // breadth first search = level by level 
-    bfs() {
-        let result = [];
-        let queue = [];
-
-        queue.push(this.root);
-
-        while (queue.length) {
-            let currentNode = queue.shift()
-            result.push(currentNode.value)
-            if (currentNode.left) {
-                queue.push(currentNode.left)
-            }
-            if (currentNode.right) {
-                queue.push(currentNode.right)
-            }
-        }
-        return result
-    }
-
-}
-
-let myBST = new BST(15)
-myBST.insert(3)
-myBST.insert(36)
-myBST.insert(2)
-myBST.insert(12)
-myBST.insert(28)
-myBST.insert(39)
-log(myBST.dfsInOrder())
-log(myBST.dfsPreOrder())
-log(myBST.dfsPostOrder())
-log(myBST.bfs())
+    return -1
+};
+log("(())))".findParenMatch(2), 1)
+log("(())))".findParenMatch(3), 0)
+log("(((())))))".findParenMatch(1), 6)
+log("(.)".findParenMatch(1), -1)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
