@@ -10,31 +10,37 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function constructSubmatrix(matrix, rowsToDelete, columnsToDelete) {
-    let subMatrix = []
+function countVegetables(string) {
+    let list = string.split(" ")
 
-    for (i = 0; i < matrix.length; i++) {
-        while (rowsToDelete.includes(i)) {
-            if(i=== matrix.length-1){
-                return subMatrix
-            }
-            i++
-        }
-        subMatrix.push([]);
-            for (j = 0; j < matrix[i].length; j++) {
-            
-            if (!columnsToDelete.includes(j)) {
-                subMatrix[subMatrix.length-1].push(matrix[i][j])
-            }
-            log(subMatrix)
+    let veg = {
+        cabbage: 0,
+        carrot: 0,
+        celery: 0,
+        cucumber: 0,
+        mushroom: 0,
+        onion: 0,
+        pepper: 0,
+        potato: 0,
+        tofu: 0,
+        turnip: 0
+    }
+    for (veggie of list) {
+        if (veg[veggie] || veg[veggie] === 0) {
+            veg[veggie]++
         }
     }
-    return subMatrix
+    let answer = []
+    for (entry in veg) {
+        if (veg[entry] > 0) {
+            answer.push([veg[entry], entry])
+        }
+    }
+    answer.sort((a,b)=> a[1].localeCompare(b[1]) *-1 )
+
+    return answer.sort((a,b)=> b[0] - a[0])
 }
-
-
-
-log(constructSubmatrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [0], [2]))
+log(countVegetables("turnip turnip turnip turnip turnip turnip cabbage carrot onion pepper tofu dog whisker liquor turnip turnip cabbage cabbage cababge carrot cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber pepper pepper pepper pepper onion"))
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
