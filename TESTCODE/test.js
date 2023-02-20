@@ -10,39 +10,18 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function countVegetables(string) {
-    let list = string.split(" ")
-
-    let veg = {
-        cabbage: 0,
-        carrot: 0,
-        celery: 0,
-        cucumber: 0,
-        mushroom: 0,
-        onion: 0,
-        pepper: 0,
-        potato: 0,
-        tofu: 0,
-        turnip: 0
+function firstNonRepeated(s) {
+    let unique = null
+    
+    for(i=0; i < s.length; i++){
+     if(s.indexOf(i) === s.lastIndexOf(i)){
+      return s[i]
+     }
     }
-    for (veggie of list) {
-        if (veg[veggie] || veg[veggie] === 0) {
-            veg[veggie]++
-        }
-    }
-    let answer = []
-    for (entry in veg) {
-        if (veg[entry] > 0) {
-            answer.push([veg[entry], entry])
-        }
-    }
-    answer.sort((a,b)=> a[1].localeCompare(b[1]) *-1 )
+    return unique
+  }
 
-    return answer.sort((a,b)=> b[0] - a[0])
-}
-log(countVegetables("turnip turnip turnip turnip turnip turnip cabbage carrot onion pepper tofu dog whisker liquor turnip turnip cabbage cabbage cababge carrot cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber cucumber pepper pepper pepper pepper onion"))
-
-
+  log(firstNonRepeated("test"))
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
