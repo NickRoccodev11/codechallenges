@@ -10,18 +10,39 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function firstNonRepeated(s) {
-    let unique = null
-    
-    for(i=0; i < s.length; i++){
-     if(s.indexOf(i) === s.lastIndexOf(i)){
-      return s[i]
-     }
-    }
-    return unique
-  }
 
-  log(firstNonRepeated("test"))
+var summaryRanges = function(nums) {
+  let ranges=[];
+  let start = ''
+ 
+  for(i=0;i<nums.length; i++){
+      if(start !== 0  && !start){
+      start = nums[i]
+      }else{
+          if(nums[i-1]+1 !== nums[i]){
+              if(nums[i-1] === start ){
+                  ranges.push(start)
+                  start = nums[i]
+              }else{
+                  ranges.push(`${start}->${nums[i-1]}`)
+                  start = nums[i]
+              }
+          }
+      }
+      if(i=== nums.length - 1  ){
+          if(start === nums[i] ){
+              ranges.push(start)
+          }else{
+             ranges.push(`${start}->${nums[i]}`)
+          }
+      }
+  } 
+  return ranges
+ };
+
+log(summaryRanges([0,1,2,4,5,7]))
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
