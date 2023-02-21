@@ -41,7 +41,7 @@ var summaryRanges = function(nums) {
         }else{
             if(nums[i-1]+1 !== nums[i]){
                 if(nums[i-1] === start ){
-                    ranges.push(start)
+                    ranges.push(start.toString())
                     start = nums[i]
                 }else{
                     ranges.push(`${start}->${nums[i-1]}`)
@@ -51,7 +51,7 @@ var summaryRanges = function(nums) {
         }
         if(i=== nums.length - 1  ){
             if(start === nums[i] ){
-                ranges.push(start)
+                ranges.push(start.toString())
             }else{
                ranges.push(`${start}->${nums[i]}`)
             }
