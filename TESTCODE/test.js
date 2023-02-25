@@ -11,36 +11,12 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var summaryRanges = function(nums) {
-  let ranges=[];
-  let start = ''
- 
-  for(i=0;i<nums.length; i++){
-      if(start !== 0  && !start){
-      start = nums[i]
-      }else{
-          if(nums[i-1]+1 !== nums[i]){
-              if(nums[i-1] === start ){
-                  ranges.push(start)
-                  start = nums[i]
-              }else{
-                  ranges.push(`${start}->${nums[i-1]}`)
-                  start = nums[i]
-              }
-          }
-      }
-      if(i=== nums.length - 1  ){
-          if(start === nums[i] ){
-              ranges.push(start)
-          }else{
-             ranges.push(`${start}->${nums[i]}`)
-          }
-      }
-  } 
-  return ranges
- };
 
-log(summaryRanges([0,1,2,4,5,7]))
+let stringy = "hello"
+
+stringy.slice(stringy.length-2)
+
+log(stringy)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
