@@ -1,6 +1,4 @@
-
-
-
+// linked lists
 
 function reverseList(head){
     let prev= null;
