@@ -12,14 +12,3 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function toAcronym(inp){
-    let arr = inp.split(' '),
-        letters = []
-    for(i = 0; i< arr.length; i++){
-      letters.push(arr[i][0].toUpperCase())
-    }
-    return letters.join('')
-  }
-
-  log(toAcronym("faint undulations comfort kangaroos"))
