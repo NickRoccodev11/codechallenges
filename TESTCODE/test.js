@@ -13,14 +13,26 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function age(x, y){
-    let b = 0
-    
-    for(i=0;i<1000; i++){
-       b = i;
-      if((b+x)/b === y){
-        return b + x
-      }
-     }
+function span(arr, predicate) {
+    let until = [],
+        fail = false,
+        after = [];
+    for (i = 0; i < arr.length; i++) {
+        while (!fail) {
+            if (predicate(arr[i])) {
+                until.push(arr[i])
+            } else {
+                fail = true
+            }
+        }
+        after.push(arr[i])
+    }
+    return [until, after]
+}
+
+let arr = [2,4,6,1,8,10,12]
+let predicate = (x) => {
+    return Math.abs(x) % 2 === 0;
   }
-  log(age(-15,.25))
+
+  log(span(arr,predicate))

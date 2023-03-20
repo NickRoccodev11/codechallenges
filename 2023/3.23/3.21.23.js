@@ -15,3 +15,4 @@ function integrate(coefficient, exponent) {
     coefficient = coefficient/exponent;
     return `${coefficient}x^${exponent}`
   }
+
