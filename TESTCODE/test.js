@@ -10,14 +10,10 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let ar1 = ["a", "b","c"]
-let ar2 = ["d", "e","f"]
+const bandNameGenerator2 = (str) => str[0] === str[str.length-1] ? str[0].toUpperCase() + str.slice(1)+str.slice(1) : "The " + str[0].toUpperCase()+ str.slice(1) 
 
-let str1 = ar1.concat(ar2).join("")
-let str2 = ar1.concat(...ar2).join("")
-log(str1)
-log(str2)
-
+log(bandNameGenerator2("dog"))
+log(bandNameGenerator2("dod"))
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 

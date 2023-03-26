@@ -27,3 +27,8 @@ function bandNameGenerator(str) {
         return "The " + band.join("")
     }
 }
+
+const bandNameGenerator2 = (str) => str[0] === str[str.length-1] ? str[0].toUpperCase() + str.slice(1)+str.slice(1) : "The " + str[0].toUpperCase()+ str.slice(1) 
+
+log(bandNameGenerator2("dog"))
+log(bandNameGenerator2("dod"))
