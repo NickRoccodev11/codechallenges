@@ -10,29 +10,13 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var kookaCounter = function(laughing) {
-    let male = true;
-    let birds = 0
-    
-    for(i=0; i<laughing.length; i++){
-      if(laughing[i]  === "H"){
-        if(!male){
-          male = true;
-          birds++
-        }
-      }else if (laughing[i] === "h"){
-        if(male){
-          male = false 
-          birds++
-        }
-      }
-    }
-    return birds
-  }
+let ar1 = ["a", "b","c"]
+let ar2 = ["d", "e","f"]
 
-
-log(kookaCounter( "HaHaHahahaHaHa"))
-
+let str1 = ar1.concat(ar2).join("")
+let str2 = ar1.concat(...ar2).join("")
+log(str1)
+log(str2)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
