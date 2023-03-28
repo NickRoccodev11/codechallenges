@@ -10,41 +10,30 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/**
- * @param {string} s
- * @param {string} t
- * @return {boolean}
- */
-var backspaceCompare = function(s, t) {
-    let textS = []
-    let textT = []
-
-    for(var i = 0; i < s.length; i++){
-        if(s[i] === "#" && textS.length > 0 ){
-            textS.pop()
-        }else if (s[i] !== "#" ){
-            textS.push(s[i])
+var kookaCounter = function(laughing) {
+    let male = true;
+    let birds = 0
+    
+    for(i=0; i<laughing.length; i++){
+      if(laughing[i]  === "H"){
+        if(!male){
+          male = true;
+          birds++
         }
+      }else if (laughing[i] === "h"){
+        if(male){
+          male = false 
+          birds++
+        }
+      }
     }
-    for(var i = 0; i < t.length; i++){
-        if(t[i] === "#" && textT.length > 0 ){
-            textT.pop()
-            log(`popped: textT = ${textT}`)
-        }
-        if (t[i] !== "#" ){
-            log(`i= ${i} letter: ${t[i]}`)
-            textT.push(t[i])
-            log(` post push: ${textT} i= ${i}`)
-        }
-    }
-// log(textS)
-log(textT)
-return textS.join("") === textT.join("")
+    return birds
+  }
 
-};
 
-log(backspaceCompare("rmp","rmu#p"))
+log(kookaCounter( "HaHaHahahaHaHa"))
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
 
