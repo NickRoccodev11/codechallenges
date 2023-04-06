@@ -13,3 +13,14 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function age(x, y){
+    let b = 0
+    
+    for(i=0;i<1000; i++){
+       b = i;
+      if((b+x)/b === y){
+        return b + x
+      }
+     }
+  }
+  log(age(-15,.25))
