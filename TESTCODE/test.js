@@ -14,21 +14,24 @@ const log = console.log;
 
 
 
+function remove(string) {
 
+    let finalString = []
+    let arr = string.split(" ")
 
-function shortenToDate(longDate) {
-    let formatted = longDate.split(" ")
- )
-    formatted.pop()
-   
-    formatted = formatted.join(" ")
-    
-    formatted= formatted.slice(0, formatted.length-1)
-    return formatted
-  }
+    for (i = 0; i < arr.length; i++) {
+        if (!arr[i].includes("!")) {
+            finalString.push(arr[i])
+        } else {
+            if (arr[i].indexOf("!") !== arr[i].lastIndexOf("!")) {
+                finalString.push(arr[i])
+            }
+        }
+    }
+    return finalString.join(" ");
+}
 
-log(shortenToDate("Monday, April 30th, 10pm"))
-
+log(remove("Hi! Hi!! !Hi!"))
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
