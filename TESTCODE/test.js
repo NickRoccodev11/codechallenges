@@ -12,18 +12,15 @@ const log = console.log;
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // const mostLikely = (prob1,prob2) => (parseInt(prob1[0]) / parseInt(prob1[2]) ) > (parseInt(prob2[0])  / parseInt(prob2[2]) )
-function mostLikely(prob1, prob2) {
-    let arr1 = prob1.split(":"),
-        arr2 = prob2.split(":"),
-        frac1 = Number(arr1[0] / arr1[1]),
-        frac2 = Number(arr2[0] / arr2[1])
-        log(frac1)
-        log(frac2)
-    return frac1 > frac2
 
-}
 
-log(mostLikely("1:3", "1:2"))
+const duplicates = arr => {
+    let filt = arr.filter((e,i,a)=> a.indexOf(e) !== a.lastIndexOf(e))
+    let filtSet = new Set(filt);
+    return [filtSet]
+   }
+
+log(duplicates([1,2,3,4,5,3]))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
