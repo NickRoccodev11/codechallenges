@@ -64,3 +64,26 @@ const duplicates2 = arr => {
 //problem with this try: verifying strings mixed with nums causes issues when using a hashmap. 
 //zero equates to false. I had to make special clauses for these cases, which meant doing a loop inside a loop again,
 // this may be technically faster in genral, but worst case scenario is same as first try
+
+const duplicates3 = arr => {
+    const map = {};
+    const duplicatesArr = [];
+  
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      const key = (typeof element === 'string') ? `s_${element}` : `i_${element}`;
+  
+      if (map[key]) {
+        if (!duplicatesArr.includes(element)) {
+          duplicatesArr.push(element);
+        }
+      } else {
+        map[key] = true;
+      }
+    }
+  
+    return duplicatesArr;
+  }
+
+  // in this answer, we've eliminated the need for a separate string array by prefixing the keys with "s"
+  // or "i" to determine data type
