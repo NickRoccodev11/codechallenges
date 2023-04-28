@@ -21,3 +21,46 @@ const duplicates = arr => {
     return answer
 }
 
+// can we improve upon this?
+// we are doing an includes method inside of a for loop (nested iteration)
+//second try
+
+const duplicates2 = arr => {
+    let map = {},
+        final = [],
+        strings = [],
+        zero = false;
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].toString() === arr[i]) {
+            if (strings.includes(arr[i])) {
+                if (!final.includes(arr[i])) {
+                    final.push(arr[i])
+                    continue;
+                }
+            } else {
+                strings.push(arr[i])
+                continue;
+            }
+        } else if (arr[i] === 0) {
+            if (!zero) {
+                zero = true
+                continue;
+            } else {
+                final.push(0)
+                continue;
+            }
+        }
+ if (!map[arr[i]]) {
+            map[arr[i]] = arr[i]
+        } else {
+            if (map[arr[i]] === arr[i] && !final.includes(arr[i])) {
+                final.push(arr[i])
+            }
+        }
+    }
+    return final
+}
+
+//problem with this try: verifying strings mixed with nums causes issues when using a hashmap. 
+//zero equates to false. I had to make special clauses for these cases, which meant doing a loop inside a loop again,
+// this may be technically faster in genral, but worst case scenario is same as first try
