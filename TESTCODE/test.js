@@ -11,27 +11,10 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let old = new Date(2020, 1, 1)
+let newer = new Date(2020, 2, 1)
 
-
-
-function remove(string) {
-
-    let finalString = []
-    let arr = string.split(" ")
-
-    for (i = 0; i < arr.length; i++) {
-        if (!arr[i].includes("!")) {
-            finalString.push(arr[i])
-        } else {
-            if (arr[i].indexOf("!") !== arr[i].lastIndexOf("!")) {
-                finalString.push(arr[i])
-            }
-        }
-    }
-    return finalString.join(" ");
-}
-
-log(remove("Hi! Hi!! !Hi!"))
+log(newer + old)
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
