@@ -15,7 +15,7 @@
 
 
 function racePodium(blocks) {
-    let podium = [2, 3, 1];  //  2/4/1  // 3/4/1
+    let podium = [2, 3, 1];  
     blocks -= 6;
     while (blocks > 0) {
         if (podium[1] - podium[0] > 1) {
