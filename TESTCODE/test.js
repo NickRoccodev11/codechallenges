@@ -11,35 +11,42 @@ const log = console.log;
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function makeValley(arr) {
 
+    let sorted = arr.sort((a, b) => a - b),
+        left = [],
+        right = [],
+        bottom = false;
 
-
-function compose(s1, s2) {
-    let arr1 = s1.split("\n"),
-        arr2 = s2.split("\n").reverse(),
-        temp = '',
-        newStr = []
-// log(arr1)
-// log(arr2)
-    for (var i = 0; i < arr1.length; i++) {
-      log("round", i)
-        temp = arr1[i].slice(0, i + 1) + arr2[i].slice(0)
-        temp = temp.slice(0,arr1.length+1)
-        log(temp)
-        newStr.push(temp)
+    if (arr.length % 2 !== 0) {
+         bottom = sorted.shift()
+        log("bottom made")
     }
-
-    return newStr.join("\n")
-
+    for (i = 0; i < sorted.length; i++) {
+        if (i % 2 === 0) {
+            right.push(arr[i])
+            log(`i:${i} right: ${right} `)
+        } else {
+            left.push(arr[i])
+            log(`i:${i} leftt: ${left} `)
+        }
+    }
+    if (bottom) {
+      
+       left = left.reverse()
+       left.push(bottom)
+       log(left)
+        return left.concat(right)
+    } else {
+        return left.reverse().concat(right)
+    }
 }
 
-log(compose("byGt\nhTts\nRTFF\nCnnI", "jIRl\nViBu\nrWOb\nNkTB"))
+[]
 
 
-let str = "doggy"
-str.length = 3
+log(makeValley([17, 15, 8, 7, 4, 1, 4, 5, 7, 14, 17]))
 
-log(str)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
