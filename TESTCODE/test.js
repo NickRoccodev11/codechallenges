@@ -10,28 +10,13 @@ const log = console.log;
 
 // Pseudocode - talk about what you want to do HIGH LEVEL. then write out each step and look for possible snafus
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-var twoSum = function (nums, target) {
-let map= {};
-for(i=0;i<nums.length; i++){
-    map[i] = nums[i]
-}
-for(idx in map){
-    if(nums.includes(target - map[idx] ) ){
-      let idx1 = parseInt(idx)
-      let idx2= nums.indexOf(target-map[idx])  
-      if(idx1!== idx2){
-        return [idx1, idx2]
-      }
-    }
-}
 
-};
-log(twoSum([3, 4, 5, 3], 6))
+
+let arr = [1,2,3,4]
+
+log(arr.push(arr.shift()))
+
+log(arr)
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // To calculate Big O, there are five steps you should follow:
