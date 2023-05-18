@@ -12,3 +12,8 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let phrase = "   fly me   to   the moon  "
+
+let arr = phrase.split(" ")
+log(arr)
