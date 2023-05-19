@@ -13,7 +13,25 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let phrase = "   fly me   to   the moon  "
+const permutations = arr => {
+    const result = [];
+  
+    const generatePermutations = (current, remaining) => {
+      if (remaining.length === 0) {
+        result.push(current);
+        return;
+      }
+  
+      for (let i = 0; i < remaining.length; i++) {
+        const updatedCurrent = current.concat(remaining[i]);
+        const updatedRemaining = remaining.slice(0, i).concat(remaining.slice(i + 1));
+        generatePermutations(updatedCurrent, updatedRemaining);
+      }
+    };
+  
+    generatePermutations([], arr);
+    return result;
+  };
+  
 
-let arr = phrase.split(" ")
-log(arr)
+  log(permutations([1,2,3]))
