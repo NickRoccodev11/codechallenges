@@ -65,4 +65,4 @@ function turnsOnRoad(x, y) {
   }
   return turns
 }
-log(turnsOnRoad(0,1))
+log(turnsOnRoad(10,10))
