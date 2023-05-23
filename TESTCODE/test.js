@@ -12,26 +12,37 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function turnsOnRoad(x, y) {
+  let direction = "r";
+  let currentX = 0, currentY = 0
+  let add = 1, turns = 0
+  while (currentX !== x || currentY !== y) {
+    if (direction === "r") {
+      currentX += add
+      direction = "u"
+      turns++
+      log(`turn # ${turns} coords: [${currentX},${currentY}] direction is now ${direction}`)
+    } else if (direction === "u") {
+      currentY += add
+      direction = "l"
+      add++
+      turns++
+      log(`turn # ${turns} coords: [${currentX},${currentY}] direction is now ${direction}`)
+    } else if (direction === "l") {
+      currentX -= add
+      direction = "d"
+      turns++
+      log(`turn # ${turns} coords: [${currentX},${currentY}]direction is now ${direction}`)
+    } else if (direction === "d") {
+      currentY -= add
+      direction = "r"
+      add++
+      turns++
+      log(`turn # ${turns} coords: [${currentX},${currentY}]direction is now ${direction}`)
+    }
 
-const permutations = arr => {
-    const result = [];
-  
-    const generatePermutations = (current, remaining) => {
-      if (remaining.length === 0) {
-        result.push(current);
-        return;
-      }
-  
-      for (let i = 0; i < remaining.length; i++) {
-        const updatedCurrent = current.concat(remaining[i]);
-        const updatedRemaining = remaining.slice(0, i).concat(remaining.slice(i + 1));
-        generatePermutations(updatedCurrent, updatedRemaining);
-      }
-    };
-  
-    generatePermutations([], arr);
-    return result;
-  };
-  
 
-  log(permutations([1,2,3]))
+  }
+  return turns
+}
+log(turnsOnRoad(12,-3))

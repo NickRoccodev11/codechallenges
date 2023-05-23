@@ -32,3 +32,4 @@ var permute = function(nums) {
     generatePermutations([], nums);
     return result;
   };
+  [1,3,4]
