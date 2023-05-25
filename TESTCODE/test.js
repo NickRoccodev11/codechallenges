@@ -12,57 +12,22 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function turnsOnRoad(x, y) {
-  let direction = "r";
-  let currentX = 0, currentY = 0
-  let add = 1, turns = 0
-  while (turns < 1000000) {
-    if (direction === "r") {
-      for(i=0; i< add; i++){
-          currentX += 1
-          if (currentX === x && currentY === y){
-              return turns
-          }
-      }
-      direction = "u"
-      turns++
-      // log(`turn # ${turns} coords: [${currentX},${currentY}] direction is now ${direction}`)
-    } else if (direction === "u") {
-      for(i=0; i< add; i++){
-          currentY += 1
-          if (currentX === x && currentY === y){
-              return turns
-          }
-      }
-      direction = "l"
-      add++
-      turns++
-      // log(`turn # ${turns} coords: [${currentX},${currentY}] direction is now ${direction}`)
-    } else if (direction === "l") {
-      for(i=0; i< add; i++){
-          currentX -= 1
-          if (currentX === x && currentY === y){
-              return turns
-          }
-      }
-      direction = "d"
-      turns++
-      // log(`turn # ${turns} coords: [${currentX},${currentY}]direction is now ${direction}`)
-    } else if (direction === "d") {
-      for(i=0; i< add; i++){
-          currentY -= 1
-          if (currentX === x && currentY === y){
-              return turns
-          }
-      }
-      direction = "r"
-      add++
-      turns++
-      // log(`turn # ${turns} coords: [${currentX},${currentY}]direction is now ${direction}`)
-    }
-
-
+function makeLatinSquare(n) {
+  let ls = [], line = [];
+  for(i=1; i<=n; i++){
+    line.push(i)
   }
-  return turns
-}
-log(turnsOnRoad(10,10))
+
+    ls.push(line)
+    
+    for(i=1; i < n; i++ ){
+      let line = []
+      for(j=1; i<=n; i++){
+        line.push(i)
+      }
+      ls.push(line)
+    }
+    return ls;
+  }
+
+  log(makeLatinSquare(4))
