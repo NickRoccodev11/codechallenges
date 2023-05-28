@@ -12,15 +12,22 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const stringy = (size) => {
-  let str = "1"
-  for(i=0; i < size-1; i++){
-    if(str[str.length-1] === "1"){
-      str += "0"
-      }else{
-        str += "1"
-      }
-  }
-  return str
+
+
+console.log("starting over")
+let arr1 = [1,2,3,4,5,6,7,8]
+console.log(arr1.indexOf(2))
+
+let Nick = {
+  isAwesome : true,
+  age: "youngEnough",
+  willGetJob: true
 }
-console.log(stringy(10))
+console.log(Nick.age)
+
+console.log(arr1[3])
+function Adder(num, another){
+  return num + another
+}
+
+console.log(Adder(3                                                                                                                    ,3))
