@@ -14,20 +14,40 @@ const log = console.log;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-console.log("starting over")
-let arr1 = [1,2,3,4,5,6,7,8]
-console.log(arr1.indexOf(2))
+//split string into a n array
+//check if all/each val is a num. if not return 1
+//sort the vals
+//if we reach a val that is not in order, retunr that missing val
+//to compare, start a counter at 1 and increment it at the end of each loop iteration
+// if we reach the end return 0
 
-let Nick = {
-  isAwesome : true,
-  age: "youngEnough",
-  willGetJob: true
+function findMissingNumber(sequence) {
+  if (sequence.length === 0){
+    return 0
+  }
+  let numArr = sequence.split(" ")
+  if (numArr.length === 0){
+    return 0
+  }
+  let compare = 1
+  for (var i = 0; i < numArr.length; i++) {
+    numArr[i] = Number(numArr[i])
+    if (isNaN(numArr[i])) {
+      return 1
+    }
+  }
+  numArr.sort((a, b) => (a - b))
+
+  for (var j = 0; j < numArr.length; j++) {
+    if (numArr[j] === compare) {
+      compare++;
+    } else {
+      return compare
+    }
+  }
+  return 0
 }
-console.log(Nick.age)
 
-console.log(arr1[3])
-function Adder(num, another){
-  return num + another
-}
-
-console.log(Adder(3                                                                                                                    ,3))
+console.log(findMissingNumber("1 4 2 3 7 rr"), "1")
+console.log(findMissingNumber("1 4 2 3 7"), "5")
+console.log(findMissingNumber("1 4 2 3"), "0")
