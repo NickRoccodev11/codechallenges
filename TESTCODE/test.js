@@ -12,42 +12,16 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// if its even, you are going to start chopping at length/2 -1 
 
 
-//split string into a n array
-//check if all/each val is a num. if not return 1
-//sort the vals
-//if we reach a val that is not in order, retunr that missing val
-//to compare, start a counter at 1 and increment it at the end of each loop iteration
-// if we reach the end return 0
 
-function findMissingNumber(sequence) {
-  if (sequence.length === 0){
-    return 0
+function getMiddle(s){
+  if(s.length % 2 === 0){
+  return s.slice(s.length/2-1, s.length/2+1)
+  }else{
+    return s[Math.floor(s.length/2)]
   }
-  let numArr = sequence.split(" ")
-  if (numArr.length === 0){
-    return 0
-  }
-  let compare = 1
-  for (var i = 0; i < numArr.length; i++) {
-    numArr[i] = Number(numArr[i])
-    if (isNaN(numArr[i])) {
-      return 1
-    }
-  }
-  numArr.sort((a, b) => (a - b))
-
-  for (var j = 0; j < numArr.length; j++) {
-    if (numArr[j] === compare) {
-      compare++;
-    } else {
-      return compare
-    }
-  }
-  return 0
 }
-
-console.log(findMissingNumber("1 4 2 3 7 rr"), "1")
-console.log(findMissingNumber("1 4 2 3 7"), "5")
-console.log(findMissingNumber("1 4 2 3"), "0")
+console.log(getMiddle("happy"))
+console.log(getMiddle("happys"))
