@@ -12,12 +12,28 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// if its even, you are going to start chopping at length/2 -1 
 
+//[1,2,2,3],[5,3,2,2],[7,3,2,2]
 
+// determine what the common elements are:
+// it can be the same element if it appears twice in all arrays
 
-function getASCII(c){
-  return c.charCodeAt()
+function common(a, b, c) {
+  let map = {}
+  for (const nums of a) {
+    if (!map[nums]) {
+      if (b.includes(nums) && c.includes(nums)) {
+        map[nums] = 1;
+        b.splice(b.indexOf(nums), 1)
+        c.splice(c.indexOf(nums), 1)
+      }
+    } else {
+      if (b.includes(nums) && c.includes(nums)){
+        map[nums]++
+      }
+    }
   }
+  console.log(map)
+}
 
-  console.log(getASCII("b"))
+console.log(common([1, 2, 2, 3], [5, 3, 2, 2], [7, 3, 2, 2]))
