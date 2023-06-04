@@ -19,15 +19,20 @@ function common(a, b, c) {
           c.splice(c.indexOf(nums), 1)
         }
       } else {
-        if (b.includes(nums) && c.includes(nums)){
+        if (b.includes(nums) && c.includes(nums)) {
           map[nums]++
         }
       }
     }
     let objKeys = Object.keys(map)
-    console.log(objKeys)
+    let objvals = Object.values(map)
+    let sum = 0
+    for (i = 0; i < objKeys.length; i++) {
+      sum += Number(objKeys[i]) * objvals[i]
+    }
+    return sum
   }
   
   console.log(common([1, 2, 2, 3], [5, 3, 2, 2], [7, 3, 2, 2]))
-
-  // day 1: we have a map of common nums (key) and their frequency (value)
+  
+  // day 2: this particular solution does not account for some cases. It may be the mutating of the original arrays causing it. 
