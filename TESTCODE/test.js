@@ -13,30 +13,36 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function common(a, b, c) {
-  let map = {}
-  for (const nums of a) {
-    if (!map[nums]) {
-      if (b.includes(nums) && c.includes(nums)) {
-        map[nums] = 1;
-        b.splice(b.indexOf(nums), 1)
-        c.splice(c.indexOf(nums), 1)
-      }
-    } else {
-      if (b.includes(nums) && c.includes(nums)) {
-        map[nums]++
-      }
-    }
+// The new football league season is coming and the Football Association need some help resetting the league standings. Normally the initial league standing is done in alphabetical order (from A to Z) but this year the FA have decided to freshen it up.
+
+// It has been decided that team who finished first last season will begin the next season in first place. Regardless of what letter their club begins with. e.g. if Manchester City were in first place last year, they will begin the season in position one. All other teams should be in alphabetical order.
+
+// The teams will be fed in as an object ({}). The key will be will be their position from last season and the value is the club's name e.g. Arsenal.
+
+// The output should be an object ({}) with the key as the club's starting position for the new season and the value should be club's name e.g. Arsenal.
+
+// For example. If in the previous season the standings were:
+
+// 1:'Leeds United' 2:'Liverpool' 3:'Manchester City' 4:'Coventry' 5:'Arsenal'
+
+// Then the new season standings should
+
+// 1:'Leeds United' (first last season) 2:'Arsenal' (alphabetical) 3:'Coventry' (alphabetical) 4:'Liverpool' (alphabetical) 5:'Manchester City' (alphabetical)
+
+function premierLeagueStandings(teamStandings) {
+  let teams = Object.values(teamStandings)
+  teams.shift()
+  teams.sort()
+  // console.log(teams)
+  let newStandings = {}
+  newStandings[1] = teamStandings[1]
+  let counter = 2
+  for(team of teams){
+    newStandings[counter] = team;
+    counter++
   }
-  let objKeys = Object.keys(map)
-  let objvals = Object.values(map)
-  let sum = 0
-  for (i = 0; i < objKeys.length; i++) {
-    sum += Number(objKeys[i]) * objvals[i]
-  }
-  return sum
+  return newStandings
 }
 
-console.log(common([1, 2, 2, 3], [5, 3, 2, 2], [7, 3, 2, 2]))
 
-// day 2: this particular solution does not account for some cases. It may be the mutating of the original arrays causing it. 
+console.log(premierLeagueStandings({1:'Leeds United', 2:'Liverpool', 3:'Manchester City', 4:'Coventry', 5:'Arsenal'}))
