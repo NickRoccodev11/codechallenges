@@ -13,36 +13,33 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// The new football league season is coming and the Football Association need some help resetting the league standings. Normally the initial league standing is done in alphabetical order (from A to Z) but this year the FA have decided to freshen it up.
+// Constraints:
 
-// It has been decided that team who finished first last season will begin the next season in first place. Regardless of what letter their club begins with. e.g. if Manchester City were in first place last year, they will begin the season in position one. All other teams should be in alphabetical order.
+// 1 <= nums.length <= 1000
+// 1 <= sum(nums[i].length) <= 1000
+// 1 <= nums[i][j] <= 1000
+// All the values of nums[i] are unique.
 
-// The teams will be fed in as an object ({}). The key will be will be their position from last season and the value is the club's name e.g. Arsenal.
+//copy the first inner array values
+//compare them to the second, for any val not included in 2nd arr, splice it out
+//continue for all arrays
+// sort the remaining vals 
 
-// The output should be an object ({}) with the key as the club's starting position for the new season and the value should be club's name e.g. Arsenal.
-
-// For example. If in the previous season the standings were:
-
-// 1:'Leeds United' 2:'Liverpool' 3:'Manchester City' 4:'Coventry' 5:'Arsenal'
-
-// Then the new season standings should
-
-// 1:'Leeds United' (first last season) 2:'Arsenal' (alphabetical) 3:'Coventry' (alphabetical) 4:'Liverpool' (alphabetical) 5:'Manchester City' (alphabetical)
-
-function premierLeagueStandings(teamStandings) {
-  let teams = Object.values(teamStandings)
-  teams.shift()
-  teams.sort()
-  // console.log(teams)
-  let newStandings = {}
-  newStandings[1] = teamStandings[1]
-  let counter = 2
-  for(team of teams){
-    newStandings[counter] = team;
-    counter++
+var intersection = function (nums) {
+  let comp = [...nums[0]]
+  for (i = 0; i < nums.length; i++) {
+    for (j = 0; j < comp.length; j++) {
+      if (!nums[i].includes(comp[j])) {
+       comp.splice(j, 1);
+       j--;
+        // console.log(`i:${i} j:${j} comp: ${comp}`)
+        if (comp.length === 0) {
+          return []
+        }
+      }
+    }
   }
-  return newStandings
-}
+  return comp.sort((a, b) => a - b)
+};
 
-
-console.log(premierLeagueStandings({1:'Leeds United', 2:'Liverpool', 3:'Manchester City', 4:'Coventry', 5:'Arsenal'}))
+console.log(intersection([[3, 1, 2, 4, 5], [1, 2, 3, 4], [3, 4, 5, 6]]))
