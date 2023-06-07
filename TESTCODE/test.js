@@ -13,33 +13,17 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Constraints:
 
-// 1 <= nums.length <= 1000
-// 1 <= sum(nums[i].length) <= 1000
-// 1 <= nums[i][j] <= 1000
-// All the values of nums[i] are unique.
+//determine length of string and if its greater than k
+//
 
-//copy the first inner array values
-//compare them to the second, for any val not included in 2nd arr, splice it out
-//continue for all arrays
-// sort the remaining vals 
 
-var intersection = function (nums) {
-  let comp = [...nums[0]]
-  for (i = 0; i < nums.length; i++) {
-    for (j = 0; j < comp.length; j++) {
-      if (!nums[i].includes(comp[j])) {
-       comp.splice(j, 1);
-       j--;
-        // console.log(`i:${i} j:${j} comp: ${comp}`)
-        if (comp.length === 0) {
-          return []
-        }
-      }
+var digitSum = function(s, k) {
+  let arr =[]
+    for(i=0; i<s.length; i+=k){
+      arr.push(s.slice(i,i+k))
     }
-  }
-  return comp.sort((a, b) => a - b)
+    console.log(arr)
 };
 
-console.log(intersection([[3, 1, 2, 4, 5], [1, 2, 3, 4], [3, 4, 5, 6]]))
+console.log(digitSum("11111222223", 3))
