@@ -14,14 +14,17 @@ const log = console.log;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//determine length of string and if its greater than k
-//push sliced chunks into new array
-// convert to numbers, sum them, and then join it all back to a string to check for length
+// if the first instance has is succeeded by a larger number, remove the first.
+// if you make it to the end and you have not removed any numbers, remove the last instance
+// iterate through string looking for digit
+//if you get a match, compare it to the next digit using parseInt() 
+//if (digit is greater than nextnum) continue
+// else if (digit is smaller than nextnum) slice string up until digit, 
+// concatenate the rest after digit onto a new var
+//return var
 
-function VarNamer(){
-  var namer = "nicholas"
-  return namer
-}
 
-VarNamer()
-console.log(namer)
+
+var removeDigit = function(number, digit) {
+    
+};
