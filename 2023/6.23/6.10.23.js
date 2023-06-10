@@ -12,3 +12,23 @@
 // else if (digit is smaller than nextnum) slice string up until digit, 
 // concatenate the rest after digit onto a new var
 //return var
+ 
+
+
+var removeDigit = function (number, digit) {
+    let newNum = ""
+    for (i = 0; i < number.length; i++) {
+      if (number[i] === digit) {
+        if (Number(number[i + 1]) > Number(digit)) {
+          newNum = number.slice(0, number[i])
+          newNum += number.slice(number[i + 1])
+          return newNum
+        }
+      }
+    }
+    newNum = number.slice(0, number.lastIndexof(digit))
+    newNum += number.slice(number.lastIndexof(digit + 1))
+    return newNum
+  };
+  
+  // DAY 2: THERE ARE SOME BUGS!! 
