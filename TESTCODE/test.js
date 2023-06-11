@@ -30,15 +30,19 @@ var removeDigit = function (number, digit) {
   for (i = 0; i < number.length; i++) {
     if (number[i] === digit) {
       if (Number(number[i + 1]) > Number(digit)) {
-        newNum = number.slice(0, number[i])
-        newNum += number.slice(number[i + 1])
-        return newNum
+        if (number.indexOf(number[i]) === 0) {
+          return number.slice(1)
+        } else {
+          newNum = number.slice(0, number[i])
+          newNum += number.slice(number[i + 1])
+          return newNum
+        }
       }
     }
   }
-  newNum = number.slice(0, number.lastIndexof(digit))
-  newNum += number.slice(number.lastIndexof(digit + 1))
+  newNum = number.slice(0, number.lastIndexOf(digit))
+  newNum += number.slice(number.lastIndexOf(digit) + 1)
   return newNum
 };
 
-// DAY 2: THERE ARE SOME BUGS!! 
+console.log(removeDigit("1231", "1"))
