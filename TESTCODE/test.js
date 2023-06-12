@@ -33,16 +33,18 @@ var removeDigit = function (number, digit) {
         if (number.indexOf(number[i]) === 0) {
           return number.slice(1)
         } else {
-          newNum = number.slice(0, number[i])
-          newNum += number.slice(number[i + 1])
+          newNum = number.slice(0, i)
+          newNum += number.slice(i+1)
           return newNum
         }
       }
     }
   }
   newNum = number.slice(0, number.lastIndexOf(digit))
+  // console.log(newNum)
   newNum += number.slice(number.lastIndexOf(digit) + 1)
+  // console.log(newNum)
   return newNum
 };
 
-console.log(removeDigit("1231", "1"))
+console.log(removeDigit("133235", "3"))
