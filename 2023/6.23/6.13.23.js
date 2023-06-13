@@ -36,3 +36,5 @@ var removeDigit = function (number, digit) {
   
   console.log(removeDigit("541596", "5"))
   
+  //bugs: i was refering to the number[i] in my slice rather than just "i" 
+//   DONT CONFUSE ELEMENTS WITH THEIR INDECES 
