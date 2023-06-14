@@ -13,38 +13,39 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// iterate over num, checking for equality with the next digit ahead
+//if i===i+1 then check if i+1 === i+2
+//if all three match,...
+// first check if theyre "999" you can stop if they are
+//  otherwise create a variable that contains them as a number
+//push the number var to a possibles array
+//run Math.max or sort the array, whichever works 
 
-// if the first instance  is succeeded by a larger number, remove the first.
-// if you make it to the end and you have not removed any numbers, remove the last instance
-// iterate through string looking for digit
-//if you get a match, compare it to the next digit using parseInt() 
-//if (digit is greater than nextnum) continue
-// else if (digit is smaller than nextnum) slice string up until digit, 
-// concatenate the rest after digit onto a new var
-//return var
+var largestGoodInteger = function (num) {
+  let possibles = [];
+  let current;
 
-
-
-var removeDigit = function (number, digit) {
-  let newNum = ""
-  for (i = 0; i < number.length; i++) {
-    if (number[i] === digit) {
-      if (Number(number[i + 1]) > Number(digit)) {
-        if (number.indexOf(number[i]) === 0) {
-          return number.slice(1)
-        } else {
-          newNum = number.slice(0, i)
-          newNum += number.slice(i+1)
-          return newNum
-        }
+  for (i = 0; i < num.length; i++) {
+    if (num[i] === num[i + 1] && num[i] === num[i + 2]) {
+      current = num[i] + num[i] + num[i]
+      if (current === "999") {
+        return "999"
+      } else {
+        possibles.push(Number(current))
+        current = ""
       }
     }
   }
-  newNum = number.slice(0, number.lastIndexOf(digit))
-  // console.log(newNum)
-  newNum += number.slice(number.lastIndexOf(digit) + 1)
-  // console.log(newNum)
-  return newNum
+
+  if(possibles.length === 0){
+return ""
+  }else if(Math.max(...possibles) === 0){
+    return "000"
+  }else{
+    return Math.max(...possibles).toString()
+  }
 };
 
-console.log(removeDigit("133235", "3"))
+console.log(largestGoodInteger("2300019"))
+console.log(largestGoodInteger("42352338"))
+console.log(largestGoodInteger("6777133339"))
