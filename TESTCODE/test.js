@@ -42,11 +42,12 @@ var divisorSubstrings = function (num, k) {
   for (i = 0; i < sNum.length; i++) {
     curr = Number(sNum.slice(i, i + k))
     if (num % curr === 0 && curr !== 0) {
+      console.log(i, "i")
       kBeauty++
     }
   }
   return kBeauty
 };
 
-console.log(divisorSubstrings(430043, 2))
-console.log(divisorSubstrings(240,2))
+console.log(divisorSubstrings(30003, 3))
+
