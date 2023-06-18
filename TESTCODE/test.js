@@ -35,28 +35,25 @@ const log = console.log;
 // if it passes, increment a "K-beauty" variable
 // return kbeauty
 
-var digitCount = function (num) {
-  let digiMap = {}
-  for (digit of num) {
-      if (!digiMap[digit]) {
-          digiMap[digit] = 1
-      } else {
-          digiMap[digit]++
+var selfDividingNumbers = function (left, right) {
+  let answers = []
+  let num = 0
+  let nStr = ""
+  for (i = left; i <= right; i++) {
+      num = i;
+      nStr = i.toString()
+      if (nStr.includes("0")) {
+          continue;
       }
-  }
-  for (i = 0; i < num.length; i++) {
-      let index = i.toString()
-      if (!digiMap[index]) {
-          if (num[i] != "0") {
-              return false
-          }
-      } else {
-          if (digiMap[index].toString() != num[i]) {
-              return false
+      for (j = 0; j < nStr.length; j++) {
+          if (num % Number(nStr[j]) !== 0) {
+              break;
+          } else if (j === nStr.length - 1) {
+              answers.push(num)
           }
       }
   }
-  return true
+  return answers
 };
 
-console.log(digitCount("030"))
+console.log(selfDividingNumbers(47, 85))
