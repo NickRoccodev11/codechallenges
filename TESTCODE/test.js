@@ -14,46 +14,29 @@ const log = console.log;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// The k-beauty of an integer num is defined as the number of substrings of num when it is read as a string that meet the following conditions:
+// You are given a string array words and a string s, where words[i] and s comprise only of lowercase English letters.
 
-// It has a length of k.
-// It is a divisor of num.
-// Given integers num and k, return the k-beauty of num.
+// Return the number of strings in words that are a prefix of s.
 
-// Note:
+// A prefix of a string is a substring that occurs at the beginning of the string. A substring is a contiguous sequence of characters within a string.
 
-// Leading zeros are allowed.
-// 0 is not a divisor of any value.
-// A substring is a contiguous sequence of characters in a string.
+ 
 
-//  MY PLAN:
+// Example 1:
 
-// save num as a string
-// traverse the string by steps of k
-// with each step, reassign a current variable which acts as divisor
-//test it against num
-// if it passes, increment a "K-beauty" variable
-// return kbeauty
+var countPrefixes = function (words, s) {
+  let answer = 0;
 
-var selfDividingNumbers = function (left, right) {
-  let answers = []
-  let num = 0
-  let nStr = ""
-  for (i = left; i <= right; i++) {
-      num = i;
-      nStr = i.toString()
-      if (nStr.includes("0")) {
-          continue;
-      }
-      for (j = 0; j < nStr.length; j++) {
-          if (num % Number(nStr[j]) !== 0) {
+  for (i = 0; i < words.length; i++) {
+      for (j = 0; j < words[i].length; j++) {
+          if (words[i][j] !== s[j]) {
               break;
-          } else if (j === nStr.length - 1) {
-              answers.push(num)
+          }
+          if (j === words[i].length - 1) {
+              answer++
           }
       }
   }
-  return answers
+  return answer
 };
-
-console.log(selfDividingNumbers(47, 85))
+console.log(countPrefixes(["a", "b", "c", "ab", "bc", "abc"], "abc"))
