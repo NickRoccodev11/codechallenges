@@ -20,23 +20,21 @@ const log = console.log;
 
 // A prefix of a string is a substring that occurs at the beginning of the string. A substring is a contiguous sequence of characters within a string.
 
- 
+
 
 // Example 1:
 
-var countPrefixes = function (words, s) {
-  let answer = 0;
 
-  for (i = 0; i < words.length; i++) {
-      for (j = 0; j < words[i].length; j++) {
-          if (words[i][j] !== s[j]) {
-              break;
-          }
-          if (j === words[i].length - 1) {
-              answer++
-          }
-      }
+var removeDuplicates = function (nums) {
+  for (i = 0, j = 0; j < nums.length; j++) {
+    if (nums[i] !== nums[j]) {
+      i++;
+      nums[i] = nums[j]
+    }
+    if (j === nums.length - 1) {
+      return i + 1
+    }
   }
-  return answer
 };
-console.log(countPrefixes(["a", "b", "c", "ab", "bc", "abc"], "abc"))
+
+console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
