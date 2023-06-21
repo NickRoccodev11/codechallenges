@@ -24,6 +24,7 @@
 // i incriments, updates with j value
 //continue until j reaches end
 // returned val = i+1
+//simplified from previous attempt
 
 
 
