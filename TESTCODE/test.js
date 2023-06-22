@@ -13,21 +13,19 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var findClosestNumber = function (nums) {
-  let currClosest = Infinity;
-
-  for (i = 0; i < nums.length; i++) {
-    if (Math.abs(nums[i]) === Math.abs(currClosest)) {
-      if (nums[i] > currClosest) {
-        currClosest = nums[i];
-       // log(`current:${currClosest} i: ${i} nums[i] ${nums[i]}`)
-      }
-    } else if (Math.abs(nums[i]) < Math.abs(currClosest)) {
-      currClosest = nums[i];
-     // log(`current:${currClosest} i: ${i} nums[i] ${nums[i]}`)
-    }
+function strongEnough(earthquake, age) {
+  //building strength:
+  let currStrength = 1000
+  for (i = 0; i < age; i++) {
+    let year = (1 / 100) * currStrength;
+    currStrength -= year
   }
-  return currClosest;
-};
-// log(findClosestNumber([2,-1,1]))
-log(findClosestNumber([-10, -12, -54, -12, -544, -10000]))
+  // EarthQuake strength
+  let result = earthquake.reduce((total, innerArray) => {
+    let sum = innerArray.reduce((innerTotal, num) => innerTotal + num, 0)
+    return total * sum
+  }, 1)
+  return result <= currStrength ? "Safe!" : "Needs Reinforcement!"
+}
+
+log(strongEnough([[5, 8, 7], [3, 3, 1], [4, 1, 2]], 3))
