@@ -49,3 +49,5 @@ var checkXMatrix = function (grid) {
     }
     return true;
 };
+
+// Runtime beats 83% :)  Memory beats 12% :/
