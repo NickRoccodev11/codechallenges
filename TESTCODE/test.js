@@ -13,19 +13,13 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function strongEnough(earthquake, age) {
-  //building strength:
-  let currStrength = 1000
-  for (i = 0; i < age; i++) {
-    let year = (1 / 100) * currStrength;
-    currStrength -= year
+var percentageLetter = function(s, letter) {
+  let total = s.length;
+  let letterAmount = 0; 
+  for(i=0; i<s.length; i++){
+      if(s[i] === letter){
+          letterAmount++;
+      }
+      return Math.floor(letterAmount/total*100)
   }
-  // EarthQuake strength
-  let result = earthquake.reduce((total, innerArray) => {
-    let sum = innerArray.reduce((innerTotal, num) => innerTotal + num, 0)
-    return total * sum
-  }, 1)
-  return result <= currStrength ? "Safe!" : "Needs Reinforcement!"
 }
-
-log(strongEnough([[5, 8, 7], [3, 3, 1], [4, 1, 2]], 3))
