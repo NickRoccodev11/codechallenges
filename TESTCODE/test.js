@@ -13,35 +13,6 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var strongPasswordCheckerII = function (password) {
-  if (password.length < 8) {
-    return false
-  }
-  let lowerCase = false;
-  let upperCase = false;
-  let oneDigit = false;
-  let specialChar = false;
-  let specialList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+"]
-  for (i = 0; i < password.length; i++) {
-    if (i !== password.length - 1 && password[i] === password[i + 1]) {
-      log("failed here on", i, password[i], password[i + 1])
-      return false
-    }
-    if (password[i].toLowerCase() === password[i] && password[i].toUpperCase() !== password[i]) {
-      lowerCase = true
-    } else if (password[i].toLowerCase() !== password[i] && password[i].toUpperCase() === password[i]) {
-      upperCase = true
-    } else if (specialList.includes(password[i])) {
-      specialChar = true
-    } else if (!specialList.includes(password[i]) && password[i] === password[i].toUpperCase() && password[i] === password[i].toLowerCase()) {
-      oneDigit = true
-    }
-  }
-  if (lowerCase && upperCase && oneDigit && specialChar) {
-    return true
-  } else {
-    return false
-  }
-};
-
-console.log(strongPasswordCheckerII("IloveLe3tcode!"))
+let a = "a"
+//String.fromCharCode(charCodeA);
+log(a.charCodeAt(0))
