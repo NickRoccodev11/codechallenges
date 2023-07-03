@@ -1,21 +1,17 @@
 let log = console.log
 /////////////////////////////////////////////////////////////////////////
 
-function mostFrequentItemCount(collection) {
-    if (collection.length === 0) {
-        return 0
-    }
-    let map = {}
-    for (num of collection) {
-        if (!map[num]) {
-            map[num] = 1
+
+function neutralise(s1, s2) {
+    let final = ""
+    for (i = 0; i < s1.length; i++) {
+        if (s1[i] !== s2[i]) {
+            final = final.concat("0")
+            log(final)
         } else {
-            map[num]++
+            final = final.concat(s1[i])
+            log(final)
         }
     }
-    console.log(map)
-    return Math.max(...Object.values(map))
+    return final;
 }
-
-console.log(mostFrequentItemCount([3, -1, -1]))
-console.log(mostFrequentItemCount([3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]))
