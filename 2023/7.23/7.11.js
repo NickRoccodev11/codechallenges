@@ -15,3 +15,5 @@ function colourAssociation(array){
     }
   return newArr
   }
+
+  //remember, you have to declare the object within the loop so that it is Re-initialized. otherwise, you will get a single obj with multiple properties, which is not what we want here
