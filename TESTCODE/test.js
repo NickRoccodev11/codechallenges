@@ -1,26 +1,22 @@
 let log = console.log
 /////////////////////////////////////////////////////////////////////////
-
-//MEMOIZATION
-
-let answered = []
-
-function slowThing(a) {
-    if(answered[a]) return answered[a]
-    let x = 0
-    for (i = 0; i < a; i++) {
-        for (j = 0; j < a; j++) {
-            for (h = 0; h < a; h++) {
-                x+= i+j+h
-            }
-        }
+var age = "Wrong Number"
+class Dog{
+    constructor(breed, age){
+        this.breed = breed;
+        this.age = age
     }
-    answered[a] = x
-        return x
+    getBreed(){
+        console.log("breed: " + this.breed)
+    }
+    getAge = () => {
+        console.log("age: " + this.age)
+    }
 }
 
-console.log(slowThing(1000))
-console.log(slowThing(1000))
-console.log(slowThing(1000))
+let dusty = new Dog("chow chow", 4)
 
-//the first log takes a few seconds, while thwe other two happen instantaneously- this is because we've stored the answer in our answer array
+dusty.getBreed(); //breed chowchow
+dusty.getAge();   // age: 4 
+
+// Arrow function binds differently in the context of class
