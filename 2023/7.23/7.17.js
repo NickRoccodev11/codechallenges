@@ -13,3 +13,4 @@ class Ghost{
   }
 let ghosty = new Ghost();
   console.log(ghosty.color)
+  //remember, random gives a float so it must be floored
