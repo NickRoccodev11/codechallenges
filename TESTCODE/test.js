@@ -1,73 +1,35 @@
 let log = console.log
 /////////////////////////////////////////////////////////////////////////
 
-// n=3
-//1,3  /  1 
+function compare(s1, s2) {
+    let val1 = 0
+    let val2 = 0
+    let upper = ""
 
-// n=4
-// 1,2,4 /  d d  
+    for (i = 0; i < s1.length; i++) {
+        if (s1[i].toUpperCase() === s1[i].toLowerCase()) {
+            val1 = 0
+            break;
+        } else {
+            upper = s1[i].toUpperCase();
+            log(upper)
+            val1 += upper.charCodeAt(0)
+            log(val1)
+        }
+    }
+    for (i = 0; i < s2.length; i++) {
+        if (s2[i].toUpperCase() === s2[i].toLowerCase()) {
+            val2 = 0
+            break;
+        } else {
+            upper = s2[i].toUpperCase();
+            log(upper)
+            val2 += upper.charCodeAt(0)
+            log(val2)
+        }
+       
+    }
+    return val1 === val2
+}
 
-//n=5
-//1,2,5 / d 1
-
-// n=6
-// 1,3,6 /  1 d
-
-// n=7
-// 1,3,7 / 1 1
-
-//n=8
-//1,2,4,8 / d d d
-
-//n=9
-//1,2,4,9 / d d 1
-
-//n=10
-//1,2,5,10 / d 1 d
-
-// n=11
-// 1,2,5,11 / d 1 1
-
-// n=12
-// 1,3,6,12 /  1 d d
-
-// n= 13
-// 1, 3, 6, 13 /  1 d 1
-
-// n=14
-// 1,3,7,14 / 1 1 d
-
-// n=15
-// 1,3,7,15 /  1 1 1
-
-
-// n= 16
-// 1,2,4,8,16 / d d d d
-
-// n=17
-//1,2,4,8,17 / d d d 1
-
-// n=18 
-//1,2,4,9,18 / d d 1 d
-
-// n=19
-// 1,2,4,9,19 / d d 1 1
-
-// n=20
-//1,2,5,10,20 /  d 1 d d
-
-// n=21
-// 1,2,5,10,21 / d 1 d 1
-
-// n=22
-// 1,2,5,11,22 / d 1 1 d
-
-//n=23
-//1,2,5,11,23 / d 1 1 1 
-
-// n=24
-// 1,3,6,12,24 / 1 d d d
-
-// n=25
-//1,3,6,12,25 / 1 d d 1
-
+log(compare("AD", "BC"))
