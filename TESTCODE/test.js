@@ -12,22 +12,15 @@ const log = console.log;
 //4 Remove the constants
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function makeLatinSquare(n) {
-  let ls = [], line = [];
-  for(i=1; i<=n; i++){
-    line.push(i)
-  }
-
-    ls.push(line)
-    
-    for(i=1; i < n; i++ ){
-      let line = []
-      for(j=1; i<=n; i++){
-        line.push(i)
+const stringy = (size) => {
+  let str = "1"
+  for(i=0; i < size-1; i++){
+    if(str[str.length-1] === "1"){
+      str += "0"
+      }else{
+        str += "1"
       }
-      ls.push(line)
-    }
-    return ls;
   }
-
-  log(makeLatinSquare(4))
+  return str
+}
+console.log(stringy(10))
