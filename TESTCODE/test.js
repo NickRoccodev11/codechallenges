@@ -35,19 +35,28 @@ const log = console.log;
 // if it passes, increment a "K-beauty" variable
 // return kbeauty
 
-var divisorSubstrings = function (num, k) {
-  let sNum = num.toString();
-  let current
-  let kBeauty = 0
-  for (i = 0; i < sNum.length; i++) {
-    curr = Number(sNum.slice(i, i + k))
-    if (num % curr === 0 && curr !== 0) {
-      console.log(i, "i")
-      kBeauty++
-    }
+var digitCount = function (num) {
+  let digiMap = {}
+  for (digit of num) {
+      if (!digiMap[digit]) {
+          digiMap[digit] = 1
+      } else {
+          digiMap[digit]++
+      }
   }
-  return kBeauty
+  for (i = 0; i < num.length; i++) {
+      let index = i.toString()
+      if (!digiMap[index]) {
+          if (num[i] != "0") {
+              return false
+          }
+      } else {
+          if (digiMap[index].toString() != num[i]) {
+              return false
+          }
+      }
+  }
+  return true
 };
 
-console.log(divisorSubstrings(30003, 3))
-
+console.log(digitCount("030"))
