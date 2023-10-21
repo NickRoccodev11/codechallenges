@@ -25,16 +25,23 @@ const log = console.log;
 // Example 1:
 
 
-var removeDuplicates = function (nums) {
-  for (i = 0, j = 0; j < nums.length; j++) {
-    if (nums[i] !== nums[j]) {
-      i++;
-      nums[i] = nums[j]
-    }
-    if (j === nums.length - 1) {
-      return i + 1
-    }
-  }
-};
 
-console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
+
+function catchSignChange(arr) {
+  if (arr.length <= 1) {
+      return 0
+  }
+  let pos = arr[0] >= 0
+  console.log(pos)
+  let signChange = 0
+  for (i = 1; i <= arr.length; i++) {
+      if (arr[i] < 0 && pos === true ||
+          arr[i] >= 0 && pos === false) {
+          signChange++;
+          pos = !pos
+      }
+  }
+  return signChange
+}
+
+console.log(catchSignChange( [-7,-7,7,0]))
