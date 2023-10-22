@@ -26,22 +26,45 @@ const log = console.log;
 
 
 
+var rearrangeCharacters = function (s, target) {
+  let copies = 0
+  let sMap = {}
+  let visited = []
 
-function catchSignChange(arr) {
-  if (arr.length <= 1) {
-      return 0
-  }
-  let pos = arr[0] >= 0
-  console.log(pos)
-  let signChange = 0
-  for (i = 1; i <= arr.length; i++) {
-      if (arr[i] < 0 && pos === true ||
-          arr[i] >= 0 && pos === false) {
-          signChange++;
-          pos = !pos
+  for (char of s) {
+    if (target.indexOf(char) !== -1) {
+      if (!sMap[char]) {
+        sMap[char] = 1
+      } else {
+        sMap[char]++
       }
+    }
   }
-  return signChange
-}
+  console.log(sMap, "Smap")
+  for (i = 0; i < target.length; i++) {
+    if (!sMap[target[i]]) {
+      return 0
+    } else {
+      if (visited.includes(target[i])) {
+        console.log("reducing sMap")
+        sMap[target[i]]--;
+        console.log(sMap, "Smap")
+      }
+      if (copies === 0) {
+        console.log("copies === 0")
+        copies = sMap[target[i]]
+        visited.push(target[i])
+      } else if (sMap[target[i]] < copies) {
+        console.log("reassigning copies", copies)
+        copies = sMap[target[i]]
+        visited.push(target[i])
+      }
+    }
+  }
+  return copies
+};
 
-console.log(catchSignChange( [-7,-7,7,0]))
+
+console.log(rearrangeCharacters("codecodecodecode","codecode"))
+// console.log(rearrangeCharacters("abbaccaddaeea", "aaaaa"))
+// console.log(rearrangeCharacters("abcba","abc"))

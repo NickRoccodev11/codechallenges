@@ -6,7 +6,6 @@ function catchSignChange(arr) {
         return 0
     }
     let pos = arr[0] >= 0
-    console.log(pos)
     let signChange = 0
     for (i = 1; i <= arr.length; i++) {
         if (arr[i] < 0 && pos === true ||
@@ -16,4 +15,4 @@ function catchSignChange(arr) {
         }
     }
     return signChange
-  }
+}
