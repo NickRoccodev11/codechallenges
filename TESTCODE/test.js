@@ -13,41 +13,21 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// 1  0  0  0  0  0  0  1
-// 0  1  0  0  0  0  1  0
-// 0  0  1  0  0  1  0  0
-// 0  0  0  1  1  0  0  0
-// 0  0  0  1  1  0  0  0
-// 0  0  1  0  0  1  0  0
-// 0  1  0  0  0  0  1  0
-// 1  0  0  0  0  0  0  1
+var findClosestNumber = function (nums) {
+  let currClosest = Infinity;
 
-// to keep track:
-// start= 0
-// finish = grid.length-1
-// loop inside a loop (i, j)
-// as you iterate, if it's not start or finish, it must be zero
-// at the end of each j loop:
-//start++, finish--; 
-
-var checkXMatrix = function (grid) {
-  let start = 0;
-  let end = grid.length - 1;
-
-  for (i = 0; i < grid.length; i++) {
-    for (j = 0; j < grid[i].length; j++) {
-      if (j === start || j === end) {
-        if (grid[i][j] === 0) {
-          return false;
-        }
-      } else {
-        if (grid[i][j] !== 0) {
-          return false;
-        }
+  for (i = 0; i < nums.length; i++) {
+    if (Math.abs(nums[i]) === Math.abs(currClosest)) {
+      if (nums[i] > currClosest) {
+        currClosest = nums[i];
+       // log(`current:${currClosest} i: ${i} nums[i] ${nums[i]}`)
       }
+    } else if (Math.abs(nums[i]) < Math.abs(currClosest)) {
+      currClosest = nums[i];
+     // log(`current:${currClosest} i: ${i} nums[i] ${nums[i]}`)
     }
-    start++;
-    end--;
   }
-  return true;
+  return currClosest;
 };
+// log(findClosestNumber([2,-1,1]))
+log(findClosestNumber([-10, -12, -54, -12, -544, -10000]))
