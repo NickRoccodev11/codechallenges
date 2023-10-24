@@ -13,58 +13,41 @@ const log = console.log;
 //5 Find the highest order term — this will be what we consider the Big O of our algorithm/function
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// 1  0  0  0  0  0  0  1
+// 0  1  0  0  0  0  1  0
+// 0  0  1  0  0  1  0  0
+// 0  0  0  1  1  0  0  0
+// 0  0  0  1  1  0  0  0
+// 0  0  1  0  0  1  0  0
+// 0  1  0  0  0  0  1  0
+// 1  0  0  0  0  0  0  1
 
-// You are given a string array words and a string s, where words[i] and s comprise only of lowercase English letters.
+// to keep track:
+// start= 0
+// finish = grid.length-1
+// loop inside a loop (i, j)
+// as you iterate, if it's not start or finish, it must be zero
+// at the end of each j loop:
+//start++, finish--; 
 
-// Return the number of strings in words that are a prefix of s.
+var checkXMatrix = function (grid) {
+  let start = 0;
+  let end = grid.length - 1;
 
-// A prefix of a string is a substring that occurs at the beginning of the string. A substring is a contiguous sequence of characters within a string.
-
-
-
-// Example 1:
-
-
-
-var rearrangeCharacters = function (s, target) {
-  let copies = 0
-  let sMap = {}
-  let visited = []
-
-  for (char of s) {
-    if (target.indexOf(char) !== -1) {
-      if (!sMap[char]) {
-        sMap[char] = 1
+  for (i = 0; i < grid.length; i++) {
+    for (j = 0; j < grid[i].length; j++) {
+      if (j === start || j === end) {
+        if (grid[i][j] === 0) {
+          return false;
+        }
       } else {
-        sMap[char]++
+        if (grid[i][j] !== 0) {
+          return false;
+        }
       }
     }
+    start++;
+    end--;
   }
-  console.log(sMap, "Smap")
-  for (i = 0; i < target.length; i++) {
-    if (!sMap[target[i]]) {
-      return 0
-    } else {
-      if (visited.includes(target[i])) {
-        console.log("reducing sMap")
-        sMap[target[i]]--;
-        console.log(sMap, "Smap")
-      }
-      if (copies === 0) {
-        console.log("copies === 0")
-        copies = sMap[target[i]]
-        visited.push(target[i])
-      } else if (sMap[target[i]] < copies) {
-        console.log("reassigning copies", copies)
-        copies = sMap[target[i]]
-        visited.push(target[i])
-      }
-    }
-  }
-  return copies
+  return true;
 };
-
-
-console.log(rearrangeCharacters("codecodecodecode","codecode"))
-// console.log(rearrangeCharacters("abbaccaddaeea", "aaaaa"))
-// console.log(rearrangeCharacters("abcba","abc"))
