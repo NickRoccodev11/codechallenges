@@ -20,3 +20,4 @@ var countAsterisks = function (s) {
     return astCount;
   };
   
+  
