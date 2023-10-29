@@ -2,9 +2,6 @@
 
 // All inputs will be valid.
 
-
-
-
 function digits(n) {
     return n.toString().length
     }
