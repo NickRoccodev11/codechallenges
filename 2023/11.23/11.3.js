@@ -26,3 +26,6 @@ function match(usefulness, months) {
 
     return useScore >= needs ? "Match!" : "No match!"
 }
+
+//without a loop:
+let needsRating = 100 * (Math.pow(1 - 0.15, months))
