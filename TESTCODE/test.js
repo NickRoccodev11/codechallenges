@@ -1,22 +1,27 @@
 let log = console.log
 /////////////////////////////////////////////////////////////////////////
-//nested loops i and j
-// j=i
-// two conditions:
-//are i - j >= iD?
-// is numsi - numsj >= vD?
-// if true, return [i j]
-//use  math.abs 
+// string
+//rtsng
 
-var findIndices = function (nums, indexDifference, valueDifference) {
-    for (i = 0; i < nums.length; i++) {
-        if (i + indexDifference < nums.length) {
-            for (j = i + indexDifference; j < nums.length; j++) {
-                if (Math.abs(nums[i] - nums[j]) >= valueDifference) {
-                    return [i, j]
-                }
-            }
+//poiinter
+//ponter
+
+
+//limit
+//mlt
+
+//strings are immutable, consider doing this as an array that is joined before returning
+//iterate through string, if str[i] === "i" arr.reverse(). else arr.pop(str[i])
+//return arr.join("")
+var finalString = function (s) {
+    let strArr = [];
+
+    for (i = 0; i < s.length; i++) {
+        if (s[i] === "i") {
+            strArr.reverse();
+        } else {
+            strArr.push(s[i]);
         }
     }
-    return [-1, -1]
+    return strArr.join('');
 };
