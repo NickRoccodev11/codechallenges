@@ -13,7 +13,7 @@ let log = console.log
 //strings are immutable, consider doing this as an array that is joined before returning
 //iterate through string, if str[i] === "i" arr.reverse(). else arr.pop(str[i])
 //return arr.join("")
-var finalString = function (s) {
+var finalString2 = function (s) {
     let strArr = [];
 
     for (i = 0; i < s.length; i++) {
@@ -25,3 +25,5 @@ var finalString = function (s) {
     }
     return strArr.join('');
 };
+
+var finalString = s => s.split('').sort((a,b)=> a=== "i" ? )
