@@ -1,29 +1,29 @@
 let log = console.log
 /////////////////////////////////////////////////////////////////////////
-// string
-//rtsng
-
-//poiinter
-//ponter
 
 
-//limit
-//mlt
-
-//strings are immutable, consider doing this as an array that is joined before returning
-//iterate through string, if str[i] === "i" arr.reverse(). else arr.pop(str[i])
-//return arr.join("")
-var finalString2 = function (s) {
-    let strArr = [];
-
-    for (i = 0; i < s.length; i++) {
-        if (s[i] === "i") {
-            strArr.reverse();
-        } else {
-            strArr.push(s[i]);
+var isFascinating = function (n) {
+    let stringVer = n.toString();
+    log(stringVer)
+    let concatted;
+    for (i = 2; i < 4; i++) {
+        concatted = i * n;
+        log(concatted)
+        stringVer += concatted;
+        log(stringVer)
+    }
+    if (stringVer.length !== 9 &&
+        stringVer.indexOf("0") !== -1) {
+        return false
+    }
+    log(stringVer.indexOf("0"))
+    for (i = 0; i < stringVer.length; i++) {
+        if (stringVer.indexOf(stringVer[i]) !== stringVer.lastIndexOf(stringVer[i])) {
+            return false
         }
     }
-    return strArr.join('');
+    return true
 };
 
-var finalString = s => s.split('').sort((a,b)=> a=== "i" ? )
+
+log(isFascinating(267))
