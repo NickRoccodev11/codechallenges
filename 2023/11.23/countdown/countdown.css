@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+    color: blanchedalmond;
+}
+
+#liftoff{
+    display: none;
+}
+
+#timer{
+    display: block;
+}
