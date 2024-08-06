@@ -1,13 +1,27 @@
 let log = console.log
 /////////////////////////////////////////////////////////////////////////
-/**
- * @param {string} s
- * @return {number}
- */
-var minimizedStringLength = function (s) {
-    let sArr = s.split("")
-    let final = sArr.filter((e, i, a) => a.indexOf(e) === a.lastIndexOf(e))
-    return final.length
-};
 
-log(minimizedStringLength("hello"))
+function findGlasses(arr){
+    let bridge = 0;
+    for(let i = 0; i< arr.length; i++){
+      for(let j = 0; j < arr[i].length; j++){
+        if(arr[i][j] == "O"){
+            console.log(arr[i])
+            j++
+          while(arr[i][j] =="-"){
+            j++
+            bridge++;
+            console.log("j:", j)
+            console.log(arr[i][j])
+          }
+          if(arr[i][j] == "O" && bridge > 0){
+            console.log("j:", j)
+            return i
+          }else{
+            bridge = 0
+          }
+        }
+      }
+    }
+  }
+  console.log(findGlasses("O--#--O","dustO---Odust","more dust"))
