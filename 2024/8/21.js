@@ -29,7 +29,21 @@ class BST {
   }
 
   contains(value) {
-    // Write your code here.
+    if (this.value === value){
+      return true
+    }else if(this.value > value){
+      if (this.left === null){
+        return false
+      }else{
+       return  this.left.contains(value)
+      }
+    }else{
+      if(this.right === null){
+        return false
+      }else{
+       return this.right.contains(value)
+      }
+    }
   }
 
   remove(value) {
