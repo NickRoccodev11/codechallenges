@@ -2,21 +2,24 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var canJump = function(nums) {
-  if(nums[0] == 0 && nums.length > 1) return false;
+var canJump = function (nums) {
+  if (nums[0] == 0 && nums.length > 1) return false;
 
-  for(let i = 0; i < nums.length -1; i++){
-      if(nums[i] == 0){
-          let counter =1;
-          for(let j  = i - 1; j >= 0; j--){
-              if(nums[j] > counter){
-                  break;
-              }else if( j == 0 && nums[j] <= counter){
-                  return false;
-              }
-              counter++;
-          }
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] > nums.length - i + 1) {
+      return true;
+    }
+    if (nums[i] == 0) {
+      let counter = 1;
+      for (let j = i - 1; j >= 0; j--) {
+        if (nums[j] > counter) {
+          break;
+        } else if (j == 0 && nums[j] <= counter) {
+          return false;
+        }
+        counter++;
       }
+    }
   }
   return true;
 };
@@ -28,7 +31,7 @@ var canJump = function(nums) {
 //if the first position is zero, false
 //if we hit a zero, we need to figure out if we can jump it
 // a zero can be jumped if any element  before it:
-// is greater than the distance in steps between 
+// is greater than the distance in steps between
 //that element and zero
 //if we get a zero:
 //loop backwards to the beginning from that index
