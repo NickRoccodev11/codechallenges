@@ -4,7 +4,7 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function(nums, k) {
-  const map = {};
+  const map = {}
   for(let i =0; i < nums.length; i++){
       map[i] = nums[i];
   }
