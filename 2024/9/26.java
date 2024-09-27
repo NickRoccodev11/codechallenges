@@ -1,7 +1,6 @@
 import java.util.Arrays;
 class Kata{
   public static long sumTwoSmallestNumbers(final long [] numbers) {
-    long lowestSum = 0;
     
    Long smallest = Long.MAX_VALUE;
    Long secondSmallest = Long.MAX_VALUE;
